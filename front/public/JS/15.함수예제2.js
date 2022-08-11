@@ -22,3 +22,4 @@ function 계산버튼함수(){
 	document.getElementById('resultbox').innerHTML= '계산 결과 : '+ result
 }
 
+
