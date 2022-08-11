@@ -61,6 +61,8 @@ li{ list-style-type: none; }
 .items .date{ float: right; }
 		/* 오른쪽 */
 .right_main{ float: right; width: 440px;}
+.right_main .main_title{ border-bottom: solid 2px black; padding-bottom: 8px;}
+.right_main .product_ul{ float: left; width: 200px; margin: 20px 0 0 10px; }
 
 /* ------------------- 푸터 ----------------- */
 #footer{ clear: both; }
