@@ -32,13 +32,38 @@ li{ list-style-type: none; }
 	background-position: top center;
 }
 /* ------------------- 본문 ----------------- */
+#content{ width: 1200px; margin: 0 auto; }
 	/* ---------- 사이드바 ---------- */
-	
-	
+.sidebar{ float: left; width: 250px; }
+.sb_title1{ background-color: #0ca9a3; padding: 15px; 
+	font-size: 20px; color: white; 
+}
+.sb_comment{ padding: 15px; line-height: 150%; }
+.searchbox { padding: 15px; }
+.searchbox input{ width: 150px; height: 30px;  }
+.searchbox button{ margin-left: 5px; padding: 8px 10px; }
+.sidebar .sb_title2{ 
+	border-top: solid 2px black; 
+	border-bottom: solid 1px #eeeeee;
+	padding: 15px; font-size: 15px;
+}
+.sidebar .sb_list{ padding: 15px; } 
+.sidebar .sb_list li{ padding: 10px; }
+
 	/* ---------- 메인 본문 ---------- */
+		/* 왼쪽 */
+.main_content{ float: right; width: 900px; }
+.left_main{ float: left; width: 440px;}
+.left_main .main_title{ border-bottom: solid 2px black; padding-bottom: 8px;}
+.left_main .board_ul{  margin: 10px 0px 40px 0px;  }
+.left_main .board_ul .items{ padding-bottom: 40px; }
+.items .title{ float: left; }
+.items .date{ float: right; }
+		/* 오른쪽 */
+.right_main{ float: right; width: 440px;}
 
 /* ------------------- 푸터 ----------------- */
-
+#footer{ clear: both; }
 
 
 
