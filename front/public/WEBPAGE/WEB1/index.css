@@ -23,7 +23,7 @@ a:hover{ color: gray; }
 .main_menu{ margin-top:20px; font-size: 20px; }
 .main_menu li{ display: inline; margin-left: 80px; }
 
-/* --------------------------------------------- */ 
+/* --------------------- 메인이미지 ---------------------- */ 
 #main_img{
 	clear : both; /* 앞태그에서 사용되는 float 제거 */
 	width: 100%; height: 250px;
@@ -32,6 +32,24 @@ a:hover{ color: gray; }
 	background-position: top center; /* 박스권 배경 이미지 정렬 */
 	margin: 20px; 
 }
+/* --------------------- 본문 ---------------------- */ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
