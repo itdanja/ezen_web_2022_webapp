@@ -24,8 +24,25 @@ li{ list-style-type: none; }
 	font-size: 20px; margin-left: 100px;
 }
 /* ------------------- 메인이미지 ----------------- */
-
+#main_img{
+	clear: both;
+	height : 350px;
+	background-image: url("img/main_bg.png");
+	background-repeat: no-repeat; /*자동채우기 제거 */
+	background-position: top center;
+}
 /* ------------------- 본문 ----------------- */
+	/* ---------- 사이드바 ---------- */
+	
+	
+	/* ---------- 메인 본문 ---------- */
 
 /* ------------------- 푸터 ----------------- */
+
+
+
+
+
+
+
 
