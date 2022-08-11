@@ -34,7 +34,7 @@ li{ list-style-type: none; }
 /* ------------------- 본문 ----------------- */
 #content{ width: 1200px; margin: 0 auto; }
 	/* ---------- 사이드바 ---------- */
-.sidebar{ float: left; width: 250px; }
+.sidebar{ float: left; width: 250px; margin-bottom: 80px; }
 .sb_title1{ background-color: #0ca9a3; padding: 15px; 
 	font-size: 20px; color: white; 
 }
@@ -65,8 +65,18 @@ li{ list-style-type: none; }
 .right_main .product_ul{ float: left; width: 200px; margin: 20px 0 0 10px; }
 
 /* ------------------- 푸터 ----------------- */
-#footer{ clear: both; }
-
+#footer{ 
+	clear: both; /* float 제거 */
+	background-color: #05354e;
+	color: white;
+	height: 300px;
+}
+.ft_box{ width: 1200px; margin: 0 auto;}
+.ft_menu{ padding: 20px; font-weight: bold; }
+.ft_menu li{ display: inline; margin-right: 30px; }
+.ft_box .items{ float: left; margin: 20px 50px 20px 50px; }
+.ft_item_ul{ margin-top: 10px; width: 300px; }
+.ft_item_ul li{ margin: 5px;}
 
 
 
