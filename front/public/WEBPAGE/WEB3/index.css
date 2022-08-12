@@ -12,6 +12,9 @@ li{ list-style-type: none; }
 .logo_impact{ color: blue; font-weight: bold; }
 .top_menu{ position: absolute; right: 20px; top:30px; }
 .top_menu li{ display: inline; margin-left: 20px; }
+/* ----------------------- 메인이미지 ------------------------ */
+#main_img{ text-align: center; }
+
 
 
 
