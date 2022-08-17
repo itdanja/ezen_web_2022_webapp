@@ -71,10 +71,40 @@ function lotto_number(){
 }
 // 4. 추첨번호 비교 결과 함수 
 function lotto_result(){
-	
+	let count = 0  // 두 배열 간 총 동일한 숫자의 개수 
+	let result_numbers = select_numbers.filter( (value) => lotto_numbers.includes(value) )
+	count = result_numbers.length
+	let msg = '' // 출력할 메시지를 저장하는 변수 
+	if( count == 0 ){ msg +='꽝'}
+	else if( count == 1 ){  msg +='1개 맞았습니다.' + result_numbers }
+	else if( count == 2 ){  msg +='2개 맞았습니다.[5등]' + result_numbers }
+	else if( count == 3 ){  msg +='3개 맞았습니다.[4등]' + result_numbers }
+	else if( count == 4 ){  msg +='4개 맞았습니다.[3등]' + result_numbers }
+	else if( count == 5 ){  msg +='5개 맞았습니다.[2등]' + result_numbers }
+	else if( count == 6 ){  msg +='6개 맞았습니다.[1등]' + result_numbers }
+	document.getElementById('resultbox').innerHTML = msg
 }
- 
- 
+
+/*
+	두 배열간 교집합[동일한 데이터] 개수 구하기 방법 
+	1. 
+	for( let i of select_numbers ){
+		for( let j of lotto_numbers ){
+			if( i == j) { 
+				count++ 
+			} 
+		}
+	} 
+	
+	2.
+	for( let i of select_numbers ){
+		if( lotto_numbers.indexOf( i ) != -1 ){ count++; }
+	}
+	
+	3.
+	let result_numbers = select_numbers.filter( (value) => lotto_numbers.includes(value) )
+	count = result_numbers.length
+*/
  
  
  
