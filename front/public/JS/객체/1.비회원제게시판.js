@@ -10,6 +10,11 @@
 		// 6. 글 등록했으면 기존 내용물 지우기 -> input 공백 넣기 
 	[출력]
 	// 1. js시작될때 / 새로운 글이 등록 될때마다 [ 게시물 출력 ]
+	[보기]
+	// 1. 게시물 출력해서 제목을 클릭 할때마다 [ 게시물 보기 ]
+		// 1. 내가 클릭한 게시물(???) : 매개변수 전달 [ 클릭한 게시물의 번호( 중복 없는 속성 ) ]
+		
+	
 */
 
 // 4. 여러개 board 객체를 저장할 배열 선언 
@@ -47,19 +52,27 @@ function 글등록(){
 
 // 1. 
 function 게시물출력(){
-	
 	let html = '<tr> <th>번호</th> <th>제목</th> <th>작성자</th> </tr>'
 	
 	// 반복문 
 	for( let i = 0 ; i<boardlist.length ; i++ ){
 		// i는 0부터 배열의길이 까지 1씩 증가 			// 배열내 i번째 객체내 '제목' 키 호출 -> 값 이 나옴
-		html += '<tr> <td> '+i+' </td> <td> '+boardlist[i].제목+' </td> <td> '+boardlist[i].작성자+'</td> </tr>'
+		html += '<tr>'+
+					'<td> '+i+' </td> '+
+					'<td><a href="#" onclick="게시물보기('+i+')">'+boardlist[i].제목+'</a></td>'+ 
+					'<td>'+boardlist[i].작성자+'</td> '+
+				'</tr>'
+											// " " : 문자처리   ' ' : 문자처리  vs `${ }`
+											// js에서 html 작성시 문자처리 : '<태그명 onclick="함수()">'
 	}
-	
-	// 
 	document.getElementById('boardlist').innerHTML = html
-	
-}
+} // 게시물출력 함수 end 
+
+function 게시물보기( i ){
+	document.getElementById('viewtitle').innerHTML =  boardlist[i].제목
+	document.getElementById('viewwriter').innerHTML =  boardlist[i].작성자
+	document.getElementById('viewcontent').innerHTML =  boardlist[i].내용
+} // 게시물보기 함수 end 
 
 
 
