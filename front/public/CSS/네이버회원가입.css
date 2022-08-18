@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+a{
+	color: black;
+	text-decoration: none;
+}
+body{
+	background-color: #f5f6f7;
+}
+
+/* 레이아웃 */
+.main_signup{
+	width: 460px;
+	margin: 0 auto;	/* 가운데정렬*/
+	text-align: center;
+}
+h3{
+	text-align: left;
+	font-size: 14px;
+	font-family:'돋움';
+}
+.signup_input{
+	display: flex;
+	padding: 10px;
+	border: solid 1px #dadada;
+	background-color: #ffffff;
+}
+#signup_id , #signup_pw , #signup_rpw{
+	height: 30px;	/* 높이길이 */
+	border: none; /*테두리 제거 */
+	width: 100%;	/* 가로길이 */
+}
+.signup_at{
+	font-size: 15px;
+	margin-top: 5px;
+	color: #8e8e8e;
+}
+.signup_lock{
+	width : 24px;
+	height : 24px;
+	background-image: url("https://static.nid.naver.com/images/ui/join/m_icon_pw_step.png");
+	background-size: 125px 75px;
+	margin-top: 5px;
+	top : 50%;
+	right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
