@@ -55,7 +55,7 @@ function 점수등록(){ // 2. 점수 등록 버튼을 눌렀을때
 	document.getElementById('kor').value = ''
 	document.getElementById('eng').value = ''
 	document.getElementById('mat').value = ''
-	// 5. 
+	// 5. 등록할때마다 테이블내 html 재호출
 	학생출력()
 	
 } // f end 
@@ -94,7 +94,7 @@ function 학생출력() {
 					'<th>'+studentlist[i].mat+'</th>'+
 					'<th>'+sum+'</th>'+
 					'<th>'+avg+'</th>'+
-					'<th><button>삭제</button></th>'+
+					'<th><button onclick="학생삭제('+i+')" >삭제</button></th>'+
 				'</tr>' 
 		// 변수는 문자처리 X // 변수는 앞전에 미리 정의된 단어[ 키워드 = 컴퓨터가 알고 있는 단어 ]
 	} // for end 
@@ -102,6 +102,11 @@ function 학생출력() {
 	document.getElementById('listtable').innerHTML = html
 } // f end 
 
+function 학생삭제( i ) { // 학생 삭제하는 함수 [ 매개변수 : 삭제할 식별번호(배열내 저장된 순서번호=인덱스) ]
+	alert( studentlist[i].name + '의 점수를 삭제 합니다.')
+	studentlist.splice( i , 1 ) // i번째 인덱스의 객체 1개 삭제 
+	학생출력() // 5. 삭제 할때마다 테이블내 html 재호출
+}
 
 
 
