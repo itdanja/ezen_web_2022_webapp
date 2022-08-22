@@ -35,6 +35,43 @@
 .post_thumb{
 	position: relative;
 }
+/*------------------------------------------*/
+
+
+.btn a{
+	color: #fff;	/*글자색*/
+	padding: 10px 20px;	/* 안쪽 여백 : 가로 세로 */
+	background-color: #eda1a1; /* 배경색 */
+	
+	/* 그림자 : 1.box-shadow 2.text-shadow */
+	box-shadow: 0 0 0 5px #eda1a1;
+			/* x축 , y축 , 그림정도 , 확대/축소 정도 , 색상 */ 
+	
+	border: 2px dashed #e38787;
+	border-radius: 5px;
+	text-decoration: none;
+	display: inline-block;
+}
+.btn a:hover{ /* 마우스 올렸을때 */
+	color: #fff;
+	background-color: #e38787;
+	box-shadow: 0 0 0 5px #e38787;
+	border: 2px dashed #eda1a1;
+	
+}
+/*------------------------------------------*/
+article ul li::before{
+	content : '';
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: #93d8d0;
+	display: inline-block;
+	margin: 0 8px 2px 0;
+}
+
+
+
 /* 미디어쿼리 : 디바이스 크기에 따라 css 설정 */
 @media( min-width : 600px)  { /* 가로사이즈 600px 이상일때 반응형 */
 	.container{
