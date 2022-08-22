@@ -3,7 +3,7 @@
 .post_title{
 	padding-bottom: 10px; 		/* 아래 안쪽 여백 */
 	
-	/* 배경 그라데이션 */
+	/* 배경 그라데이션 : linear-gradient : 선형그라이데이션 */
 	background-image: linear-gradient(45deg, #fff 30%, #ccc 30%, #ccc 50%, #fff 50%, 
 	#fff 80%, #ccc 80%, #ccc 100%);
 	
@@ -23,10 +23,20 @@
 	color : #949087;
 	text-decoration: none; /* 링크 밑줄제거 */
 }
-
+/*------------------------------------------*/
+.post_img{
+	width : 100%;
+	height: 260px; /* 고정 높이 -> 비율이 깨짐 */
+	object-fit : cover;
+	border-radius: 40% 70% 50% 30% / 50%;
+				/* 각각의 가로      /  세로 : 50% 통일 */
+				 
+}
+.post_thumb{
+	position: relative;
+}
 /* 미디어쿼리 : 디바이스 크기에 따라 css 설정 */
-@media( min-width : 600px)  {
-	
+@media( min-width : 600px)  { /* 가로사이즈 600px 이상일때 반응형 */
 	.container{
 		display: flex;
 		justify-content: space-between;
@@ -36,6 +46,15 @@
 	}	
 	aside{
 		width: 26%;
+	}
+	.post_img{	/* 이미지 고정 사이즈 -> 비율이 깨짐 */
+		width: 220px;
+		height: 180px;
+	}
+	.post_thumb{
+		margin : 0 3rem 1rem 0;
+		shape-outside : circle();
+		float: left;
 	}
 	
 	
