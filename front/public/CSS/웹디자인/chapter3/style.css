@@ -70,6 +70,20 @@ article ul li::before{
 	margin: 0 8px 2px 0;
 }
 
+ol li{
+	/* 요소의 연속 값을 세는 속성  : 해당 요소를 사용할때마다 숫자가 늘어남*/
+	counter-increment: asd; 
+}
+
+article ol li::before{
+	content: counter( asd );
+	color: #93DFB8;
+	display: inline-block;	
+	margin-right: 8px;
+}
+
+
+
 
 
 /* 미디어쿼리 : 디바이스 크기에 따라 css 설정 */

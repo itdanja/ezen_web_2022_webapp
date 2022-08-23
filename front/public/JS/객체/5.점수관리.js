@@ -110,6 +110,39 @@ function 학생삭제( i ) { // 학생 삭제하는 함수 [ 매개변수 : 삭�
 
 
 
+		let output=''
+		let num= Number(prompt('홀수입력 : '))
+		let s=(num+1)/2 //중간지점(기준)
+		
+		//좌표설정
+ 		for(let i=1; i<=num; i++){
+			for(let j=1; j<=num; j++){
+				// 기준점 설정
+				if(i==s){output+='*' } // 가로 가운데 한줄은 항상 별
+
+				//가로 가운데 줄을 기준으로 위/아래 구분
+				// 가로 중간 위
+				else if(i < s){
+							if(i>=j){ output +='*'}
+							else if( (i+j)>num){output+= '*'}
+							else output +=' '
+				}
+				
+				//가로 중간 아래
+				else if(i>s){
+							if((i+j)<=num+1 ){output += '*'}
+							else if(i <=j ){output +='*'}
+							else output +=' '
+				}
+			}
+			
+			output+='\n'
+		} 
+	
+		console.log(output)
+
+
+
 
 
 
