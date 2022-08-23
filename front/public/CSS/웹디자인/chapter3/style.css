@@ -82,6 +82,84 @@ article ol li::before{
 	margin-right: 8px;
 }
 
+/*------------------ 인용문 --------------------*/
+article blockquote{
+	position: relative;
+	padding: 1rem 3rem 1rem 3rem;
+	margin-bottom: 1rem;
+}
+
+article blockquote::before ,
+article blockquote::after  {
+	font-size : 6rem;
+	font-family: "Noto Sans KR" , sans-serif;
+	position: absolute;
+	color : #cccccc;	/* 단색일경우 3자리 */
+	line-height : 0;
+}
+
+article blockquote::before{
+	content: '\201C';
+	top: 2.5rem;
+	left: 0;
+}
+
+article blockquote::after{
+	content: '\201D';
+	bottom: 0.5rem;
+	right: 0;
+}
+/* ---------------------------------------------------- */
+
+.bqbox{
+	position: relative; /* 가상요소들의 부모요소에 relative */
+	padding: 20px;
+}
+
+.bqbox ::before , .bqbox ::after{
+	content: '' ;
+	width: 40px; height: 40px;
+	position: absolute; /* 가상요소들의 absolute */
+}
+
+.bqbox ::before {
+	border-top: 2px solid red;
+	border-left: 2px solid red;
+	top: 0; left: 0;		/* 왼쪽 상단 */ 
+}
+.bqbox ::after {
+	border-bottom: 2px solid red;
+	border-right: 2px solid red;
+	bottom: 0; right: 0;	/* 오른쪽 하단 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
