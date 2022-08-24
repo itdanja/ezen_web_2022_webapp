@@ -1,5 +1,24 @@
 /**
- * 
+	1. html 읽어온 후 이벤트 처리 함수 
+		document.addEventListener('DOMContentLoaded', ()=>{ } ) 
+	2. 요소[태그] 호출 
+		객체명 = document.querySelector( 식별자명 )
+		객체명 = document.querySelectorAll( 식별자명 )
+	3.텍스트 조작 
+		객체명.textContent = '문자 그대로' 
+		객체명.innerHTML = 'html형식대로'
+	4.속성 조작 
+		객체명.setAttribute( '속성명' , 값 )
+		객체명.getAttribute( '속성명' )
+		* 객체명.속성명 = 값 
+	5.스타일 조작 
+		객체명.style.속성명 = 값 
+	6. 태그(요소) 추가
+		document.createElement( 태그명 )
+	7. 태그(요소) 삭제
+		부모객체.removeChild( 자식객체 )
+		자식객체.parentNode.removeChild( 자식객체 )
+
  */
  
 // p.320

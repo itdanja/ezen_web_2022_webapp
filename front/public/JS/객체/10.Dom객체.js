@@ -13,7 +13,9 @@ const p = document.querySelector('p') // 요소 가져오기
 const connectBtn = document.querySelector('#connect') // 요소 가져오기
 const disconnectBtn = document.querySelector('#disconnect') // 요소 가져오기
 // 출력하는 함수 
-const listener = () => { h1.textContent = `클릭횟수 : ${counter++}` }
+const listener = () => { 
+	h1.textContent = `클릭횟수 : ${++counter}` 
+}
 // 1. 연결 버튼을 클릭했을때 
 connectBtn.addEventListener( 'click' , () => {
 	if( isConnect == false ){ // 만약에 연결이 안되어 있으면 
