@@ -143,19 +143,83 @@ cmselect.addEventListener('change', (event)=>{
 	변환상수 = Number( options[index].value )
 	calculate() // 함수 실행
 })
-
 // 2. 
 const calculate = () => {
 	// span에 계산된 결과를 출력 [ toFixed(2) : 소수점 표시(소수점개수) ]
 	cmspan.textContent = (현재값*변환상수).toFixed(2)
 }
-
 // 1. input 입력할때마다 현재값 변수를 입력된 값으로 변환해주는 이벤트
 cmiput.addEventListener('keyup' , (event) =>{
 	// * input 입력된 데이터(value) 숫자형으로 변환후 현재값 변수에 저장 
 	현재값 = Number( event.currentTarget.value )
 	calculate() // 함수 실행 
 })
+
+// p.347
+let timer = 0		// 타이머 시간(초) 저장하는 변수/객체 
+let timerId = 0		// 타이머 함수를 저장하는 변수/객체 [ setInterval 함수 ]
+const timerinput = document.querySelector('#timerinput')
+const timerh1 = document.querySelector('#timerh1')
+// 1. 체크박스의 상태가 변경 되었을때
+timerinput.addEventListener('change' , (event)=>{
+	// 1. 체크박스의 checked 인지 확인 
+	if( event.currentTarget.checked ){ // 체크가 되어 있는상태 
+		// setInterval( 함수명 , 초[밀리초=1000/1초] )
+		timerId = setInterval( ()=>{
+			timer += 1 	// 타이머 시간 변수 1씩증가
+			timerh1.textContent = `${timer}초` // span태그에 변수 출력 
+		} , 1000 )
+	}else{ // 체크가 안되어 있는상태 
+		clearInterval( timerId ) // 타이머 함수 종료 [ clearInterval(타이머객체) ]
+	}
+})
+
+
+
+// p.348~349
+/*
+
+	tag		=> 'tag'			[복수] 	querySeletor('h1')
+	calss   => '.class명'		[복수]	querySeletor('.h1class')
+	id		=> '#id명'			[단일]	querySeletor('#h1id')
+	name	=> '[name=name명]'	[복수]	querySeletor('[name=h1name]')
+	
+	*식별자 
+		<h1 id="h1id" class="h1class" name="h1name">
+*/
+// 1. HTML 요소 
+const radios = document.querySelectorAll('[name=pet]')
+const output = document.querySelector('#output')
+
+// 2. radios[배열] 반복문 
+	// 배열명.forEach( ( 반복변수 )=>{ } )
+		// 동물목록 = [ 강아지 , 고양이 , 햄스터 , 기타  ]
+		/*
+			 1. for( let i in 동물목록 ){ alert( i ) }
+			 	i = 0   i =1  i = 2   i = 3
+			 	
+			 2. for( let i of 동물목록 ){ alert( i ) }
+			 	i = 강아지  i=고양이 i=햄스터 i= 기타 
+			 	
+			 3. 배열명.forEach( ( i , j) => { alert( i , j )  })
+			 	i = 강아지  i=고양이 i=햄스터 i = 기타 
+			 	j = 0     j= 1   j= 2   j = 3
+		*/
+	
+radios.forEach( ( i )=>{
+	i.addEventListener('change' , (event) =>{
+		const current = event.currentTarget
+		if( current.checked ){
+			output.textContent = `좋아하는 애완동물은 ${current.value}이시군요!`
+		} // if end 
+	}) // event end 	
+}) // forEach end 
+
+
+
+
+
+
 
 
 
