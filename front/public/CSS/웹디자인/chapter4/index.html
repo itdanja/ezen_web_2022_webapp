@@ -81,13 +81,13 @@
 		<div class="home_text"> <!-- 내용  -->
 			<h2 class="title"> 직원 급여 차트 [ 과제 ]</h2>
 			<p>
-				직원명 : <input type="text"> <br>
-				급여 : <input type="text"> <br>
-				<button class="btn btn_secondary">등록</button>
+				직원명 : <input id="name" type="text"> <br>
+				급여 : <input id="money" type="text"> <br>
+				<button onclick="차트그리기()" class="btn btn_secondary">등록</button>
 			</p>
 		</div> <!-- 차트 -->
 		<div class="home_chart">	<!-- chartist.js 라이브러리 이용한 차트 구현 -->
-			<div class="bar_chart"></div> <!-- 막대차트 -->
+			<div class="bar_chart2"></div> <!-- 막대차트 -->
 		</div>
 	</section>
 	

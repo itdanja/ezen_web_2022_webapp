@@ -42,6 +42,60 @@ let barOptions = {
 // 
 new Chartist.Bar('.bar_chart' , barData , barOptions )
 
+	
+/* 막대차트 */
+let barData2 = {	// 객체 선언 [ 매번 선언시 초기화 ]
+	/* 항목*/
+	labels : [ ] ,
+	/*  */
+	series : [ [ ] ]		// 배열 = [ ]  
+}
+let barOptions2 = {
+	// y축
+	axisY : { 	// *  let 객체명 = {  키 : { }  }
+		offset : 60 ,									// 1. 
+		scaleMinSpace : 50 , 							// 2.선 간격[px]
+		labelInterpolationFnc : function(value) {		// 3.Y축 눈금 표시 
+			return value +' 원'
+		}
+	} ,   
+	width : '100%' , 
+	height : '440px' 
+}
+
+function 차트그리기(){
+	const name = document.getElementById('name').value;
+	const money = document.getElementById('money').value;
+	barData2.labels.push( name )
+	barData2.series[0].push( money )
+	// 차트 적용 
+	new Chartist.Bar('.bar_chart2' , barData2 , barOptions2 )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

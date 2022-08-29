@@ -119,9 +119,18 @@ footer{
 }
 .footer_nav{ margin: 50px; }
 
+
 /* 모바일 퍼스트 : 모바일 기준으로 css 우선 작성 / 테스크톱 : 미디어쿼리 */
-@media( min-width : 600px )  {
-	/* 600px 이상일때 적용되는 css */
+@media( min-width : 600px )  {/* 600px 이상일때 적용되는 css */
+	/* ----------- 푸터 ------------------- */
+	.footer_nav{ 
+		display: flex; 
+		justify-content: center; 
+		margin: 50px; 
+	}
+	.footer_nav li{ margin: 0 20px; }
+	
+	/* ------------ 본문 --------------------- */
 	.content{ 
 		display: flex; 						/* 하위태그 가로배치 [ flex-direction : row ]  */
 		justify-content: space-between; 	/* 하위태그 가로 정렬 */
@@ -159,10 +168,7 @@ footer{
 	}
 	/* 메뉴에 있는 가상요소[아이콘] 제거 */
 	.main_nav a::before{ content:''; }
-	
-	/* ----------- 푸터 ------------------- */
-	.footer_nav{ display: flex; justify-content: center; margin: 50px; }
-	.footer_nav li{ margin: 0 20px; }
+
 }
 
 
