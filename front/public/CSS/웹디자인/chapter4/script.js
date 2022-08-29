@@ -43,7 +43,7 @@ let barOptions = {
 new Chartist.Bar('.bar_chart' , barData , barOptions )
 
 	
-/* 막대차트 */
+/*---------------- 직원 급여 차트 --------------- */
 let barData2 = {	// 객체 선언 [ 매번 선언시 초기화 ]
 	/* 항목*/
 	labels : [ ] ,
