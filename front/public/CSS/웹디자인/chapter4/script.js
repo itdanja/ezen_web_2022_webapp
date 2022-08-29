@@ -35,8 +35,8 @@ let barOptions = {
 			return value +' 명'
 		}
 	} ,   
-	width : '100%',
-	height : '400px;'
+	width : '100%' , 
+	height : '440px' 
 }
 
 // 
