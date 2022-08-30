@@ -160,6 +160,15 @@ th,td{ display: block; } /* 모바일기준 [ block : 한줄차지 ] */
 	margin-bottom: 1rem;
 }
 
+/*-------------------- form.html ------------------------*/
+/* ------- 메인 이미지 ------------------*/
+.form_page{
+	background-image: url("images/bg-form.jpg");
+	background-repeat: no-repeat;
+	background-position: right 100px; /* 헤더 보이게끔 100px 이동 */
+	background-size: 70vw; /* viewport width : 반응형 가로 사이즈 */
+	
+}
 
 
 /* ----------- 푸터 ------------------- */
