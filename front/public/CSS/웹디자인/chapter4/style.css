@@ -106,7 +106,7 @@ header .wrapper{
 	background-color: #cccccc;
 	margin: 2rem  0 2.5rem;
 }
-/*-------- job.html ------------------------*/
+/*-------------------- job.html ------------------------*/
 /* 본문 */
 .text_center{
 	text-align: center;
@@ -147,6 +147,21 @@ td{
 }
 th,td{ display: block; } /* 모바일기준 [ block : 한줄차지 ] */
 
+/* ------------ 타임라인 ----------------------*/
+.timeline{
+	list-style: decimal inside;
+}
+.timeline_item{
+	margin-bottom: 2rem;
+}
+.timeline_title{
+	display: inline-block; /* <h3> display : block */
+	font-size: 20px;
+	margin-bottom: 1rem;
+}
+
+
+
 /* ----------- 푸터 ------------------- */
 
 footer{
@@ -163,6 +178,48 @@ footer{
 
 /* 모바일 퍼스트 : 모바일 기준으로 css 우선 작성 / 테스크톱 : 미디어쿼리 */
 @media( min-width : 600px )  {/* 600px 이상일때 적용되는 css */
+	
+	/* ------------ 타임라인 ----------------------*/
+	.timeline_item{
+		display: flex;
+		margin-bottom: 0; /* 테두리 연결 */
+	}
+	.timeline_title{
+		width: 24%;
+		text-align: right;
+		padding: 2rem 2.5rem 2rem 0;
+	}
+	.timeline_content{
+		width: 76%;
+		border-left: 5px solid #f8f6f2;	/* 구분선 테두리 */
+		padding: 1.5rem 0 1.5rem 2.5rem;
+		position: relative; /* 가상요소를 절대위치 사용하기 위해 */
+	}
+	.timeline_content::before{ /* 가상요소 -> 아이콘 */
+		/* 가상요소 절대위치 */
+		position: absolute; 	/* 부모요소 기준 */
+		top: 1.5rem; left: -1.5rem;  
+		/* 가상요소의 크기/배경색/정렬/여백 */
+		display: block; width: 2.25rem; height: 2.25rem; background-color: #d0bea2;
+		text-align: center; padding: 0.1rem;
+		/* 폰트어썸 아이콘 */
+		font-family: 'Font Awesome 5 Pro';
+		font-weight: 900;
+		color: white;
+		font-size: 1.25rem;
+	}
+	.icon_file::before{ content: '\f56e'; }
+	.icon_code::before{ content: '\f121'; }
+	.icon_chat::before{ content: '\f086'; }
+	.icon_hands::before{ content: '\f2b5'; }
+	
+	
+	
+	
+	
+	
+	
+	
 	/* ----------------- */
 	.main{ padding: 4rem; }
 	/* --------- 테이블 ----------------*/
