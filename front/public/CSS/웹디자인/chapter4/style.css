@@ -5,10 +5,7 @@
 	margin: 0 auto;
 	width: 100%;
 }
-.main{
-	max-width: 900px;
-	margin: 0 auto;
-}
+
 /* ----------- 헤더 ------------------- */
 header .wrapper{
 	display: flex;	
@@ -109,7 +106,31 @@ header .wrapper{
 	background-color: #cccccc;
 	margin: 2rem  0 2.5rem;
 }
-/* -------- job.html 테이블 --------------------*/
+/*-------- job.html ------------------------*/
+/* 본문 */
+.text_center{
+	text-align: center;
+}
+.text_center::after{ margin: 30px auto; }
+/* 레이아웃 */
+.main{
+	max-width: 900px;
+	width : 90%;		/* 모바일 기준으로 가로길이 10% 여백사용 */
+	margin: 100px auto;
+	padding: 20px;
+	background-color: #ffffff; /* 배경이미지 가림 */
+	box-shadow: 0 0 6px #cccccc; /* 그림자 : 배경이미지 경계선 */
+}
+
+/* ------- 메인 이미지 ------------------*/
+.job_page{
+	background-image: url("images/bg-job.jpg");
+	background-repeat: no-repeat;
+	background-position: left 100px; /* 헤더 보이게끔 100px 이동 */
+	background-size: 70vw; /* viewport width : 반응형 가로 사이즈 */
+}
+
+/* --------  테이블 --------------------*/
 table{
 	margin : 3.5rem 0;
 	width:100%;
@@ -142,6 +163,8 @@ footer{
 
 /* 모바일 퍼스트 : 모바일 기준으로 css 우선 작성 / 테스크톱 : 미디어쿼리 */
 @media( min-width : 600px )  {/* 600px 이상일때 적용되는 css */
+	/* ----------------- */
+	.main{ padding: 4rem; }
 	/* --------- 테이블 ----------------*/
 	th,td{ display: table-cell; } /* td,th display 기본값 : table-cell; */
 		/* -------- 가상클래스 : 동일한 식별자가 있을경우 홀/짝/n 번째 선택 *--------------*/
@@ -152,6 +175,8 @@ footer{
 	tr:nth-child(even) th{ /* 짝수 번쨰 tr 행 */
 		background-color: #ffffff;
 	}
+	th{ width: 25%; }
+	td{ width: 75%; }
 	
 	/* ----------- 푸터 ------------------- */
 	.footer_nav{ 
