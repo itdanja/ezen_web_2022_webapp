@@ -167,8 +167,54 @@ th,td{ display: block; } /* 모바일기준 [ block : 한줄차지 ] */
 	background-repeat: no-repeat;
 	background-position: right 100px; /* 헤더 보이게끔 100px 이동 */
 	background-size: 70vw; /* viewport width : 반응형 가로 사이즈 */
-	
 }
+/*--- 플레이스 홀더 셀렉터 ( 속성을 이용한 셀렉터 ) --------- */
+input[type='text']::placeholder , 
+input[type='email']::placeholder , 
+input[type='url']::placeholder , 
+textarea::placeholder{
+	color: #bbbbbb;
+}
+input[type='checkbox']{
+	opacity: 0;	/* 투명도 이용한 숨기기 */
+	appearance : none;/*기본 스타일 제거*/
+	position: absolute;
+}
+/* 인접 형제 셀렉터 [ + ] */
+input[type='checkbox'] + span::before{
+	display: inline-block;
+	content: '';
+	width: 1.5rem; height: 1.5rem;
+	border: 1px solid #bbbbbb;
+	background-color: white;
+	margin: -0.125rem  0.5rem 0 0;
+	vertical-align: middle; 
+	
+	font-family: 'Font Awesome 5 Pro';
+	font-weight: 900;
+	padding: 0 2px;
+	line-height: 1.5;
+}
+/* 체크 했을때 */
+input[type="checkbox"]:checked + span::before{
+	content: '\f00c';
+}
+
+.select_box{
+	position: relative;
+}
+.select_box::after{
+	display: inline-block;
+	position: absolute;
+	top:0.625rem; right: 1rem;
+	font-family: 'Font Awesome 5 Pro';
+	font-weight: 900;
+	content: '\f078';	/* 아래 발향 화살표 아이콘 */
+	color: #bbbbbb;
+}
+
+
+
 
 
 /* ----------- 푸터 ------------------- */
