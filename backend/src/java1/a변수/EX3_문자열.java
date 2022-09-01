@@ -1,6 +1,5 @@
 package java1.a변수;
 
-import java.net.Socket;
 
 public class EX3_문자열 { // class s 
 
@@ -41,7 +40,6 @@ public class EX3_문자열 { // class s
 		 */
 		/*
 		    예제3 ) 출석부 출력
-		    
 		    	            [[ 출석부 ]]
 			 --------------------------------------
 			 이름			1교시	    2교시	    3교시
@@ -50,6 +48,25 @@ public class EX3_문자열 { // class s
 			 --------------------------------------
 					
 		 */
+		System.out.println("\n----------------- ");
+		// 예1)
+		System.out.println("\\    /\\");
+		System.out.println(" )  ( ')");
+		System.out.println("(  /  )");
+		System.out.println(" \\(__)|");
+		// 예2)
+		System.out.println("|\\_/|");
+		System.out.println("|q p|   /}");
+		System.out.println("( 0 )\"\"\"\\");
+		System.out.println("|\"^\"`    |");
+		System.out.println("||_/=\\\\__|");
+		// 예3)
+		System.out.print("\t[[ 출석부 ]]");
+		System.out.print("\n------------------------------");
+		System.out.print("\n이름\t1교시\t2교시\t3교시");
+		System.out.print("\n유재석\t출석\t결석\t출석");
+		System.out.print("\n강호동\t출석\t결석\t출석");
+		System.out.print("\n------------------------------");
 		
 		
 		
@@ -57,7 +74,6 @@ public class EX3_문자열 { // class s
 		
 		
 	} // main e
-	
 } // class e 
 /*
  
