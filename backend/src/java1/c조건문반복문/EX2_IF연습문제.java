@@ -8,17 +8,32 @@ public class EX2_IF연습문제 {
 		
 		// * 입력객체
 		Scanner scanner = new Scanner(System.in);
-		// 문제1 : 2개의 정수를 입력받아서 더 큰수 출력 
+		
+		// 문제1 : 2개의 정수를 입력받아서 더 큰수 출력 [ 경우의수 : 3개(크다,작다,같다=그외) ]
+		System.out.print("문제1) 정수1 입력: "); int 문제1_1 = scanner.nextInt();
+		System.out.print("문제1) 정수1 입력: "); int 문제1_2 = scanner.nextInt();
+		if( 문제1_1 > 문제1_2 ) { System.out.println("결과1 : " + 문제1_1 );}
+		else if( 문제1_1 < 문제1_2 ) { System.out.println("결과1 : " + 문제1_2 );}
+		//else if( 문제1_1 == 문제1_2 ) { System.out.println("결과1 : 두 수는 같다");}
+		else{ System.out.println("결과1 : 두 수는 같다"); }
+		
 		// 문제2 : 3개의 정수를 입력받아서 가장 큰수 출력 
-		// 문제3 : 4개의 정수를 입력받아서 가장 큰수 출력
-		// 문제4 : 3개의 정수를 입력받아서 오름차순 / 내림차순 
-		// 문제6 : 점수를 입력받아 점수가 90점 이상이면 합격 아니면 불합격 출력 
-		//문제7
+		System.out.print("문제2) 정수1 입력: "); int 문제2_1 = scanner.nextInt();
+		System.out.print("문제2) 정수2 입력: "); int 문제2_2 = scanner.nextInt();
+		System.out.print("문제2) 정수3 입력: "); int 문제2_3 = scanner.nextInt();
+		int max = 문제2_1;	// 첫번째 데이터를 가장 큰수로 저장하는 max 변수  
+		if( max < 문제2_2 ) { max = 문제2_2; } // 두번째 데이터가 max보다 크면 max에 두번째 데이터를 넣기
+		if( max < 문제2_3 ) { max = 문제2_3; } // 세번째 데이ㅓ가 max보다 크면 max에 세번째 데이터를 넣기 
+		System.out.println("결과2 : 가장큰수 : " + max );
+		
+		// 문제3 : 3개의 정수를 입력받아서 오름차순 / 내림차순 
+		// 문제4 : 점수를 입력받아 점수가 90점 이상이면 합격 아니면 불합격 출력 
+		// 문제5
 			// 점수를 입력받아 점수가 90점 이상이면 A등급
 			//				점수가 80점 이상이면 B등급
 			//				점수가 70점 이상이면 C등급
 			//				그외 재시험
-		/* 문제8
+		/* 문제6
 			[ 입력 ] : 국어,영어,수학 입력받기
 			[ 조건 ]
 				평균이 90점 이상이면서 
