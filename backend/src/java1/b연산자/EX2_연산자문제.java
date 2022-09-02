@@ -81,6 +81,7 @@ public class EX2_연산자문제 { // class s
 		 	System.out.println("문제7 : " );  		double 반지름 = scanner.nextDouble();
 		 	System.out.println("결과7 원넓이 : " + ( 반지름 * 반지름 * 3.14 ) );
 		*/
+		/*
 		 	//문제8 : 두 실수를 입력받아 앞실수의 값이 뒤의 값의 몇 %인지 출력하기 
 		 		// 예) 54.5     84.3  입력했으면    64.285714% 출력 
 			System.out.print("문제8) 실수1 : ");		double 문제8_1 = scanner.nextDouble();
@@ -104,23 +105,47 @@ public class EX2_연산자문제 { // class s
 		 	System.out.print("문제11) 키 : ");		double 키2 = scanner.nextDouble();
 		 	System.out.print("문제11) 몸무게 : ");		double 몸무게 = scanner.nextDouble();
 		 	System.out.println(" BMI : " + (  몸무게 / ( (키2/100) * (키2/100))   )  );
-		/*
-		 	문제12 : inch 를 입력받아 cm 로 변환하기 [ 1 inch -> 2.54cm ] 
-		 	문제13 :  중간고사, 기말고사, 수행평가를 입력받아 반영비율별 계산하기
+		*/
+		 	//문제12 : inch 를 입력받아 cm 로 변환하기 [ 1 inch -> 2.54cm ]
+			System.out.print("문제12 inch : "); 		double inch = scanner.nextDouble();
+			System.out.println("결과: cm : " + ( inch*2.54 ) );
+		 	//문제13 :  중간고사, 기말고사, 수행평가를 입력받아 반영비율별 계산하기
 					//소수 둘째 자리 까지 점수 출력하기
 					//중간고사 반영비율 => 30 %
 					//기말고사 반영비율 => 30 %
 					//수행평가 반영비율 => 40 %
-			문제14 :  연산 순서 나열 하고 x와 y값 예측하기
-	 				//int x = 10;
-					//int y = x-- + 5 + --x;
-					//printf(" x의 값 : %d , y의값 :  %d ", x, y)
-		 	
-		 	문제15 :  정수3개 입력받아 오름차순 출력 
-		 	문제16 :  정수4개 입력받아 오름차순 출력 
-		 
-		 */
-		
-		
+			System.out.print("문제13 중간고사 : ");		double 중간고사 = scanner.nextInt() * 0.3 ;
+			System.out.print("문제13 기말고사 : ");		double 기말고사 = scanner.nextInt() * 0.3 ;
+			System.out.print("문제13 수행평가 : ");		double 수행평가 = scanner.nextInt() * 0.4 ;
+			System.out.printf("결과 : %.2f" , (중간고사+기말고사+수행평가) );
+			
+			//문제14 :  연산 순서 나열 하고 x와 y값 예측하기
+			int x = 10;
+			int y = x-- + 5 + --x;
+			System.out.printf("\n x의 값 : %d , y의값 :  %d ", x, y);
+			/*
+			 	1. x변수에 10 대입한다.		x = 10 
+			 	2. y변수에 대입
+			 		1. x--		: 10 [ 나중에 감소 ]
+			 		2. --x		: 9 [ 먼저 감소 ]
+			 		3. x-- + 5 	: 10+5 -> 15-1  [ 나중에 감소 ]
+			 		4. 14 + 9  	: 14+9 -> 23
+			 		5. y = 23
+			 	3. 출력 
+			 		x = 8
+			 		y = 23
+			 */
+		 	//문제15 :  정수3개 입력받아 오름차순 출력 
+		 	//문제16 :  정수4개 입력받아 오름차순 출력 
+
 	} // main e 
 } // class e
+
+
+
+
+
+
+
+
+
