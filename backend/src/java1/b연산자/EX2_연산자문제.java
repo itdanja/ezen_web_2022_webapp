@@ -103,7 +103,7 @@ public class EX2_연산자문제 { // class s
 				//BMI 계산식 = > 몸무게 / ((키 / 100) * (키 / 100))
 		 	System.out.print("문제11) 키 : ");		double 키2 = scanner.nextDouble();
 		 	System.out.print("문제11) 몸무게 : ");		double 몸무게 = scanner.nextDouble();
-		 	System.out.println(" BMI : " + (  몸무게 / ( (키/100) * (키/100))   )  );
+		 	System.out.println(" BMI : " + (  몸무게 / ( (키2/100) * (키2/100))   )  );
 		/*
 		 	문제12 : inch 를 입력받아 cm 로 변환하기 [ 1 inch -> 2.54cm ] 
 		 	문제13 :  중간고사, 기말고사, 수행평가를 입력받아 반영비율별 계산하기
