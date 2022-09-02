@@ -69,21 +69,42 @@ public class EX2_연산자문제 { // class s
 			String 결과5 = ( 문제5 % 7 == 0 && 문제5 % 2 == 0 ) ? "참" : "거짓";
 			System.out.println("결과5) : " + 결과5 );
 		 */
+		/*
 		 	// 문제6 : 두개의 정수를 입력받아 더 큰수 출력 
 			System.out.print("문제6_1 정수 입력 : ");	int 문제6_1 = scanner.nextInt();
 			System.out.print("문제6_2 정수 입력 : ");	int 문제6_2 = scanner.nextInt();
 			System.out.println("결과6) : " + ( 문제6_1 > 문제6_2 ? 문제6_1 : 문제6_2 )  );
+		*/
 		 /*
-		 	문제7 : 반지름을 입력받아 원 넓이 출력하기 
+		 	//문제7 : 반지름을 입력받아 원 넓이 출력하기 
 		 		// 원 넓이 공식 = 반지름 * 반지름 * 원주율[3.14]
-		 	문제8 : 두 실수를 입력받아 앞실수의 값이 뒤의 값의 몇 %인지 출력하기 
+		 	System.out.println("문제7 : " );  		double 반지름 = scanner.nextDouble();
+		 	System.out.println("결과7 원넓이 : " + ( 반지름 * 반지름 * 3.14 ) );
+		*/
+		 	//문제8 : 두 실수를 입력받아 앞실수의 값이 뒤의 값의 몇 %인지 출력하기 
 		 		// 예) 54.5     84.3  입력했으면    64.285714% 출력 
-		 	문제9 : 사다리꼴 넓이 구하기 [ 윗변과 밑변 높이를 입력받아 출력하기 ] 
+			System.out.print("문제8) 실수1 : ");		double 문제8_1 = scanner.nextDouble();
+			System.out.print("문제8) 실수2 : ");		double 문제8_2 = scanner.nextDouble();
+			System.out.printf("결과 : %.2f%%" , ( 문제8_1/문제8_2 )*100 );
+			
+		 	// 문제9 : 사다리꼴 넓이 구하기 [ 윗변과 밑변 높이를 입력받아 출력하기 ] 
 		 		// 사다리꼴 계산식 -> ( 윗변 * 밑변 ) * 높이 / 2 
-		 	문제10: 키를 정수를 입력받아 표준체중 출력하기
+		 	System.out.print("문제9) 윗변 : ");	  	double 윗변 = scanner.nextDouble();
+		 	System.out.print("문제9) 밑변 : ");	  	double 밑변 = scanner.nextDouble();
+		 	System.out.print("문제9) 높이 : ");	  	double 높이 = scanner.nextDouble();
+		 	System.out.println("결과 : " + ( (윗변*밑변)*높이 / 2 ) );
+		 
+		 	//문제10: 키를 정수를 입력받아 표준체중 출력하기
 				//표준체중 계산식 = > (키 - 100) * 0.9
-			문제11 : 키와 몸무게를 입력받아 BMI 출력하기
+		 	System.out.print("문제10) 키 : ");	 	double 키 = scanner.nextDouble();
+		 	System.out.println("결과 : " + ( (키-100)*0.9 ) );
+		
+			//문제11 : 키와 몸무게를 입력받아 BMI 출력하기
 				//BMI 계산식 = > 몸무게 / ((키 / 100) * (키 / 100))
+		 	System.out.print("문제11) 키 : ");		double 키2 = scanner.nextDouble();
+		 	System.out.print("문제11) 몸무게 : ");		double 몸무게 = scanner.nextDouble();
+		 	System.out.println(" BMI : " + (  몸무게 / ( (키/100) * (키/100))   )  );
+		/*
 		 	문제12 : inch 를 입력받아 cm 로 변환하기 [ 1 inch -> 2.54cm ] 
 		 	문제13 :  중간고사, 기말고사, 수행평가를 입력받아 반영비율별 계산하기
 					//소수 둘째 자리 까지 점수 출력하기
@@ -96,7 +117,6 @@ public class EX2_연산자문제 { // class s
 					//printf(" x의 값 : %d , y의값 :  %d ", x, y)
 		 	
 		 	문제15 :  정수3개 입력받아 오름차순 출력 
-		 	
 		 	문제16 :  정수4개 입력받아 오름차순 출력 
 		 
 		 */
