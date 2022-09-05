@@ -24,7 +24,7 @@ public class EX5_예금프로그램 { // class start
 			else if( ch == 2 ) // 2 입력했을경우  
 				{ 
 					System.out.print("안내) 출금액>"); 
-					// 잔액부족 [ 경우의수 2개 : 1. 예금액보다 출금액 더 크거나 같으면 / 2. 더 작으면  ]
+					// 잔액부족 [ 경우의수 2개 : 1. 예금액보다 출금액 더 크면 / 2. 더 작거나 같으면  ]
 					int money = scanner.nextInt();
 					if( balance < money ) { System.out.println("안내) 잔액이 부족합니다.");}
 					else { balance -=money;  }
