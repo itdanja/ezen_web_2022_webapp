@@ -61,14 +61,35 @@ System.out.println("\n---------------------------------------------------");
 			// 2. 공백
 			for( int b = 1 ; b<= i-1 ; b++ ) {
 				System.out.print(" ");
-			}
+			} // for 2 end 
 			// 3. 별
 			for( int s = 1 ; s<= line6-i+1 ; s++ ) {
 				System.out.print("*");
-			}
+			} // for 3 end 
 			// 1. 줄바꿈
 			System.out.println();
-		} // for end 
+		
+		} // for 1 end 
+		
+System.out.println("\n---------------------------------------------------");
+
+		System.out.print("문제7) 줄수 : "); 
+		int line7 = scanner.nextInt();
+		for( int i = 1 ; i<=line7 ; i++ ) {
+			
+			// 2.공
+			for( int b = 1 ; b<=line7-i ; b++ ) {
+				System.out.print(" ");
+			} // for2 end 
+			// 3.별
+			for( int s = 1 ; s<=i*2-1 ; s++ ) {
+				//System.out.print("*"); // 7번
+				System.out.print(i); // 8번
+			}// for3 end 
+			// 1. 줄바꿈
+			System.out.println();
+		} // for1 end 
+
 System.out.println("\n---------------------------------------------------");
 
 	} // main end 
