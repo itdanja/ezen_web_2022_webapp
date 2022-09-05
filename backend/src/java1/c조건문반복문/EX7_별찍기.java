@@ -26,16 +26,22 @@ System.out.println("\n---------------------------------------------------");
 		// 3.
 		System.out.print("문제3) 줄수 : "); int line3 = scanner.nextInt();
 		for( int i = 1 ; i<=line3 ; i++ ) {
-			// 별
+			// 2. 별찍기
 			for( int s = 1 ; s<= i ; s++ ) { System.out.print("*"); }
-			// 줄바꿈
+			// 1. 줄바꿈
 			System.out.println();
 		} // for end 
 System.out.println("\n---------------------------------------------------");
 	
 		// 4.
-
-
+		System.out.print("문제4) 줄수 : "); int line4 = scanner.nextInt();
+		for( int i = 1 ; i<= line4 ; i++ ) {
+			// 2. 별찍기 
+			for( int s = 1 ; s <= line4-i+1 ; s++ ) { System.out.print("*");}
+			// 1. 줄바꿈
+			System.out.println();
+		}
+	
 
 
 
