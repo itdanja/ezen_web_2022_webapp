@@ -40,16 +40,18 @@ System.out.println("\n---------------------------------------------------");
 			for( int s = 1 ; s <= line4-i+1 ; s++ ) { System.out.print("*");}
 			// 1. 줄바꿈
 			System.out.println();
+		} // for end 
+System.out.println("\n---------------------------------------------------");
+		
+		System.out.print("문제5) 줄수 : "); int line5 = scanner.nextInt();
+		for( int i = 1 ; i<=line5 ; i++ ) {
+			// 2. 공백찍기
+			for( int b = 1 ; b<=line5-i ; b++ ) { System.out.print(" "); }
+			// 3. 별찍기 
+			for( int s = 1 ; s<=i ; s++ ) { System.out.print("*"); }
+			// 1. 줄바꿈
+			System.out.println();
 		}
-	
-
-
-
-
-
-
-
-
 
 
 
