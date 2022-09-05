@@ -51,10 +51,51 @@ System.out.println("\n---------------------------------------------------");
 			for( int s = 1 ; s<=i ; s++ ) { System.out.print("*"); }
 			// 1. 줄바꿈
 			System.out.println();
-		}
+		} // for end 
+System.out.println("\n---------------------------------------------------");
 
+		System.out.print("문제6) 줄수 : "); 
+		int line6 = scanner.nextInt();
+		for( int i = 1 ; i<=line6 ; i++ ) {
+			
+			// 2. 공백
+			for( int b = 1 ; b<= i-1 ; b++ ) {
+				System.out.print(" ");
+			}
+			// 3. 별
+			for( int s = 1 ; s<= line6-i+1 ; s++ ) {
+				System.out.print("*");
+			}
+			// 1. 줄바꿈
+			System.out.println();
+		} // for end 
+System.out.println("\n---------------------------------------------------");
 
-
-		
 	} // main end 
 } // class end 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
