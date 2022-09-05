@@ -1,4 +1,4 @@
-package java1.c조건문반복문;
+package java1.ch3조건문반복문;
 
 import java.util.Scanner; // 외부 클래스 호출[ 가져오기 ] // 자동완성 아닐경우 직접 입력!!!
 
