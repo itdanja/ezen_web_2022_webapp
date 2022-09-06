@@ -47,6 +47,23 @@ public class EX5_학생점수관리 { // class s
 					System.out.println("평균 점수 : " + avg );  // 평균 : 합계/개수
 					
 					// * 순위별[ 내림차순 ] 출력 
+					for( int i = 0 ; i<scores.length ; i++ ) {
+						for( int j = i+1 ; j<scores.length ; j++ ) {
+							if( scores[i] < scores[j] ) { // > : 오름차순 <:내림차순
+								// 두 변수 교환
+								int temp = scores[i];	
+								scores[i] = scores[j];
+								scores[j] = temp;
+							} // if end 
+						} // for end 
+					} // for end 
+					
+					// 확인 
+					int rank = 0;
+					for( int value : scores ) {
+						System.out.println( (rank+1)+"순위 점수 : "+ value );
+						rank++;
+					}
 				} 
 			else if( selectNo == 5 ) 
 				{ run=false; } // 5 입력했을때
@@ -56,3 +73,10 @@ public class EX5_학생점수관리 { // class s
 		System.out.println("프로그램 종료");
 	}// main e 
 } // class e 
+
+
+
+
+
+
+
