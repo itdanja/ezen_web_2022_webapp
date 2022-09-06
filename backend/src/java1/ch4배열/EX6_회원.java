@@ -18,7 +18,33 @@ public class EX6_회원 { // class s
 			System.out.print("선택 : ");	int btn = scanner.nextInt();
 			
 			if( btn == 1 )   // 1 입력했을떄
-				{  }
+				{ 
+					// 1. 아이디 / 비밀번호  입력받는다.
+					System.out.print("아이디 : ");	String id = scanner.next();
+					System.out.print("비밀번호 : ");	String password = scanner.next();
+					// 2. 배열내 모든 항목[인덱스]와 비교해서 입력한 아이디와 비밀번호 있는지 확인 
+					int login = 0 ; // 로그인 처리에 대한 상태를 저장하는 변수 
+					for( int i = 0 ; i<memberlist.length ; i++ ) {
+						if( memberlist[i][0] != null ) { 
+							// 해당 인덱스가 null 아니면서 
+							if( memberlist[i][0].equals( id ) ) { 
+								// 해당 인덱스의 아이디가 입력받은 id와 같으면서 
+								login = 2;	// 아이디는 맞으나 비밀번호 틀렸을때 
+								if( memberlist[i][1].equals( password ) ) {
+									// 해당 인덱스의 비밀번호가 입력받은 password 와 같으면 
+									System.out.println("안내) 로그인 성공 !!");
+									login = 1; // 로그인 성공 [ 아이디와 비밀번호가 모두 맞았을때 ]
+										// (추후코드) 로그인 메뉴 // 
+									break;
+								} // if end 
+							}  // if end
+						} // if end 
+					} // for end 
+					// // 3. 있으면 로그인 성공 없으면 로그인 실패
+					if( login == 0 ) { System.out.println("안내) 동일한 아이디가 없습니다."); } 
+					else if( login == 2){ System.out.println("안내) 비밀번호가 일치 하지 않습니다.");}
+					else if( login == 1) { System.out.println("안내) 로그아웃 되었습니다.");}
+				}
 			else if( btn == 2 )   // 2 입력했을떄
 				{  
 					System.out.println("================= 회원가입 페이지 ===============");
@@ -29,10 +55,9 @@ public class EX6_회원 { // class s
 					boolean idcheck = true;	// 아이디 중복여부 	[ true : 중복없다 , false : 중복있다. ]
 					for( int row = 0 ; row<memberlist.length ; row++ ) {
 						if( memberlist[row][0] != null && memberlist[row][0].equals( id ) ) { 
-							// 입력받은 id 와 배열내 id 같다!! [ 중복 찾음 ] 
-							// null 은 equals메소드 사용 불가 [  == null , != null ]
+							// 해당 인덱스의 id가 null 이 아니면서 입력받은 id 같다!! [ 중복 찾음 ] // null 은 equals메소드 사용 불가 [  == null , != null ]
 							System.out.println("안내) 이미 사용중인 아이디 입니다. ");
-							idcheck = false; break;
+							idcheck = false; break; // 아이디중복체크 여부 변수 수정후 반복문 탈출
 						} // if end 
 					} // for end 
 					// 3. 아이디 중복 흐름 제어 
@@ -57,9 +82,17 @@ public class EX6_회원 { // class s
 					} // if 3 end
 				} // else if end 
 			else if( btn == 3 )   // 3 입력했을떄
-				{  }
+				{ 
+				
+				
+				
+				}
 			else if( btn == 4 )   // 4 입력했을떄
-				{  }
+				{ 
+				
+				
+				
+				}
 			else { System.out.println("안내) 알수 없는 번호입니다. "); } // 그외 입력했을떄
 
 		} // while end 
