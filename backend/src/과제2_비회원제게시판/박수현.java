@@ -58,15 +58,14 @@ public class 박수현 {
 					
 					else if(btn2==2) {
 						System.out.println("알림 ) 선택하신 게시물의 비밀번호 : "); String password2= scanner.next();
-						for(int i=0; i<boardlist.length; i++) {
-							if(boardlist[i][0]!=null && boardlist[i][3].equals(password2)) {
+							if(boardlist[boardnum][0]!=null && boardlist[boardnum][3].equals(password2)) {
 								//비밀번호가 같으면
-								boardlist[i][0]=null; boardlist[i][1]=null;
-								boardlist[i][2]=null;  boardlist[i][3]=null;
+								boardlist[boardnum][0]=null; boardlist[boardnum][1]=null;
+								boardlist[boardnum][2]=null;  boardlist[boardnum][3]=null;
 								System.out.println("알림 ) 삭제 성공");
 								
 								// 당기기
-								for(int j=i; j<boardlist.length; j++) {
+								for(int j=boardnum; j<boardlist.length; j++) {
 									boardlist[j][0]= boardlist[j+1][0];
 									boardlist[j][1]= boardlist[j+1][1];
 									boardlist[j][2]= boardlist[j+1][2];
@@ -81,27 +80,19 @@ public class 박수현 {
 								break;
 								
 							}//비밀번호 동일 if end
-							else {System.out.println("비밀번호가 다릅니다. [삭제실패]"); break; }
 							
-							
-						}//btn2-2 for end
 					}//btn2-2 종료
 					
 					else if(btn2==3) {
 						System.out.println("알림 ) 수정할 게시물의 비밀번호"); String password2= scanner.next();
-						for(int i=0; i<boardlist.length; i++) {
-							if(boardlist[i][0]!=null && boardlist[i][3].equals(password2)) {
+							if(boardlist[boardnum][0]!=null && boardlist[boardnum][3].equals(password2)) {
 								System.out.println("수정할 제목 : "); String title2= scanner.next();
 								System.out.println("수정할 내용 : "); String content2= scanner.next();
-								boardlist[i][0]=title2; boardlist[i][1]=content2; 
+								boardlist[boardnum][0]=title2; boardlist[boardnum][1]=content2; 
 								System.out.println("알림 ) 내용이 수정되었습니다.");
 								del=false;
 								break;
 							}
-							else {System.out.println("비밀번호가 다릅니다"); break; }
-						}//btn2-3 for end
-					
-					
 					}//btn2-3 종료
 					
 					
