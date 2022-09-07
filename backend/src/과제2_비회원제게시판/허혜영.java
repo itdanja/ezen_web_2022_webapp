@@ -138,15 +138,14 @@ public class 허혜영 {
 						System.out.println("게시물 비밀번호 입력 : " );
 						String pw = scan.next();
 						
-						for( int j = 0; j < 글저장.length; j++ ) {
-							if( 글저장[j][3] != null && 글저장[j][3].equals(pw) ) {	// 저장된 비밀번호가 입력한 번호랑 같을때
+							if( 글저장[i][3] != null && 글저장[i][3].equals(pw) ) {	// 저장된 비밀번호가 입력한 번호랑 같을때
 								System.out.println("수정할 제목 : ");
 								String 수정할제목 = scan.next();
 								System.out.println("수정할 내용 : ");
 								String 수정할내용 = scan.next();
 								
-								글저장[j][0] = 수정할제목;
-								글저장[j][1] = 수정할내용;
+								글저장[i][0] = 수정할제목;
+								글저장[i][1] = 수정할내용;
 									
 								System.err.println("[알림] 내용이 수정되었습니다.");		
 								break;
@@ -156,7 +155,7 @@ public class 허혜영 {
 								System.err.println("[알림] 비밀번호가 다릅니다 [삭제실패]");
 								break;
 							} // else 종료
-						} // for 종료
+						
 					} // else if 종료
 					else {
 						System.err.println("번호 오류");
