@@ -26,8 +26,9 @@ public class EX7실행 {
 			///////////////////////////// 1번을 입력했을때 실행되는 구역 ///////////////////////////////////
 			if( ch == 1 ) { 
 				// 1.출력[ 안내 ] -> 입력 -> 저장 
-				System.out.print("제목 : ");		String title = scanner.next();
-				System.out.print("내용 : ");		String content = scanner.next();
+				scanner.nextLine();
+				System.out.print("제목 : ");		String title = scanner.nextLine();
+				System.out.print("내용 : ");		String content = scanner.nextLine();
 				System.out.print("작성자 : ");	String writer = scanner.next();
 				System.out.print("비밀번호 : ");	String password = scanner.next();
 				// 2. 저장된 변수 4개를 하나의 객체로 만들기[ 4개변수를 묶음 -> 편하기 ]
@@ -49,15 +50,31 @@ public class EX7실행 {
 				System.out.print("안내) 이동할 게시물 번호 : "); int select = scanner.nextInt();
 				Board board = boardlist[select]; // 입력된 번호[인덱스]의 객체 호출
 				System.out.println("------------"+ select+"번 게시물 상세 페이지 -----------");
-				System.out.print("작성자 : " + board.writer );
-				System.out.println("\t제목 : " + board.title );
+				System.out.print("제목 : " + board.title );
+				System.out.println("\t작성자 : " + board.writer );
 				System.out.println("내용 : " + board.content );
 				System.out.println("-----------------------------------------------------");
 				System.out.print(" 1.목록보기 2.삭제 3.수정  선택 : ");
 				int ch2 = scanner.nextInt();
 				if( ch2 == 1 ) {} // 생략시 while 재반복
-				else if( ch2 == 2 ) {}
-				else if( ch2 == 3 ) {}
+				else if( ch2 == 2 ) {
+					System.out.print("안내) 비밀번호 : ");  	String password = scanner.next();
+					if( board.password.equals( password) ) {
+						// 만일 현재게시물의 비밀번호 와 입력받은 비밀번호가 같으면[ equals ] 
+							// 한칸씩 당기기 [ 삭제된 인덱스 뒤로 ]
+							for( int index = select ; index<boardlist.length ; index++ ) {
+								// 현재 보고 있는 게시물의 인덱스 부터 마지막 인덱스까지 1씩증가 
+								boardlist[index] = boardlist[index+1]; // 객체를 한칸씩 앞으로 당기기
+								if( boardlist[index+1] == null ) { break; } // 다음 객체가 null이면
+							} // for end
+					} // if end 
+				} // else if end 
+				else if( ch2 == 3 ) {
+					System.out.print("안내) 비밀번호 : ");  	String password = scanner.next();
+					if( board.password.equals( password) ) {
+						
+					} // if end
+				}
 				else {}
 			}
 			else {}
