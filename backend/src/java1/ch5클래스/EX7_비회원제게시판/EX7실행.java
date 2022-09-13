@@ -4,36 +4,25 @@ import java.util.Scanner;
 
 public class EX7실행 {
 	public static void main(String[] args) {
-		
 		/////////////////////////////////// 1번만 실행되는 구역 ///////////////////////////////////////
 		// 0. 메모리 
 		Scanner scanner = new Scanner(System.in); // 입력객체
 		Board[] boardlist = new Board[100]; // Board 객체 100개를 저장 할 수 있는 배열 선언 
-		
 		//////////////////////////////////////////////////////////////////////////////////////////////////
-		
 		/////////////////////////////////// 무한 실행되는 구역 //////////////////////////////////////////
 		while( true ) {
 			///////////////////////////////////// 모든 게시물 객체 [배열] 출력  //////////////////////////////////////////
 			System.out.println("------------------- 비회원 게시판 ----------------------");
 			System.out.println("번호\t\t작성자\t\t제목");
-				// 1. 
-//			for( int index = 0 ; index<boardlist.length ; index++ ) {
-//				System.out.printf("%d\t%s\t%s \n " , index , boardlist[index].writer , boardlist[index].title );
-//			}
-				// 2. 
 			int num = 0;
 			for( Board temp : boardlist ) { // 배열내 모든 객체를 하나씩 temp 객체에 반복 대입
+				if( temp != null )System.out.printf("%d\t\t%s\t\t%s\n" , num , temp.writer , temp.title ); // 만일 객체가 존재하면 출력 
 				num++;
-				if( temp != null )System.out.printf("%d\t\t%s\t\t%s\n" , num , temp.writer , temp.title );
-				// 만일 객체가 존재하면 출력 
-			}
+			} // for end 
 			//////////////////////////////////////////////////////////////////////////////////////////////////
-			
 			System.out.println("-----------------------------------------------------");
 			System.out.print("1.글쓰기 2.글보기 선택 : ");
 			int ch = scanner.nextInt(); // 출력 -> 입력( int ) -> 저장 ( int ) -> 제어( if )
-			
 			///////////////////////////// 1번을 입력했을때 실행되는 구역 ///////////////////////////////////
 			if( ch == 1 ) { 
 				// 1.출력[ 안내 ] -> 입력 -> 저장 
@@ -56,8 +45,20 @@ public class EX7실행 {
 				} // for end 
 			} // if end 
 			///////////////////////////////////////////////////////////////////////////////////////
-			else if( ch == 2 ) {
-				
+			else if( ch == 2 ) { // 게시물번호 --> 인덱스번호 
+				System.out.print("안내) 이동할 게시물 번호 : "); int select = scanner.nextInt();
+				Board board = boardlist[select]; // 입력된 번호[인덱스]의 객체 호출
+				System.out.println("------------"+ select+"번 게시물 상세 페이지 -----------");
+				System.out.print("작성자 : " + board.writer );
+				System.out.println("\t제목 : " + board.title );
+				System.out.println("내용 : " + board.content );
+				System.out.println("-----------------------------------------------------");
+				System.out.print(" 1.목록보기 2.삭제 3.수정  선택 : ");
+				int ch2 = scanner.nextInt();
+				if( ch2 == 1 ) {} // 생략시 while 재반복
+				else if( ch2 == 2 ) {}
+				else if( ch2 == 3 ) {}
+				else {}
 			}
 			else {}
 		}  // while end 
