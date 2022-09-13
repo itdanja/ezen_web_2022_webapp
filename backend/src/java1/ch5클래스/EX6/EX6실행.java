@@ -22,6 +22,8 @@ public class EX6실행 {
 					// Memberarray[0][0] = id;	Memberarray[0][1] = password; Memberarray[0][2] = name;
 				// 객체 선언 
 				Member signupInfo = new Member( id, password, name, 1000 );
+				
+				// 배열내 모든 인덱스 호출
 				int index = 0; // 반복문 실행 횟수 
 				for( Member temp : MemberObject ) {	// for( 반복변수 : 배열 ) { } 
 					index++; // 1씩 증가 
