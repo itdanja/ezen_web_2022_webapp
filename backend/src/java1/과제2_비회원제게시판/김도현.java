@@ -1,4 +1,4 @@
-package 과제2_비회원제게시판;
+package java1.과제2_비회원제게시판 ;
 import java.util.Scanner;
 
 public class 김도현 {

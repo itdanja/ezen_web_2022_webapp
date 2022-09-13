@@ -1,4 +1,4 @@
-package 과제1_틱택토;
+package java1.과제1_틱택토 ;
 
 
 import java.util.Random;
