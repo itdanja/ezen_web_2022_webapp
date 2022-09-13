@@ -65,19 +65,24 @@ public class EX7실행 {
 							for( int index = select ; index<boardlist.length ; index++ ) {
 								// 현재 보고 있는 게시물의 인덱스 부터 마지막 인덱스까지 1씩증가 
 								boardlist[index] = boardlist[index+1]; // 객체를 한칸씩 앞으로 당기기
-								if( boardlist[index+1] == null ) { break; } // 다음 객체가 null이면
+								if( boardlist[index+1] == null ) {  System.out.println("안내) 삭제처리 했습니다."); break; } // 다음 객체가 null이면
 							} // for end
 					} // if end 
+					else { System.out.println("안내) 패스워드가 다릅니다. ");}
 				} // else if end 
 				else if( ch2 == 3 ) {
 					System.out.print("안내) 비밀번호 : ");  	String password = scanner.next();
 					if( board.password.equals( password) ) {
-						
+						scanner.nextLine();
+						System.out.print("수정할 제목 : "); 	boardlist[select].title = scanner.nextLine();
+						System.out.print("수정할 내용 : ");		boardlist[select].content = scanner.nextLine();
+						System.out.println("안내) 수정처리 했습니다.");
 					} // if end
-				}
-				else {}
-			}
-			else {}
+					else { System.out.println("안내) 패스워드가 다릅니다. "); }
+				} // else if end 
+				else { System.out.println("안내) 알수 없는 번호입니다. "); }
+			} // else if end 
+			else {  System.out.println("안내) 알수 없는 번호입니다. "); }
 		}  // while end 
 		//////////////////////////////////////////////////////////////////////////////////////////////////
 	} // main end 
