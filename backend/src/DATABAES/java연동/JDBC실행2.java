@@ -16,6 +16,7 @@ public class JDBC실행2 {
 		System.out.println("연동성공");
 		
 		// 2. SQL 작성
+		/*
 		String sql = "insert into product values('바나나',1500,'2021-07-01','델몬트',17)";
 		// 3. SQL 조작[연결] 
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -29,12 +30,16 @@ public class JDBC실행2 {
 		sql = "insert into product values('삼각김밥',800,'2023-09-01','CJ',22)";
 		ps = con.prepareStatement(sql);
 		ps.executeUpdate();
+		*/
 		
 		// 1. 카스의 재고수량을 10로 수정
+		//String sql = "update product set amount = 10 where product_name='카스'";
 		
 		// 2. 삼각김밥 제거 
+		//String sql = "delete from product where prodcut_name = '삼각김밥'";
 		
-		// 3. 모든 제품의 정보를 console 출력 
+		// 3. 모든 제품의 정보를 console 출력  
+		//String sql = "select * from prodcut"
 		
 		
 		
