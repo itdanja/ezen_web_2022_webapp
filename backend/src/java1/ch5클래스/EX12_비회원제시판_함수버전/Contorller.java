@@ -1,4 +1,4 @@
-package java1.ch5클래스.EX12;
+package java1.ch5클래스.EX12_비회원제시판_함수버전;
 
 public class Contorller {
 	static Board[] boardlist = new Board[100];
