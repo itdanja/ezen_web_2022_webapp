@@ -64,7 +64,7 @@ public class view {
 		System.out.println("내용 : " + temp.content );
 		System.out.print("1.뒤로가기 2.수정 3.삭제 선택 : ");	int ch = scanner.nextInt();
 		if( ch == 1 ) {} 
-		else if( ch== 2 ) {} // 수정 화면 함수 호출 
+		else if( ch== 2 ) { view_update( bnum ); } // 수정 화면 함수 호출 
 		else if( ch == 3 ) { view_delete( bnum ); } // 삭제 화면 함수 호출 [ 매개변수 1개 int = 현재 보고 있는 게시물 ]
 		else { } 
 		return;
