@@ -2,6 +2,7 @@ package DATABAES.java연동;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class JDBC실행 {
 
@@ -35,6 +36,31 @@ public class JDBC실행 {
 					"root",
 					"1234");
 			System.out.println("DB 연동 성공");
+			
+			
+		// * JDBC에서 SQL 조작 
+		// 1. 테이블에 데이터 추가 
+			// 1. sql 문법을 " " 감싸고 문자열 변수 에 저장 
+			String sql = "insert into member values('tess','나훈아','경기 부천시 중동')";
+			// 2. sql 조작 인터페이스
+			PreparedStatement ps = con.prepareStatement(sql);
+			// 3. SQL 실행 
+			ps.executeUpdate();
+			
+			// 아이유 추가 
+			// 1. sql 문법 작성 
+			sql = "insert into member values('iyou' , '아이유' , '인천 남구 주안동')";
+			// 2. sql 조작 인터페이스 
+			ps = con.prepareStatement(sql);
+			// 3. sql 실행
+			ps.executeUpdate();
+			
+			// 박진영 추가 
+			sql = "insert into member values('jyp' , '박진영' , '경기 고양시 장항동')";
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			
+			
 		}catch( Exception e ) { System.out.println("연동 실패 : " + e ); }
 		
 		

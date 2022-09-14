@@ -13,3 +13,23 @@ create table member(
 );
 /*3. 테이블 확인 */
 select * from member;
+
+/*4. 테이블에 데이터 추가 */
+insert into member values('hero','임영웅','서울 은평구 증산동');
+
+/* 5. 제품 테이블 생성 */
+use shop_db3; /* DB 선택 */
+create table product(
+	product_name char(4) primary key not null ,
+    -- 필드명  char : 문자(4글자)  primary key : 기본키(식별키)  not null : 공백 불가 
+    cost int not null ,
+    make_date date ,
+    company char(5) , 
+    amount int not null 
+);
+/* 6. 확인 */
+select * from product;
+
+
+
+
