@@ -30,6 +30,11 @@ create table product(
 /* 6. 확인 */
 select * from product;
 
-
-
-
+/* 7. Select */
+select * from member; -- member 테이블의 모든 필드[ * ] 검색 
+select member_id from member; -- memeber 테이블의 id 필드만 검색 
+select member_id , member_name from member;
+select member_id , member_name , member_addr from member;
+select member_id as 아이디 from member; -- as : 별칭 [ 원본수정X , 결과에 표시할 필드명 ]
+select member_id as 아이디 , member_name as 이름 , member_addr as 주소 from member;
+select * from member where member_id = 'jyp';
