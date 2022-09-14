@@ -21,8 +21,8 @@ public class Contorller {
 	static boolean con_delete( int bnum , String password ) {
 		if( boardlist[bnum].password .equals(password) ) {
 			for( int i = bnum ; i<boardlist.length ; i++ ) {
-				boardlist[bnum] = boardlist[bnum+1];	// 한칸씩 당기기
-				if( boardlist[bnum+1] == null ) { break; }
+				boardlist[ i ] = boardlist[ i + 1 ];	// 한칸씩 당기기
+				if( boardlist[ i + 1 ] == null ) { break; }
 			} // for end 
 			return true;
 		}else { return false; }
