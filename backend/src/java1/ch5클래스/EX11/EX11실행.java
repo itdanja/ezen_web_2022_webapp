@@ -20,9 +20,15 @@ public class EX11실행 { // 클래스
 		}
 	}
 	void run2() {
+		
+		run3();
+		
 		while(true) {
 			System.out.println("1.회원가입 2.로그인 : ");
 		}
+	}
+	
+	void run3() {
 	}
 	
 	
