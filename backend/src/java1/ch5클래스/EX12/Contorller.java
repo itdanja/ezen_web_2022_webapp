@@ -1,12 +1,9 @@
 package java1.ch5클래스.EX12;
 
 public class Contorller {
-	
 	static Board[] boardlist = new Board[100];
-
 	// 1. 게시물 등록 함수 
-	static boolean con_regist( String title , String content , 
-			String writer , String password ) {
+	static boolean con_regist( String title , String content , String writer , String password ) {
 		// 1. 객체 생성 
 		Board board = new Board(title, content, writer, password, 0);
 		// 2. 배열에 빈공간에 배치
