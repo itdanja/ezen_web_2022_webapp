@@ -17,4 +17,33 @@ public class Contorller {
 		return false; // 게시물 등록 실패 의미 // 배열에 자리 가 없다.
 	} // m end 
 	
+	// 2. 게시물 삭제 함수 
+	static boolean con_delete( int bnum , String password ) {
+		if( boardlist[bnum].password .equals(password) ) {
+			for( int i = bnum ; i<boardlist.length ; i++ ) {
+				boardlist[bnum] = boardlist[bnum+1];	// 한칸씩 당기기
+				if( boardlist[bnum+1] == null ) { break; }
+			} // for end 
+			return true;
+		}else { return false; }
+	} // m end 
+	
+	// 3. 게시물 수정 함수 
+	static boolean con_update( int bnum , String password , 
+			String title , String content ) {
+		
+		if( boardlist[bnum].password .equals(password) ) {
+			boardlist[bnum].title = title;
+			boardlist[bnum].content = content;
+			return true;
+		}else { return false; }
+	} // m end 
+	
 } // c end 
+
+
+
+
+
+
+

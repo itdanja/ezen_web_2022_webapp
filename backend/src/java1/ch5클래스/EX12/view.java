@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 // print , scanner : 입/출력 작성할 예정 
 
+	/*
+	 *  [ 과제 ]
+	 * 	1. main 메소드를 제외한 static 없이 구현 
+		2. 패스워드 검증 함수 
+	 * 
+	 */
+
 public class view {
 	// * 함수 밖에 scanner 선언한 이유 : 모든 함수에서 같이 사용할려고 [ 필드 ]
 	static Scanner scanner = new Scanner(System.in);
@@ -51,22 +58,19 @@ public class view {
 	static void view_board( ) { 
 		System.out.print("게시물번호 선택 : "); 		int bnum = scanner.nextInt();
 		System.out.println(">>> 게시물 상세 페이지 ");
-		
 		Board temp = Contorller.boardlist[bnum]; //  새로운객체[임시객체]  = 입력받은 인덱스의 객체
 		if( temp == null ) { System.out.println("안내) 없는 게시물번호 입니다."); return; } // 만약에 해당 객체가 null이면 함수 종료 
-		
 		System.out.println("제목 : " + temp.title  +"      작성자 : " + temp.writer );
 		System.out.println("내용 : " + temp.content );
 		System.out.print("1.뒤로가기 2.수정 3.삭제 선택 : ");	int ch = scanner.nextInt();
 		if( ch == 1 ) {} 
 		else if( ch== 2 ) {} // 수정 화면 함수 호출 
-		else if( ch == 3 ) {} // 삭제 화면 함수 호출 
+		else if( ch == 3 ) { view_delete( bnum ); } // 삭제 화면 함수 호출 [ 매개변수 1개 int = 현재 보고 있는 게시물 ]
 		else { } 
 		return;
-	}
+	} // m end 
 	// 4. 게시물 목록 화면 구현 함수
 	static void view_boardlist() { 
-		
 		System.out.println(">>>게시물 목록 페이지 ");
 		System.out.println("번호\t\t작성자\t\t제목");
 		for( int i = 0 ; i<Contorller.boardlist.length; i++ ) {
@@ -79,6 +83,31 @@ public class view {
 		}// for end 
 		return;
 	} // m end 
+	
+	// 5. 게시물 삭제 함수 
+	static void view_delete( int bnum ) {
+		System.out.print("비밀번호 : "); String password = scanner.next();
+		boolean result =  Contorller.con_delete(bnum, password);
+		if( result ) { System.out.println("안내) 게시물 삭제 성공 ");}
+		else { System.out.println("안내) 게시물 삭제 실패 [ 관리자에게 문의 ] ");}
+	} // m end 
+	
+	// 6. 게시물 수정 함수 
+	static void view_update( int bnum ) {
+		System.out.print("비밀번호 : "); 		String password = scanner.next();
+		System.out.print("수정할 제목 : ");	String title = scanner.next();
+		System.out.print("수정할 내용 : ");	String content = scanner.next();
+	
+		boolean result = 
+				Contorller.con_update(bnum, password, title, content);
+	
+		if( result ) { System.out.println("안내) 게시물 수정 성공");}
+		else { System.out.println("안내) 게시물 수정 실패"); }
+		
+	} // m end 
+	
+	// 7. 비밀번호 검증 함수 ???? 
+	
 }
 
 
