@@ -20,7 +20,7 @@ public class BoardDao {
 		// 빈생성자에 DB 접속 코드 ( 객체 생성시 자동으로 DB 접속 )
 		try {
 		con = DriverManager.getConnection(
-				"jdbc:mysql:://localhost:3306/boardtest",
+				"jdbc:mysql://localhost:3306/boardtest",
 				"root",
 				"1234");
 		}catch (Exception e) { System.out.println("경고) DB 접속 실패 " + e ); }
@@ -29,7 +29,6 @@ public class BoardDao {
 	// 3. 메소드 
 		// 1. 등록 메소드
 	boolean regist( BoardDto boardDto ) {
-		// sql 코드 들어갈 예정 
 		return false;
 	}
 		// 2. 모든 게시물 출력 메소드 

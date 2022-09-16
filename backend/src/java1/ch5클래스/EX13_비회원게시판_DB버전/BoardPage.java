@@ -6,6 +6,8 @@ public class BoardPage {
 	// 1. 필드 
 	// 입력객체[ 함수 밖에 만든 이유??? ]
 	Scanner scanner = new Scanner(System.in); 
+	BoardControl control = new BoardControl();
+	
 	// 2. 생성자 
 	// 3. 메소드 
 	public static void main(String[] args) {
@@ -31,11 +33,24 @@ public class BoardPage {
 	// 1. 등록화면 
 	void regist( ) {
 		System.out.println("===>>> 등록 페이지 ");
+		// 1. 출력 -> 입력 -> 저장 
+		System.out.print(">>제목 : ");		String b_title = scanner.nextLine();
+		System.out.print(">>내용 : ");		String b_content = scanner.nextLine();
+		System.out.print(">>작성자 : ");		String b_writer = scanner.next();
+		System.out.print(">>패스워드 : ");		String b_password = scanner.next();
+		// 2. 입력받은 데이터를 control 이동[ 다른 클래스의 메소드 호출 ] 
+		boolean result =  control.regist( b_title, b_content, b_writer, b_password);
+		// 3. control 처리된 결과를  reulst 에 저장한 다음에 제어 [ control 실행후 결과의 경우의수 ]
+		if( result) { System.out.println("안내) 게시물 등록 완료 ");}
+		else { System.out.println("안내) 게시물 등록 실패 ");}
 	} // m end 
+	
+	
 	// 2. 모든게시물 출력화면
 	void getBoardlist( ) {
 		System.out.println("===>>> 게시판");
 		System.out.println("번호\t작성자\t제목\t조회수");
+		
 	} // m end 
 	// 3. 개별게시물 출력 화면 
 	void getBoard() {
