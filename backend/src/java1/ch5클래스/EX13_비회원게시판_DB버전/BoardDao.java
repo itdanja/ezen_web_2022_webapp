@@ -52,14 +52,29 @@ public class BoardDao {
 		}catch (Exception e) { System.out.println("경고) DB오류 : " + e); }
 		return false; // 등록 실패시 false 
 	}
-		// 2. 모든 게시물 출력 메소드 
-	BoardDto[] getBoardlist( ) { 
-		BoardDto[] boardlist = new BoardDto[100]; // 배열 선언 
-		String sql = "select * from board"; // 1. SQL 작성
+	
+	// * 전체 게시물 수 조회 메소드 
+	int getrows() {
+		String sql = "select count(*) from board"; // 1. SQL 작성 
 		try { // 2. SQL 연결/조작
 			ps = con.prepareStatement(sql);
+			rs =  ps.executeQuery();
+			// 3. SQL 결과 
+			if( rs.next() ) { return rs.getInt(1); } // 레코드[=행=게시물] 개수 반환
+		}catch (Exception e) { System.out.println("경고) DB오류 : " + e);  }
+		return 0; // 없으면 0 
+	}
+		// 2. 모든 게시물 출력 메소드 
+	BoardDto[] getBoardlist( ) { 
+		int rowcount = getrows();	// 게시물수를 알려주는 함수 호출해서 반환값 저장 
+		BoardDto[] boardlist = new BoardDto[ rowcount  ]; // 배열 선언 [ 배열의길이 = 게시물수  ]
+		
+		String sql = "select * from board"; // 1. SQL 작성
+		try { // 2. SQL 연결/조작
+			ps = con.prepareStatement(sql );
 			rs = ps.executeQuery();	// select : executeQuery()  // insert,update,delete : executeUpdate()
 			// ResultSet rs : 쿼리[sql결과]에 조작
+			int row = 0; // 인덱스 변수 
 			while( rs.next() ) { // rs -> null --.next()--> 검색된레코드[행] --.next()--> 다음레코드[행]
 				// 레코드 한개당 6개의 필드 -> 6개 변수 -> 객체 -> 배열 
 				// 1. 해당 레코드의 필드를 호출해서 객체화1
@@ -73,7 +88,8 @@ public class BoardDao {
 				// 1. 해당 레코드의 필드를 호출해서 객체화2
 					// BoardDto board = new BoardDto(rs.getInt( 1 ), rs.getString(2),rs.getString(3), rs.getString(4),rs.getString(5) , rs.getInt(6));
 				// 2. 객체를 배열에 저장
-				boardlist[0] = board;
+				boardlist[row] = board;
+				row++; // 인덱스 증가 
 			}
 		}catch (Exception e) { System.out.println("경고) DB오류 : " + e); }
 		// 3. SQL 결과 
