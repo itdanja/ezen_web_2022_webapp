@@ -68,7 +68,6 @@ public class BoardDao {
 	BoardDto[] getBoardlist( ) { 
 		int rowcount = getrows();	// 게시물수를 알려주는 함수 호출해서 반환값 저장 
 		BoardDto[] boardlist = new BoardDto[ rowcount  ]; // 배열 선언 [ 배열의길이 = 게시물수  ]
-		
 		String sql = "select * from board"; // 1. SQL 작성
 		try { // 2. SQL 연결/조작
 			ps = con.prepareStatement(sql );
