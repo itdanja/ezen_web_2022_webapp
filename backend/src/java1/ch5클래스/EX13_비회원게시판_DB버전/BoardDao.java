@@ -21,7 +21,7 @@ public class BoardDao {
 	public BoardDao() {
 		// 빈생성자에 DB 접속 코드 ( 객체 생성시 자동으로 DB 접속 )
 		try {
-		con = DriverManager.getConnection(
+			 con = DriverManager.getConnection(
 				"jdbc:mysql://localhost:3306/boardtest",
 				"root",
 				"1234");
@@ -58,7 +58,7 @@ public class BoardDao {
 		String sql = "select count(*) from board"; // 1. SQL 작성 
 		try { // 2. SQL 연결/조작
 			ps = con.prepareStatement(sql);
-			rs =  ps.executeQuery();
+			rs = ps.executeQuery();
 			// 3. SQL 결과 
 			if( rs.next() ) { return rs.getInt(1); } // 레코드[=행=게시물] 개수 반환
 		}catch (Exception e) { System.out.println("경고) DB오류 : " + e);  }
