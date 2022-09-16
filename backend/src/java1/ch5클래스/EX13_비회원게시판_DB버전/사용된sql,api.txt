@@ -8,17 +8,22 @@
 	2. PreparedStatement 	: 연결된 DB에 SQL연결/조작
 		1. 연동된 DB에 SQL 연결 
 			ps = con.prepareStatement( sql )
+			
 		2. 조작 메소드 
-			1. ps.setInt( ?위치 , 정수열데이터 )   /   ps.setString( ?위치 , 문자열데이터 ) 
-			2. ps.executeUpdate( ) 	: insert , update, delete 
-			2. rs = ps.executeQuery( )	: select
- 	
+			1. ? 위치에 데이터 대입 
+				ps.setInt( ?위치 , 정수열데이터 )   	
+				ps.setString( ?위치 , 문자열데이터 ) 	
+				
+			2. ps.executeUpdate( ) 			: insert , update, delete 사용시 	: 해당 sql 실행 
+			
+			3. rs = ps.executeQuery( )		: select				  사용시 	: 해당 sql 실행 결과를 rs에 대입 
+		
 	3. ResultSet 		: SQL 결과[쿼리] 조작 
 		* rs 기본값 : null
 		*   null --next()--> 결과의 첫번째레코드 -- next() --> 검색결과의 두번째레코드 ---> ~~~~ 
 
-		1. rs.next( ) : (행) 다음 레코드 [ 있으면 true / 없으면 false ]
-  		2. rs.getInt( 필드번호 / 필드명 ) : 현재 레코드[행] 해당 필드의 데이터 호출 
+		1. rs.next( ) 					: (행) 다음 레코드 [ 있으면 true / 없으면 false ]
+  		2. rs.getInt( 필드번호 / 필드명 ) 	: 현재 레코드[행]의 필드의 데이터 호출 
 
 SQL 
 	DML
