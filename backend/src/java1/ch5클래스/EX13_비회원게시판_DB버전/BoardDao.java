@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import java1.ch5클래스.EX12_비회원제시판_함수버전.Board;
+
 public class BoardDao {
 	
 	// 1. 필드 
@@ -13,7 +15,7 @@ public class BoardDao {
 		// con = DriverManager.getConnection( "db주소" , "db계정명" , "db비밀번호" ) 
 		//	-- 오류 발생[ 예외 발생 ] : 만약에 접속실패 했을때에 대한 대처 방안 [ 예외 처리 try~catch ]
 	PreparedStatement ps; 	// 접속된 DB에 SQL 연결 조작하는 인터페이스 
-	ResultSet rs;			// SQL 결과를 조작하는 인터페이스 
+	ResultSet rs;			// SQL 결과[쿼리]를 조작하는 인터페이스 
 
 	// 2. 생성자 
 	public BoardDao() {
@@ -51,9 +53,30 @@ public class BoardDao {
 		return false; // 등록 실패시 false 
 	}
 		// 2. 모든 게시물 출력 메소드 
-	BoardDto[] getBoardlist( ) {
-		BoardDto[] boardlist = null;
-		// sql 코드 들어갈 예정 
+	BoardDto[] getBoardlist( ) { 
+		BoardDto[] boardlist = new BoardDto[100]; // 배열 선언 
+		String sql = "select * from board"; // 1. SQL 작성
+		try { // 2. SQL 연결/조작
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();	// select : executeQuery()  // insert,update,delete : executeUpdate()
+			// ResultSet rs : 쿼리[sql결과]에 조작
+			while( rs.next() ) { // rs -> null --.next()--> 검색된레코드[행] --.next()--> 다음레코드[행]
+				// 레코드 한개당 6개의 필드 -> 6개 변수 -> 객체 -> 배열 
+				// 1. 해당 레코드의 필드를 호출해서 객체화1
+				int b_no =  rs.getInt(1); // 해당 레코드의 첫번째 필드의 데이터 호출
+				String b_title = rs.getString(2);
+				String b_content = rs.getString(3);
+				String b_writer =  rs.getString(4);
+				String b_password = rs.getString(5);
+				int b_view = rs.getInt(6);
+				BoardDto board = new BoardDto(b_no, b_title, b_content, b_writer, b_password, b_view);
+				// 1. 해당 레코드의 필드를 호출해서 객체화2
+					// BoardDto board = new BoardDto(rs.getInt( 1 ), rs.getString(2),rs.getString(3), rs.getString(4),rs.getString(5) , rs.getInt(6));
+				// 2. 객체를 배열에 저장
+				boardlist[0] = board;
+			}
+		}catch (Exception e) { System.out.println("경고) DB오류 : " + e); }
+		// 3. SQL 결과 
 		return boardlist;
 	}
 		// 3. 개별 게시물 출력 메소드 

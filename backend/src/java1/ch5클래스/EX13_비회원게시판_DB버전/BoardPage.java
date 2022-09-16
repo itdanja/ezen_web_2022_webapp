@@ -50,7 +50,13 @@ public class BoardPage {
 	void getBoardlist( ) {
 		System.out.println("===>>> 게시판");
 		System.out.println("번호\t작성자\t제목\t조회수");
-		
+		BoardDto[] boardlist = control.getBoardlist();	// control에 모든 게시물호출 메소드 호출 -> 모든 게시물의 배열을 반환 받는다.
+		// for( int i = 0 ; i<boardlist.length ; i++) {}
+		for( BoardDto dto : boardlist ) {	// 모든 게시물의 배열을 반복문 돌린다. [ 향상된 for문 ] 
+		// for(  배열의자료형 반복변수명 : 배열 )
+			System.out.print( dto.b_no +"\t");		System.out.print( dto.b_writer +"\t");
+			System.out.print( dto.b_title +"\t");	System.out.print( dto.b_view +"\n");
+		}
 	} // m end 
 	// 3. 개별게시물 출력 화면 
 	void getBoard() {

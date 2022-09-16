@@ -16,9 +16,9 @@ public class BoardControl {
 	}
 	// 2. 
 	BoardDto[] getBoardlist( ) {
-		BoardDto[] boardlist = null;
-		// 로직 or DAO 호출 작성 예정 
-		return boardlist;
+		BoardDto[] boardlist = null;	// 선언 
+		boardlist = boardDao.getBoardlist();//결과
+		return boardlist;// 반환
 	}
 	// 3. 
 	BoardDto getBoard( int b_no ) {
