@@ -60,13 +60,21 @@ public class BoardPage {
 			System.out.print( dto.b_title +"\t");	System.out.print( dto.b_view +"\n");
 		}
 	} // m end 
+	
 	// 3. 개별게시물 출력 화면 
 	void getBoard() {
+		System.out.print(">> 게시물번호 : "); 
+		int b_no = scanner.nextInt();	// 1. 보고 싶은 게시물 번호 입력받는다.
+		BoardDto board = control.getBoard( b_no ); // 2. 입력받은 번호를 getBoard 메소드에 전달하면 해당 게시물정보 가져온다.[ 없으면 null ]
+		if( board == null  ) { 
+			System.out.println("경고) 해당 게시물이 없습니다. "); 
+			return; }
+		
 		System.out.println("===>>> 개별조회 페이지 ");
-		System.out.println("제목 :   ");
-		System.out.println("작성자 : ");
-		System.out.println("조회수 : ");
-		System.out.println("내용 : ");
+		System.out.print("제목 : " + board.b_title +"\t");
+		System.out.print("작성자 : " + board.b_writer+"\t" );
+		System.out.println("조회수 : " + board.b_view );
+		System.out.println("내용 : " + board.b_content );
 			// 출력 
 		System.out.print(" 1.뒤로가기 2.수정 3.삭제 : ");
 		int btn = scanner.nextInt();

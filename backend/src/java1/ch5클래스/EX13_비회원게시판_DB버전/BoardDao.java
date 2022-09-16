@@ -97,7 +97,22 @@ public class BoardDao {
 		// 3. 개별 게시물 출력 메소드 
 	BoardDto getBoard( int b_no  ) {
 		BoardDto board = null;
-		// sql 코드 들어갈 예정
+		// 1. SQL작성
+		String sql = "select * from board where b_no = ?"; // ? 변수가 들어갈 자리 뜻 
+		// 2. SQL 연결/조작 
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt( 1 , b_no );
+			rs = ps.executeQuery(); // ResultSet : rs
+			if( rs.next() ) {
+				// 검색된 레코드의 필드를 객체화
+				board = new BoardDto( rs.getInt(1),
+						rs.getString(2), rs.getString(3), 
+						rs.getString(4), rs.getString(5),
+						rs.getInt(6));
+			}
+		}catch (Exception e) { System.out.println("경고) DB오류 : " + e); }
+		// 3. SQL 결과
 		return board;
 	}
 		// 4. 수정 처리 메소드 

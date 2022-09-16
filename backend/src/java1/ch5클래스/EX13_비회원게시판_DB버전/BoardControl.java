@@ -22,8 +22,8 @@ public class BoardControl {
 	}
 	// 3. 
 	BoardDto getBoard( int b_no ) {
-		// 로직 or DAO 호출 작성 예정 
 		BoardDto board = null;
+		board = boardDao.getBoard(b_no);
 		return board;
 	}
 	// 4.
