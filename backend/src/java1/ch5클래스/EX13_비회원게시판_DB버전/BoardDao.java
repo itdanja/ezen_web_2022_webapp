@@ -45,12 +45,13 @@ public class BoardDao {
 		return board;
 	}
 		// 4. 수정 처리 메소드 
-	boolean update( int b_no , int b_password , String b_title , String b_content ) {
+	boolean update( int b_no , String b_password ,
+			String new_title , String new_content ) {
 		// sql 코드 들어갈 예정  
 		return false;
 	}
 		// 5. 삭제 처리 메소드 
-	boolean delete( int b_no , int b_password ) {
+	boolean delete( int b_no , String b_password ) {
 		// sql 코드 들어갈 예정 
 		return false;
 	}
