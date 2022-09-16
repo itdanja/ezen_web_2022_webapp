@@ -19,4 +19,28 @@ create table board(
 );
 -- 4. 테이블 확인 
 select * from board;
+-- 5. 테이블에 레코드 추가
+	-- 1. 모든 필드를 추가할경우 [ 필드명 생략해도 된다. ]
+    -- 		insert into 테이블명 values( 값1 , 값2 , 값3 )
+	-- 2. 특정 필드를 추가할경우 [ 추가할 필드명을 작성한다. ] 
+	-- 		insert into 테이블명( 필드명1 , 필드명2 ) values( 값1 , 값2 )
+insert 
+	into 
+		board( b_title , b_content , b_writer , b_password , b_view ) 
+	values( '제목데이터' , '내용데이터' , '유재석' , '1234' , 0 );
+-- 6. 테이블에 모든 레코드 확인 
+	-- select * from 테이블명 
+select * from board;
+
+-- 7. 개수 : 
+	-- count( 필드명 ) 	: 해당 필드의 레코드 수  	[ null 제외한 ]
+	-- count( * ) 		: 해당 필드의 레코드 수 		[ null 포함한 ] 
+select count(*) from board;	-- 전체 레코드[행] 수 == 전체 게시물 수 
+    -- 하나의 레코드의 게시물수 표시 
+    
+-- 8. 특정[조건] 게시물 조회 
+	-- select * from board where 조건[필드명 = 값] : 해당 값이 필드와 같으면 검색
+select * from board where b_no = 1;	-- 번호가 1 게시물 조회 
+select * from board where b_writer = '유재석' -- 작성자가 '유재석' 인 게시물 조회
+
 
