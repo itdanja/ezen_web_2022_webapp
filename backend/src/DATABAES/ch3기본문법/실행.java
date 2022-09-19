@@ -103,6 +103,22 @@ public class 실행 {
 				System.out.print( dto.debut_date 	+"\n" );
 			}
 			
+			// 8.
+			if( ch == 8 ) {
+				ArrayList< MemberDto > list = dao.예제8결과();
+				System.out.println("---------------- 예제8 결과물 ---------------");
+				// 향상된 for문
+				for( MemberDto dto : list ) { // list 내 모든 객체를 하나씩 반복대입
+					System.out.print( dto.mem_id		+"\t" );
+					System.out.print( dto.mem_name 		+"\t");
+					System.out.print( dto.mem_number 	+"\t");
+					System.out.print( dto.addr 			+"\t");
+					System.out.print( dto.phone1 		+"\t" );
+					System.out.print( dto.phone2 		+"\t" );
+					System.out.print( dto.height 		+"\t" );
+					System.out.print( dto.debut_date 	+"\n" );
+				} // for end 
+			}
 			
 			
 			
