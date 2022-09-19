@@ -58,6 +58,30 @@ public class 실행 {
 				System.out.print( dto.debut_date 	+"\n" );
 			}
 			
+			// 4.
+			if( ch == 4 ) {
+				ArrayList<MemberDto> list = dao.예제4결과();
+				System.out.println("---------------- 예제4 결과물 ---------------");
+				for( MemberDto dto : list ) {
+					System.out.print( dto.mem_id		+"\t" );
+					System.out.print( dto.mem_name 		+"\n");
+				}
+			}
+			// 5.
+			if( ch == 5 ) {
+				ArrayList< MemberDto > list =  dao.예제5결과();
+				System.out.println("---------------- 예제4 결과물 ---------------");
+				for( MemberDto dto : list ) {
+					System.out.print( dto.mem_name		+"\t" );
+					System.out.print( dto.height	+"\t" );
+					System.out.print( dto.mem_number 		+"\n" );
+				}
+			}
+			
+			// 6.
+			
+			
+			
 			// 19.
 		} // while end
 	} // main end

@@ -86,8 +86,52 @@ public class DAO { // mysql 라이브러리가 프로젝트 build 포함
 						rs.getShort(7), rs.getString(8));
 				return dto;
 			}
-		}catch (Exception e) { System.out.println(" 예제2 오류 : " + e); }
+		}catch (Exception e) { System.out.println(" 예제3 오류 : " + e); }
 		return null;
+	}
+	
+	// 4. 예제4 : 레코드3줄 : DTO 3개 
+	ArrayList<MemberDto> 예제4결과() {		
+		ArrayList<MemberDto> list = new ArrayList<>();
+
+		String sql ="select mem_id , mem_name "
+				+ " from member "
+				+ " where height <=162 ";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				MemberDto dto = new MemberDto(); // 빈객체 선언
+				dto.mem_id = rs.getString(1);	
+				// 검색된 레코드의 첫번째 필드 -> 객체 필드에 대입
+				dto.mem_name = rs.getString(2); 
+				// 검색된 레코드의 두번째 필드 -> 객체 필드에 대입 
+				list.add(dto); // 객체 --> 리스트 추가
+			} // while end 
+			return list;
+		}catch (Exception e){ System.out.println(" 예제4 오류 : " + e); }
+		return list;
+	}
+	
+	// 5. 예제5 
+	ArrayList< MemberDto > 예제5결과() {
+		ArrayList< MemberDto > list = new ArrayList<>();
+		String sql = "select mem_name , height , mem_number "
+				+ " from member "
+				+ " where height >= 165 and mem_number > 6";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				MemberDto dto = new MemberDto(); // 빈 객체 생성 
+				dto.mem_name = rs.getString( 1 );
+				dto.height = rs.getShort( 2 );
+				dto.mem_number = rs.getInt( 3 );
+				list.add(dto); // 객체 -> 리스트 저장 
+			}
+			return list; // 리스트 반환 
+		}catch (Exception e) { System.out.println(" 예제4 오류 : " + e); }
+		return list; // 리스트 반환
 	}
 	
 }
