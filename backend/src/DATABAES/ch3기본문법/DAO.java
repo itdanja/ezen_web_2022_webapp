@@ -196,17 +196,58 @@ public class DAO { // mysql 라이브러리가 프로젝트 build 포함
 		return list;
 	}
 	
-	// 9.
-	// 10.
-	// 11.
-	// 12.
-	// 13.
-	// 14~ 19  검색결과 필드2개 결과dto -> ResultDto
-	
-	
-	
+	// 9~19 : 과제
+		// 9 ~ 13  : 1~8 와 같은 방식
+		// 14~ 19  검색결과 필드2개 결과dto -> ResultDto
 }
 
+
+/*
+ 사용된 SQL
+	1. select * from member;
+	
+	2. select mem_name from member;
+	
+	3. select * from member where mem_name ='블랙핑크';
+	
+	4. select mem_id , mem_name from member where height <= 162;
+	
+	5. select mem_name , height , mem_number from member where height >= 165 and mem_number > 6;
+	
+	6. select mem_name , height , mem_number from member where height >= 165 or mem_number > 6;
+	
+	7. select * from member where mem_name like '우%';
+	
+	8. select * from member where mem_name like '__핑크';
+	
+	9. select mem_id , mem_name , debut_date from member order by debut_date desc;
+	
+	10. select mem_id , mem_name , debut_date , height from member where height >= 164 order by height desc ;
+	
+	11. select mem_id , mem_name , debut_date , height from member where height >= 164 order by height desc , debut_date asc;
+	
+	12. select mem_name , height  from member order by height desc limit 3 , 2 ;
+	
+	13. select distinct addr from member;	
+	
+	14. select mem_id , sum(amount) as 수량합계 from buy group by mem_id;	
+	
+	15. select mem_id as 회원_아이디 , sum( price*amount )  as 총_구매금액 from buy group by mem_id;
+	
+	16. select mem_id , avg( amount ) as 수량평균 from buy group by mem_id;	
+	
+	17. select mem_id , count( phone1 ) as 연락처 from member group by mem_id;
+	
+	18. select mem_id , count( * ) as 회원수 from member group by mem_id;	
+	
+	19.
+	select mem_id as 회원아이디 , sum( price * amount ) as 총구매금액
+	from buy
+	group by mem_id
+	having sum( price * amount ) > 1000			
+	order by sum( price * amount ) desc;
+	 
+ */
 
 
 
