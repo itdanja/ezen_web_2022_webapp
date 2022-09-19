@@ -99,6 +99,46 @@ INSERT INTO buy VALUES(NULL, 'APN', '혼공SQL', '서적', 15, 1);
 INSERT INTO buy VALUES(NULL, 'MMU', '지갑', NULL, 30, 4);
 
 
+/* ---------------------------- 예제  -----------------------------*/
+-- 1. DB 선택
+use market_db;
+-- 2. select ~ from 
+select * from member;
+	-- select : 테이블에서 데이터 검색할때 사용되는 예약어
+    -- * : (와일드카드) 모든것 의미 = 모든 필드 뜻
+    -- from : 테이블 가져온다는 의미 
+    -- member : 조회할 테이블명 
+select mem_name from member; -- 2-1 특정 필드 검색 [  회원테이블에서 회원명 검색 ] 
+select addr , debut_date , mem_name from member; -- 2-2특정 필드 검색 [ 회원테이블에서 주소,데뷔일자,회원명 검색 ]
+	-- 2-3 별칭 [ 결과(쿼리) 의 필드명 바꾸기 ]
+		-- 1. 필드명 as 별칭명 2. 필드명 별칭명  3. 필드명 as "별칭 명"  4. 필드명 as 별칭_명 
+select addr as 주소 , debut_date as '데뷔 일자' , mem_name as 회원_명 from member; 
+
+-- 3. select ~ from ~ where : 특정한 조건만 조회하기
+	-- select 필드명 from 테이블명 where 조건식 
+select * from member where mem_name ='블랙핑크';	-- 3-1 회원명이 '블랙핑크'인 모든 필드 검색 
+select * from member where mem_number = 4;		-- 3-2 회원의 인원수가 4 인 모든 필드 검색 
+select mem_id , mem_name from member where height <= 162;	-- 3-3 회원의 평균키가 162 이하인 특정 필드 검색 
+	-- 3-4 회원의 평균키가 165 이상 이면서 회원의 인원수가 6초과인 특정 필드 검색 
+select mem_name , height , mem_number from member where height >= 165 and mem_number > 6;
+	-- 3-5 회원의 평균키가 165 이상 이거나 회원의 인원수가 6초과인 특정 필드 검색
+select mem_name , height , mem_number from member where height >= 165 or mem_number > 6;
+	-- 3-6 AND <----> BETWEEN ~ AND : ~ 사이 	[ 평균키 163~165 검색 ]
+select mem_name , height , mem_number from member where height between 163 and 165;
+select mem_name , height , mem_number from member where height >= 163 and height <= 165;
+	-- 3-7 OR <-----> IN  : 하나라도 포함된 		[ 주소가 경기 혹은 전남 혹은 경남 검색 ] 
+select mem_name , addr from member where addr = '경기' or addr ='전남' or addr ='경남';
+select mem_name , addr from member where addr in( '경기' , '전남' , '경남');
+	-- 3-8 like : 패턴검색[ 일부 글자 검색 ]
+		-- % : 모든 문자 대응  vs  _ : _개수만큼 문자 대응 
+        -- 김% : 김으로 시작하는 모든 글자			vs  김_ : 김으로 시작하는 2글자 		
+        -- %김% : 김이 포함된 문자				vs	_김_	: 2번째 글자가 '김' 인 3글자
+        -- %김 : 김으로 끝나는 모든 글자			vs  _김  : 김으로 끝나는 2글자 
+select * from member where mem_name = '우주소녀';	-- 회원명이 '우주소녀' 와 같으면 레코드 검색 
+select * from member where mem_name like '우%';	-- 회원명이 '우' 시작하는 레코드 검색 
+select * from member where mem_name like '__핑크';	-- 회원명이 4글자이면서 '핑크' 끝나는 레코드 검색 
+
+
 
 
 
