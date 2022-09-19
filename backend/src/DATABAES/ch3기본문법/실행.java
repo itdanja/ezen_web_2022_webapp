@@ -70,7 +70,7 @@ public class 실행 {
 			// 5.
 			if( ch == 5 ) {
 				ArrayList< MemberDto > list =  dao.예제5결과();
-				System.out.println("---------------- 예제4 결과물 ---------------");
+				System.out.println("---------------- 예제5 결과물 ---------------");
 				for( MemberDto dto : list ) {
 					System.out.print( dto.mem_name		+"\t" );
 					System.out.print( dto.height	+"\t" );
@@ -79,6 +79,16 @@ public class 실행 {
 			}
 			
 			// 6.
+			if( ch == 6 ) {
+				ArrayList< MemberDto > list =  dao.예제6결과();
+				System.out.println("---------------- 예제6 결과물 ---------------");
+				for( MemberDto dto : list ) {
+					System.out.print( dto.mem_name		+"\t" );
+					System.out.print( dto.height	+"\t" );
+					System.out.print( dto.mem_number 		+"\n" );
+				}
+			}
+			
 			
 			
 			

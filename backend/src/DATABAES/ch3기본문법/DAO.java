@@ -130,9 +130,33 @@ public class DAO { // mysql 라이브러리가 프로젝트 build 포함
 				list.add(dto); // 객체 -> 리스트 저장 
 			}
 			return list; // 리스트 반환 
-		}catch (Exception e) { System.out.println(" 예제4 오류 : " + e); }
+		}catch (Exception e) { System.out.println(" 예제5 오류 : " + e); }
 		return list; // 리스트 반환
 	}
+	
+	// 6. 예제6
+	ArrayList<MemberDto> 예제6결과() {
+		ArrayList<MemberDto> list = new ArrayList<>();
+		String sql = "select mem_name , height , mem_number "
+				+ "from member "
+				+ "where height >= 165 or mem_number > 6";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				MemberDto dto = new MemberDto();
+				dto.mem_name = rs.getString( 1 );
+				dto.height = rs.getShort( 2 );
+				dto.mem_number = rs.getInt( 3 );
+				list.add(dto); 
+			}
+			return list;
+		}catch (Exception e) { System.out.println(" 예제6 오류 : " + e); }
+		return list;
+	}
+	
+	
+	
 	
 }
 
