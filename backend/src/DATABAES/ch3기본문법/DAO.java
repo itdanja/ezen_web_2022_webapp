@@ -196,6 +196,12 @@ public class DAO { // mysql 라이브러리가 프로젝트 build 포함
 		return list;
 	}
 	
+	// 9.
+	// 10.
+	// 11.
+	// 12.
+	// 13.
+	// 14~ 19  검색결과 필드2개 결과dto -> ResultDto
 	
 	
 	
