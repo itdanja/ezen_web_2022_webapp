@@ -45,7 +45,18 @@ public class 실행 {
 			} // ch == 2 end 
 			
 			// 3. 
-			
+			if( ch == 3 ) {
+				MemberDto dto = dao.예제3결과();
+				System.out.println("---------------- 예제3 결과물 ---------------");
+				System.out.print( dto.mem_id		+"\t" );
+				System.out.print( dto.mem_name 		+"\t");
+				System.out.print( dto.mem_number 	+"\t");
+				System.out.print( dto.addr 			+"\t");
+				System.out.print( dto.phone1 		+"\t" );
+				System.out.print( dto.phone2 		+"\t" );
+				System.out.print( dto.height 		+"\t" );
+				System.out.print( dto.debut_date 	+"\n" );
+			}
 			
 			// 19.
 		} // while end

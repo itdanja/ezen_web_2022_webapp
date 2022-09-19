@@ -64,17 +64,46 @@ public class DAO { // mysql 라이브러리가 프로젝트 build 포함
 			while( rs.next() ) { // rs.next() : 다음 레코드 이동
 				list.add( rs.getString( 1 ) ); // rs.get자료형(필드번호)
 			} // while end 
-			
 			return list; // 반환 
-		
 		}catch (Exception e) {  System.out.println(" 예제2 오류 : " + e); }
-		
 		return list; // 반환 
-	
 	}
 	
+	// 3. 예제3 : 레코드1줄 : DTO 1개
+		// 메소드 [선언]  : 반환타입 함수명( 인수 ) { } 
+	MemberDto 예제3결과() {
+		// void : 함수 결과가 없다 뜻 
+		String sql = "select * from member where mem_name='블랙핑크'";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery(); 
+			if( rs.next() ) { // 결과1개 반복문 필요 없음 [ next 1번 ]
+				// 레코드의 8개 필드 --> 객체
+				MemberDto dto = new MemberDto(
+						rs.getString(1), rs.getString(2), 
+						rs.getInt(3), rs.getString(4),
+						rs.getString(5), rs.getString(6),
+						rs.getShort(7), rs.getString(8));
+				return dto;
+			}
+		}catch (Exception e) { System.out.println(" 예제2 오류 : " + e); }
+		return null;
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
