@@ -25,7 +25,7 @@ public class DAO { // mysql 라이브러리가 프로젝트 build 포함
 	
 	// 3. 메소드
 	// 1. 예제1 : 레코드10줄 -> memberDto 8개 -> 배열/리스트
-	public ArrayList< MemberDto > 예제1결과( ) {
+	ArrayList< MemberDto > 예제1결과( ) {
 		// 배열(array) 대신에 배열을 편하게 사용할수 있는 미리 만들어진 클래스 [ 컬렉션(수집) 프레임워크 ]
 			// 리스트 [선언] :  ArrayList< 리스트에 들어갈 객체의 클래스 > 리스트명 = new ArrayList<>();
 			// 리스트에 객체 담기 : 리스트명.add( 객체명 ) 
@@ -50,7 +50,29 @@ public class DAO { // mysql 라이브러리가 프로젝트 build 포함
 			return list;
 		}catch (Exception e) { System.out.println(" 예제1 오류 : " + e); }
 		return list;
+	
+	} // 예제1결과 메소드  end 
+	
+	// 2. 예제 2: 레코드10줄 1칸
+	ArrayList< String > 예제2결과() {
+		// 1. String 객체( 문자열 ) 여러개를 저장할수 있는 list 객체 선언 
+		ArrayList< String > list = new ArrayList<>();
+		String sql = "select mem_name from member";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) { // rs.next() : 다음 레코드 이동
+				list.add( rs.getString( 1 ) ); // rs.get자료형(필드번호)
+			} // while end 
+			
+			return list; // 반환 
+		
+		}catch (Exception e) {  System.out.println(" 예제2 오류 : " + e); }
+		
+		return list; // 반환 
+	
 	}
+	
 	
 }
 

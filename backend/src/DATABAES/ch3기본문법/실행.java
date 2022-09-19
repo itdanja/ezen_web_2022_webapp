@@ -8,11 +8,7 @@ public class 실행 {
 	public static void main(String[] args) {
 		Scanner scanner= new Scanner( System.in);
 		while(true) {
-			for( int i = 1 ; i<=19 ;i++) {
-				System.out.println( i +"번 select 예제결과 ");
-			} // for end 
-			
-			System.out.print(" 예제 번호 선택 : ");
+			System.out.print(" 1~12 예제 중 번호 선택 : ");
 			int ch = scanner.nextInt();
 			
 			// 메소드 호출 방법
@@ -37,6 +33,19 @@ public class 실행 {
 					System.out.print( dto.debut_date 	+"\n" );
 				} // for end 
 			} // ch == 1 end 
+			
+			// 2. 
+			if( ch == 2 ) {
+				ArrayList< String > list = dao.예제2결과();
+				System.out.println("---------------- 예제2 결과물 ---------------");
+				for( String s : list ) {
+					System.out.print( s +"\t");
+				} // for end 
+				System.out.println();
+			} // ch == 2 end 
+			
+			// 3. 
+			
 			
 			// 19.
 		} // while end
