@@ -139,6 +139,102 @@ select * from member where mem_name like '우%';	-- 회원명이 '우' 시작하
 select * from member where mem_name like '__핑크';	-- 회원명이 4글자이면서 '핑크' 끝나는 레코드 검색 
 
 
+/*---------------  연산자 ------------------*/
+/*
+where 조건식
+	1. 산술연산자 : 
+		+ : 더하기 
+		- : 빼기 
+		* : 곱하기 
+		/ : 나누기 
+		DIV : 몫
+		MOD : 나머지	
+	2. 비교연산자
+		>= 이상
+		<= 이하
+		> 초과
+		< 미만 
+		= 같다  [ vs 자바( =대입 == 같다 ) ]
+		!= , <> : 같지않다.
+	3. 논리연산자
+		AND : 이면서 면서 이고 모두 그리고 [ 비교연산자가 모두 참 이면 참 ]
+		OR : 이거나 거나 또는 하나라도 	[ 비교연산자가 하나라도 참 이면 참
+		NOT : 부정 
+	4. 기타연산자
+		IN( 값1 , 값2 , 값3 , 값4 ) 	: 값1~값4 하나라도 존재하면 
+		BETWEEN 값1 AND 값2 	: 값1 ~ 값2 사이에 존재하면 
+		LIKE			: 패턴검색 
+			% : 모든문자수 대응  	_ : _개수만큼 문자수 대응 
+	5. NULL(공백) 관련 연산자 
+		IS NULL 		: NULL 이면 	[ 필드명 = NULL (X)   	vs  필드명 is null (O) ]
+		IS NOT NULL 	: NULL 이 아니면	[ 필드명 != NULL (X)	vs  필드명 is not null (o) ]
+*/
+-- 1. p.125 ORDER BY : 정렬  [ 모든 명령어 마지막에 작성 ]
+	-- SELECT * FROM 테이블명 ORDER BY 기준필드 ASC/DESC;	[ ASC : 오름차순(생략시)  / DESC : 내림차순 ] 
+select mem_id , mem_name , debut_date from member order by debut_date; 		-- 검색결과를 데뷔일자 기준으로 오름차순 
+select mem_id , mem_name , debut_date from member order by debut_date desc;	-- 검색결롸를 데뷔일짜 기준으로 내림차순 
+	-- SELECT * FROM 테이블명 WHERE 조건식 ORDER BY 기준필드 ASC/DESC;
+select mem_id , mem_name , debut_date , height from member order by height desc where height >= 164; -- 오류발생
+select mem_id , mem_name , debut_date , height from member where height >= 164 order by height desc ; -- 오류해결
+	-- SELECT * FROM 테이블명 ORDER BY 기준필드1 DESC , 기준필드2 ASC;		다수 정렬 [ 1차 정렬내에서 동일한 데이터끼리 2차 정렬 ] 
+select mem_id , mem_name , debut_date , height from member where height >= 164 order by height desc , debut_date asc;
+	/*
+		이름		학년 점수		-> 학년 정렬 	-> 	이름		학년 점수   -> 점수 정렬 ->	이름		학년 점수
+		유재석	1	50						유재석	1	50					신동엽	1	60
+		감호동	3	70						신동엽	1	60					유재석	1	50
+        신동엽	1	60						감호동	3	70					감호동	3	70
+    */
+-- 2. LIMIT : 출력의 개수 제한 
+	-- LIMIT 시작(0) , 개수 	: 시작부터 개수만큼 레코드 결과 제한 
+select * from member limit 3;	-- 전체중 앞에서 3개 레코드만 출력 	[ 0 , 3 ]
+select * from member limit 0 , 3 ;
+select mem_name , height  from member order by height desc;
+-- 결과 : 소녀시대 , 잇지 , 트와이스 , 여자친구 , 마마무 , 에이핑크 ~~~~ 오마이걸 
+--         0      1       2       3       4       5		~~    10
+select mem_name , height  from member order by height desc limit 3 , 2 ;
+
+-- 3. DISTINCT  : 결과에서 중복 데이터 제거 
+select addr from member;			-- 동일한 주소가 존재
+select distinct addr from member;	-- 중복 제거 
+
+-- 4. GROUP BY 절 : 특정 필드 그룹 
+select mem_id , amount from buy order by mem_id;	-- 회원아이디 기준으로 정렬 
+	-- 집계 함수[ 미리 만들어진 동작/코드 ] 
+	-- 1. sum( 필드명 ) : 해당 필드의 데이터 총합
+	-- 2. avg( 필드명 ) : 해당 필드의 데이터 평균 
+    -- 3. min( 필드명 ) : 해당 필드의 데이터 최댓값 
+    -- 4. max( 필드명 ) : 해당 필드의 데이터 최솟값 
+    -- 5. count( 필드명 ) : 해당 필드의 데이터 개수 
+    -- 		count(*)	: 모든 레코드 개수     
+select sum(amount) from buy;						-- 구매테이블에서 수량의 총합계 
+select avg(amount) from buy;						-- 수량의 평균 
+select min(amount) from buy;						-- 수량의 최솟값 
+select max(amount) from buy;						-- 수량의 최댓값 
+select count(amount) from buy;						-- 수량의 레코드 개수 	[ null 제외한 ]  
+select count(*)	from buy;							-- 모든 레코드 개수 	[ null 포함 ] 
+select count(distinct amount) from buy;				-- 레코드 개수 [ 중복 제거 ] 
+-- 특정 집계 [ ~~별 합계 , ~~끼리 합계 등 ]
+select mem_id , sum(amount) as 수량합계 from buy group by mem_id;			-- 회원아이디 별 수량 합계 
+select mem_id as 회원_아이디 , sum( price*amount )  as 총_구매금액 from buy group by mem_id;	-- 회원아이디 별  금액(가격*수량) 합계
+select mem_id , avg( amount ) as 수량평균 from buy group by mem_id;		-- 회원아이디 별 수량 평균 
+select mem_id , count( phone1 ) as 연락처 from member group by mem_id;	-- 회원아이디 별 연락처가 있는 회원 수 [ null 제외 ]
+select mem_id , count( * ) as 회원수 from member group by mem_id;			-- 회원아이디 별 회원수 			[ null 포함 ]
+
+-- 5. HAVING 절 : 그룹 조건 
+	-- where 일반조건( 그룹전 ) vs having 그룹조건 ( 그룹후 ) 
+select mem_id as 회원아이디 , sum( price * amount ) as 총구매금액
+from buy
+where sum( price * amount ) > 1000		-- 오류 발생 : sum() : 집계함수 이므로 그룹 후에 조건 사용 가능 
+group by mem_id;
+
+select mem_id as 회원아이디 , sum( price * amount ) as 총구매금액
+from buy
+group by mem_id
+having sum( price * amount ) > 1000			-- 해결 방안 : sum() 그룹 집계 이므로 그룹 후에 조건 사용 가능 
+order by sum( price * amount ) desc;
+
+
+
 
 
 
