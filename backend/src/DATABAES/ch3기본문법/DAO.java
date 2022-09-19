@@ -155,6 +155,26 @@ public class DAO { // mysql 라이브러리가 프로젝트 build 포함
 		return list;
 	}
 	
+	// 7. 
+	MemberDto 예제7결과() {
+		MemberDto dto = null;
+		String sql = "select * from member "
+				+ "where mem_name like '우%'";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if( rs.next() ) {
+				dto = new MemberDto(
+						rs.getString(1), rs.getString(2), 
+						rs.getInt(3), rs.getString(4),
+						rs.getString(5), rs.getString(6),
+						rs.getShort(7), rs.getString(8));
+				return dto;
+			}
+		}catch (Exception e) { System.out.println(" 예제7 오류 : " + e); }
+		return dto;
+	}
+	
 	
 	
 	

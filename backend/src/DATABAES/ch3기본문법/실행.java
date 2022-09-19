@@ -89,6 +89,20 @@ public class 실행 {
 				}
 			}
 			
+			// 7.
+			if( ch == 7 ) {
+				MemberDto dto = dao.예제7결과();
+				System.out.println("---------------- 예제7 결과물 ---------------");
+				System.out.print( dto.mem_id		+"\t" );
+				System.out.print( dto.mem_name 		+"\t");
+				System.out.print( dto.mem_number 	+"\t");
+				System.out.print( dto.addr 			+"\t");
+				System.out.print( dto.phone1 		+"\t" );
+				System.out.print( dto.phone2 		+"\t" );
+				System.out.print( dto.height 		+"\t" );
+				System.out.print( dto.debut_date 	+"\n" );
+			}
+			
 			
 			
 			
