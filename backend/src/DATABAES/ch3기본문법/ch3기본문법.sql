@@ -11,7 +11,7 @@ DML : 조작어[가공]
     
 */
 -- 1. DB 삭제 
-drop database market_db;			-- market_db 데이터베이스 삭제 [ 오류 : 해당 db 존재하지 않기 때문에 ]
+-- drop database market_db;			-- market_db 데이터베이스 삭제 [ 오류 : 해당 db 존재하지 않기 때문에 ]
 drop database if exists market_db; 	-- 만일 해당 db명이 존재하면 해당 db 삭제 
 -- 2. DB 생성 
 create database market_db;			-- market_db 데이터베이스 생성 [ 왼쪽 메뉴 확인 :  새로고침 ]

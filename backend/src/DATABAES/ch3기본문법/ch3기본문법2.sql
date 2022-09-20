@@ -45,17 +45,42 @@ SET @@auto_increment_increment = 1;	-- 원상복귀
 
 	-- EX5 여러번의 VALUES
 insert into hongong2 values( null , '재남2' , 30 )  , ( null , '재남3' , 40 );
-
 	-- 확인
 select * from hongong2;
+-- 3. insert into select : select 결과 레코드를 새로운 테이블에 레코드로 추가
+	-- EX1
+select count(*) from member;	-- 레코드수 
+select * from member limit 5;	-- 검색 결과의 레코드 수 제한  5줄 
+create table member_addr( mem_id char(8) not null , addr char(2) ); -- 새로운 테이블 
+select mem_id , addr from member limit 5;	-- 앞에부터 5명 회원 검색 
+insert into member_addr select mem_id , addr from member limit 5; -- 새로운 테이블에 검색된 결과를 추가 
+	-- 확인
+select * from member_addr;
+---------------------------------------------------------------------------------------------------
+-- 2.UPDATE 
+	-- UPDATE 테이블명 SET 수정필드명=새로운값 , 수정필드명2=새로운값 WHERE 조건식;
+	-- EX1 : 회원들 중 주소가 '서울' 이면 주소를 'Seoul' 변경 [ char(2) ]
+update member set addr = 'Seoul' where addr ='서울'; -- 오류 [ 1. 워크벤치 설정 변경( update/delete 사용불가 ) ]
+update member set addr = 'Seoul' where addr ='서울';	-- 오류 [ 2. addr필드의 자료형 char(2) 이기때문에 글자수 최대2 ]
+update member set addr = 'Se' where addr ='서울';	-- 문제해결 
+	-- EX2 : 회원들 중 주소가 '경기' 이면 주소를 '수도' phone1 '032' 변경
+update member set addr='수도' , phone1 = '032' where addr ='경기';
+	-- EX3 : 조건 없는 수정
+update member set addr='안산'; --  [ 모든 회원들의 주소가 '안산' ] 
+update member set mem_number = mem_number/3;	-- [ 인원수필드에 나누기 3 한 결과로 변경 ] 
+	-- 확인
+select * from member;
+---------------------------------------------------------------------------------------------------
+-- 3. DELETE 
+	-- DELETE FROM 테이블명 WEHRE 조건
+	-- EX1
+select * from member where mem_name like '%핑크%'; -- 결과 2줄 
+delete from member where mem_name like '%핑크%';	-- %핑크%	vs  _핑크_	
+	-- pk <---> fk	[ 연결 ] -- 연결이 되어 있는 상태에서 pk 값 지우면 fk???????.
+			-- ????????? 연결된 테이블[buy]에 존재하는 데이터 이므로 삭제 불가능 
+delete from member where mem_name = '잇지';	-- ?????????  연결된 테이블[buy]에 존재하지 않기 때문에 삭제 가능 
+	-- 확인 
+select * from member;
+select * from buy;
 
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
