@@ -1,9 +1,6 @@
 package java1.ch5클래스.EX13_비회원게시판_DB버전;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 import java1.ch5클래스.EX12_비회원제시판_함수버전.Board;
 

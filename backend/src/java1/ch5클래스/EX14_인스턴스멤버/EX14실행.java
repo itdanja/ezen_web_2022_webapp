@@ -1,5 +1,8 @@
 package java1.ch5클래스.EX14_인스턴스멤버;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class EX14실행 {
 
 	public static void main(String[] args) {
