@@ -1,3 +1,4 @@
+
 use market_db;
 drop table if exists hongong4;	-- 테이블 삭제 
 create table hongong4(			-- 테이블 생성
@@ -18,4 +19,56 @@ create table hongong4(			-- 테이블 생성
     datetime_col	datetime	-- DATETIME : 날짜시간 저장 [ YYYY-MM-DD HH:MM:SS ]
 );
 select * from hongong4;
+------------------------------------------------------------------------------------------------------
+-- 1. 제품테이블 
+drop table if exists c_product;
+create table c_product(
+	pno int auto_increment primary key , 	
+    pname varchar(100)  ,					
+	pbrand varchar(100)  ,
+    pprice int ,
+    pimgpath text 
+);
+select * from c_product;
+
+-- 2. 회원테이블 
+drop table if exists c_member;
+create table c_member(
+	mno	int auto_increment primary key , 
+    mid varchar(50) , 
+    mpw varchar(20) ,
+    mname varchar(50) ,
+    mphone varchar(13)
+);
+select * from c_member;
+
+drop table if exists c_backet;
+create table c_basket(
+	bno int auto_increment primary key , 
+	pno int , 					-- 제품번호
+    mno int ,					-- 회원번호
+    amount smallint ,
+    -- foreign key( 현재테이블 fk필드명 ) references pk필드의테이블명( pk필드명 )
+	foreign key( pno ) references c_product( pno ) , 	--
+    foreign key( mno ) references c_member( mno )
+);
+select * from c_basket;
+-------------------------------------------------
+-- 관계 여부 확인 [ ER 다이어그램 ] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
