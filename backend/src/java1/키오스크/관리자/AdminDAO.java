@@ -56,9 +56,24 @@ public class AdminDAO {
 		}catch (Exception e) { System.out.println("경고) 메뉴 호출 실패 : " + e ); }
 		return list;
 	} // end 
-	
 		// 3. 제품 추가 
-	
+	boolean inProduct( ProductDTO productDto ) {
+		String sql ="select * from product values( null, ? ,?,?,?,?)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , productDto. );
+			ps.setInt( 2 , productDto. );
+			ps.setString( 3 , productDto. );
+			ps.setInt( 4 , productDto. );
+			ps.setInt( 5 , productDto. );
+			ps.executeUpdate();
+			return true;	// 성공시 true 반환
+		} // try end 
+		catch (Exception e) {
+			System.out.println("경고) 제품 추가 실패 : " + e );
+		} // catch 
+		return false; // 실패시 false 반환 
+	} // 메소드 end 
 		// 4. 주문 확인 
 }
 
