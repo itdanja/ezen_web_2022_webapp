@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class AdminDAO {
 	// 1.필드
@@ -37,9 +38,28 @@ public class AdminDAO {
 		}catch (Exception e) { System.out.println("경고) 메뉴 추가 실패 : " + e ); }
 		return false;
 	}
-		// 2. 제품 추가 
+		// 2. 메뉴 호출
+	ArrayList< MenuDTO > getMenu() {
+		ArrayList< MenuDTO > list = new ArrayList<>();
+		String sql = "select * from menu";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) { 	// rs.next() : 다음 레코드 
+				// 검색 레코드 -> 객체화 
+				MenuDTO menu = new MenuDTO(
+						rs.getInt(1), rs.getString(2) );
+				// 현재 검색된 현재 레코드의 필드 호추 : rs.get자료형(검색필드순번)
+				list.add(menu);
+			} // while end 
+			return list;
+		}catch (Exception e) { System.out.println("경고) 메뉴 호출 실패 : " + e ); }
+		return list;
+	} // end 
 	
-		// 3. 주문 확인 
+		// 3. 제품 추가 
+	
+		// 4. 주문 확인 
 }
 
 
