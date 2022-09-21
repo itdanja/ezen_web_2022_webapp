@@ -58,16 +58,19 @@ public class AdminDAO {
 	} // end 
 		// 3. 제품 추가 
 	boolean inProduct( ProductDTO productDto ) {
-		String sql ="select * from product values( null, ? ,?,?,?,?)";
+		String sql ="insert into product values( null, ? ,?,?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString( 1 , productDto. );
-			ps.setInt( 2 , productDto. );
-			ps.setString( 3 , productDto. );
-			ps.setInt( 4 , productDto. );
-			ps.setInt( 5 , productDto. );
+			ps.setString( 1 , productDto.getPname() );
+			ps.setInt( 2 , productDto.getPprice() );
+			ps.setString( 3 , productDto.getPcomment() );
+			ps.setShort( 4 , productDto.getPamount() );
+			ps.setByte( 5 , productDto.getMno() );
+			
 			ps.executeUpdate();
+			
 			return true;	// 성공시 true 반환
+			
 		} // try end 
 		catch (Exception e) {
 			System.out.println("경고) 제품 추가 실패 : " + e );

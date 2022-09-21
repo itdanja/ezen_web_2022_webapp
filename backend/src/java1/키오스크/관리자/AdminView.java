@@ -50,13 +50,13 @@ public class AdminView {
 			System.out.print( menu.getMname() +"\n" );
 		}
 		System.out.print("추가할 제품의 메뉴 번호 선택 : ");
-		int mno = scanner.nextInt();
+		byte mno = scanner.nextByte();
 		///////// 제품 추가 ////////////////
 		
 		System.out.print("제품명 : "); 	scanner.nextLine(); String pname = scanner.nextLine();
 		System.out.print("가격 : ");		int pprice = scanner.nextInt();
 		System.out.print("소개 : ");		scanner.nextLine(); String pcomment = scanner.nextLine();
-		System.out.print("초기 재고 : ");	int pamount = scanner.nextInt();
+		System.out.print("초기 재고 : ");	short pamount = scanner.nextShort();
 		
 		boolean result = 
 		acontrol.inProduct(pname, pprice, pcomment, pamount, mno);
