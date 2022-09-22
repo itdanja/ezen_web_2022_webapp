@@ -59,9 +59,22 @@ public class EX1_arraylist {
 			System.out.println( s );
 		}
 		
-		// 6. 
+		// 7.	.contains(객체) : 해당 객체가 존재하면 true / false
+		System.out.println( list.contains("jdbc") ) ;
+		
+		// 8.	.indexOf(객체) 	: 해당 객체의 인덱스위치 반환
+		System.out.println( list.indexOf("asdasd") );
+	
+		// 9.  list.isEmpty()	: 리스트가 객체 하나도 없으면 true / false	
+		System.out.println( list.isEmpty()  );
+		
+		// 10. .iterator() 		: 리스트내 객체 순회
+		System.out.println( list.iterator() );
+		
+		// 6. .clear()
 		list.clear();
 		
+		// 함수는 관례적 이름	get~~  , set~~ , is~~ 
 		
 		
 	}
