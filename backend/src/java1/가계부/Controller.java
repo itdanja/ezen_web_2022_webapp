@@ -18,6 +18,12 @@ public class Controller {
 	ArrayList< ExpenseDTO > read (){
 		return ExpenseDAO.getInstance().read();
 	}
+	
+	// 4. 내용삭제 컨트롤러
+	boolean delete( int eno ) {
+		return ExpenseDAO.getInstance().delete( eno );
+	}
+	
 
 }
 

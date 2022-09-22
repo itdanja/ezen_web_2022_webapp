@@ -49,9 +49,27 @@ public class View {
 	// 3. 내용 수정 화면 메소드 
 	void update() { }
 	// 4. 내용 삭제 화면 메소드 
-	void delete( ) { }
+	void delete( ) { 
+		System.out.print(" 삭제할 번호 : "); 
+		int eno = scanner.nextInt();
+		boolean result = control.delete( eno );
+		if( result  ) { System.out.println("삭제성공");}
+		else { System.out.println("삭제실패[ 삭제할 번호 없다 or db오류 ]");}
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

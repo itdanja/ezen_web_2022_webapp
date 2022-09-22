@@ -55,6 +55,17 @@ public class ExpenseDAO {
 		return list;
 	}
 	
+	// 4. 내용삭제 SQL 메소드
+	boolean delete( int eno ) {
+		String sql ="delete from expense where eno = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt( 1 , eno );
+			ps.executeUpdate(); return true;
+		}catch (Exception e) { }
+		return false;
+	}
+	
 	
 
 }
