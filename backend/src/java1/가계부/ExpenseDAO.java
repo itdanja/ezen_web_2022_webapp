@@ -80,7 +80,7 @@ public class ExpenseDAO {
 			ps.setString( 3 , dto.getEcomment() );
 			ps.setInt( 4 , dto.getEno() );
 			ps.executeUpdate(); return true;
-		}catch (Exception e) {}
+		}catch (Exception e) { System.out.println("DB오류:"+e);} 
 		return false;
 		
 	}

@@ -25,7 +25,7 @@ public class Controller {
 	
 	// 3. 내용수정 컨트롤러
 	boolean update( int a , String b , int c , String d  ) {
-		return ExpenseDAO.getInstance().update( new ExpenseDTO(a, d, c, d) );
+		return ExpenseDAO.getInstance().update( new ExpenseDTO(a, b, c, d) );
 	}
 
 }
