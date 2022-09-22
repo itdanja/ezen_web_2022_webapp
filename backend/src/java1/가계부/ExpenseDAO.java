@@ -66,6 +66,26 @@ public class ExpenseDAO {
 		return false;
 	}
 	
+	// 3. 
+	boolean update( ExpenseDTO dto ) {
+		String sql= "update expense set "
+				+ "edate = ? , "
+				+ "emoney = ? , "
+				+ "ecomment = ?  "
+				+ "where eno = ? ";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , dto.getEdate() );
+			ps.setInt( 2 , dto.getEmoney() );
+			ps.setString( 3 , dto.getEcomment() );
+			ps.setInt( 4 , dto.getEno() );
+			ps.executeUpdate(); return true;
+		}catch (Exception e) {}
+		return false;
+		
+	}
+	
+	
 	
 
 }
