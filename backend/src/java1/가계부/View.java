@@ -1,5 +1,6 @@
 package java1.가계부;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import java1.ch5클래스.EX12_비회원제시판_함수버전.view;
@@ -34,7 +35,17 @@ public class View {
 		else { System.out.println("등록실패");}
 	}
 	// 2. 내용 출력 화면 메소드 
-	void read() { }
+	void read() {
+		ArrayList< ExpenseDTO > list = control.read();
+		System.out.println("번호\t날짜\t\t금액\t내용");
+		for( ExpenseDTO dto : list ) { // list에서 dto 하나씩 꺼내오기 
+		// for( 타입파라미터 임시변수 : 리스트/배열 ) {}
+			System.out.print(dto.getEno() +"\t");
+			System.out.print(dto.getEdate() +"\t");
+			System.out.print(dto.getEmoney() +"\t");
+			System.out.print(dto.getEcomment() +"\n");
+		}
+	}
 	// 3. 내용 수정 화면 메소드 
 	void update() { }
 	// 4. 내용 삭제 화면 메소드 

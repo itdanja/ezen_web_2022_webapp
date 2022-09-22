@@ -1,7 +1,7 @@
 package java1.가계부;
 
 public class ExpenseDTO {
-	// 1. 필드 <---> DB TABLE 필드
+	// 1. DTO 필드 <---> DB TABLE 필드
 	private int eno ;
 	private String edate ;
 	private int emoney ;

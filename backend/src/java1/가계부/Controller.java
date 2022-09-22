@@ -1,5 +1,7 @@
 package java1.가계부;
 
+import java.util.ArrayList;
+
 public class Controller {
 	
 	// 1. 내용추가 컨트롤러
@@ -11,6 +13,41 @@ public class Controller {
 		// dto객체 -> dao 메소드 
 		return ExpenseDAO.getInstance().create( dto );
 	}
+	
+	// 2. 내용호출 컨트롤러
+	ArrayList< ExpenseDTO > read (){
+		return ExpenseDAO.getInstance().read();
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

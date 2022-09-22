@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class ExpenseDAO {
 	// 1. 필드
@@ -34,10 +35,46 @@ public class ExpenseDAO {
 		return false;
 	}
 	
+	// 2. 내용출력 SQL 메소드 
+	ArrayList< ExpenseDTO > read ( ){
+		ArrayList< ExpenseDTO > list = new ArrayList<>();
+		String sql ="select * from expense";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) { // rs.next() : 다음레코드
+				// 레코드[필드4개] 1개 --> 객체화[필드4개] 1개 [포장]	
+				ExpenseDTO dto = new ExpenseDTO( 
+						rs.getInt(1),rs.getString(2), 
+						rs.getInt(3), rs.getString(4));
+				// 객체 -> 리스트 담기
+				list.add( dto );
+			} // while end 
+			return list; // 반환 
+		}catch (Exception e) {}
+		return list;
+	}
 	
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
