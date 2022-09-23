@@ -1,7 +1,7 @@
 package java1; // 현재 클래스가 속한 패키지[폴더] 위치 표시
 
 // 1. 클래스 선언부 
-public class Hello { // class s 
+public class Hello  { // class s 
 // public : 접근제한자 ( 전범위 )
 	// class : 클래스 선언시 사용되는 키워드 
 		// Hello : 클래스명[ 아무거나 ]
