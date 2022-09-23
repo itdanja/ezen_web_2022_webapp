@@ -33,11 +33,20 @@ public class EX4_달력 {
 			if( btn == 1 ) { month--; if( month == 0 ) { month = 12; year--; }  }
 				// 다음달 : 월에서 1증가  [ 만일 월이 13 이면 월=1 설정 연도 1 증가 ] 
 			else if( btn == 2 ) { month++; if( month == 13 ) { month = 1; year++; }  }
-			else if( btn == 3 ) { }
-			else if( btn == 4 ) { } 
+			else if( btn == 3 ) { 
+				System.out.print("검색 연도 : ");	int inyear = scanner.nextInt();
+				System.out.print("검색 월 : ");	int inmonth = scanner.nextInt();
+				if( inyear < 1900 || inyear > 9999  || inmonth < 1 || inmonth > 12  ) {
+					System.out.println("경고 : 지원하지 않는 날짜 입니다.");
+				}else { year = inyear;  month = inmonth; } 
+			}
+			else if( btn == 4 ) { }
 		}
-		
-	}
+	} // run 메소드 
+	void 일정추가() { }	// 날짜 , 메모 등
+	
+	void 일정출력() { }
+	
 }
 
 
