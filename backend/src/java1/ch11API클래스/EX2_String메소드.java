@@ -1,4 +1,4 @@
-package java1.ch11String;
+package java1.ch11API클래스;
 
 import java.util.Scanner;
 
