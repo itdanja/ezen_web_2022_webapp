@@ -1,4 +1,4 @@
-package java1.과제제출.개인과제;
+package java1.과제제출.개인과제.ch1_변수활용;
 
 import java.util.Scanner;
 

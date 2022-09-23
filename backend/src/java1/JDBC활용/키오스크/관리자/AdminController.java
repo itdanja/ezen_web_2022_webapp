@@ -1,4 +1,4 @@
-package java1.키오스크.관리자;
+package java1.JDBC활용.키오스크.관리자;
 
 import java.util.ArrayList;
 
