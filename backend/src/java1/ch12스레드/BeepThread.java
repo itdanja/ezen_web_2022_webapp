@@ -2,12 +2,8 @@ package java1.ch12스레드;
 
 import java.awt.Toolkit;
 
-public class BeepTask implements Runnable {
-					// implements : 구현 [ 인터페이스(추상) 구현할때 ]
-					// Runnable : 스레드 인터페이스 
-	// 1. 필드
-	// 2. 생성자
-	// 3. 메소드[ 스레드 제공하는 함수 = run ]
+public class BeepThread extends Thread  {
+	
 	@Override
 	public void run() {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();	
@@ -17,4 +13,5 @@ public class BeepTask implements Runnable {
 			catch (Exception e) {}
 		}
 	}
+
 }

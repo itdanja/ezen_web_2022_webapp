@@ -28,9 +28,9 @@ public class EX1_스레드 {
 		}
 		
 		/////////////////////////////////////////////////////////////////////////////
-		System.out.println(" --  멀티스레드 시작 --");
+		System.out.println(" -- 구현 객체 멀티스레드 시작 --");
 		// 2. p.526 
-		Runnable beepTask = new BeepTask();
+		Runnable beepTask = new BeepTask();	// 구현객체
 		Thread thread = new Thread(beepTask);
 		thread.start();	// run 메소드 호출
 		
@@ -41,6 +41,65 @@ public class EX1_스레드 {
 			try { Thread.sleep(500); } 
 			catch (Exception e) { }
 		}
+		
+		System.out.println(" -- 익명 구현 객체 멀티스레드 -- ");
+		
+		// 3. p.527 : 익명구현 객체 - 1회용 [ 이름 없으니까 다른곳에 호출 불가능 ]
+		Thread thread2 = new Thread( new Runnable() {
+			@Override
+			public void run() {
+				Toolkit toolkit = Toolkit.getDefaultToolkit();	
+				for( int i = 0 ; i<5 ; i++ ) {
+					toolkit.beep(); 
+					try{ Thread.sleep(500); }
+					catch (Exception e) {}
+				}
+			}
+		} ); 
+		thread2.start();
+		
+		for( int i = 0 ; i<5 ; i++ ) {
+			System.out.println("띵");
+			try { Thread.sleep(500); } 
+			catch (Exception e) { }
+		}
+		
+		System.out.println("--- Thread 클래스 이용한 멀티스레드 --");
+		// 4. p.529 : Thead 클래스 객체 
+		BeepThread thread3 = new BeepThread();
+		thread3.start();
+		
+		for( int i = 0 ; i<5 ; i++ ) {
+			System.out.println("띵");
+			try { Thread.sleep(500); } 
+			catch (Exception e) { }
+		}
+		
+		System.out.println("--- Thread 클래스 이용한 익명자식객체 멀티스레드 --");
+		// 5. p.530 : 클래스명 객체명 = new 생성자(){ 멤버 재정의 };
+		Thread thread4 = new Thread() { 
+			@Override
+			public void run() {
+				Toolkit toolkit = Toolkit.getDefaultToolkit();	
+				for( int i = 0 ; i<5 ; i++ ) {
+					toolkit.beep(); 
+					try{ Thread.sleep(500); }
+					catch (Exception e) {}
+				}
+			}
+		};
+		thread4.start();
+		
+		for( int i = 0 ; i<5 ; i++ ) {
+			System.out.println("띵");
+			try { Thread.sleep(500); } 
+			catch (Exception e) { }
+		}
+		
+		
+		
+		
+		
 		
 		
 		return; // main 함수 종료 
