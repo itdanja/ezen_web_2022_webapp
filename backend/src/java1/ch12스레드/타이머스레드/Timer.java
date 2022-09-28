@@ -14,16 +14,16 @@ public class Timer extends Thread {
 	@Override // 부모클래스의 이미 존재하는 메소드 재정의한다.,
 	public void run() { 초단위(); }
 	
-	
 	private void 초단위() {
 		int i = 1 ;
 		while( stop ) {	// 외부에서 stop 변수 조작해서 함수 종료시키자 
 			if( wait  ) {
 				System.out.println( i +"초");
-				try{ Thread.sleep(1000); }
-				catch (Exception e) {}
 				i++;
 			}
+			try{ Thread.sleep(1000); }
+			catch (Exception e) {}
+			System.out.println("스레드 회전중");
 		}
 	}
 }

@@ -3,9 +3,6 @@ package java1.ch12스레드.타이머스레드;
 import java.util.Scanner;
 
 public class Ex_실행 {
-	
-	
-	
 	public static void main(String[] args) {
 	
 		Scanner scan = new Scanner(System.in);
@@ -28,7 +25,6 @@ public class Ex_실행 {
 			}
 			// 3. 타이머가 켜져 있을때 일시정지 해제
 			else if( ch== 1 && timerstate == true && waitstate == false  ) { 
-				System.out.println("ㅇㅇ");
 				timer.setWait(true);	waitstate = true;
 			}
 			// 4. 타이머가 켜져 있을때 리셋
