@@ -1,14 +1,9 @@
 package java1.ch07상속.EX5_타이어예제;
 
 public class HankookTire extends Tire {
-
-	//1.필드
-	//2.생성자
 	public HankookTire(int maxRotation, String location) {
 		super(maxRotation, location);
 	}
-	//3. 메소드
-		// 1. roll 재정의
 	@Override
 	public boolean roll() {
 		++accumulatedRotation;	// 누적 회전수 1씩증가 

@@ -7,23 +7,14 @@ public class Car {
 	Tire backLeftTire =  new Tire(3 , "뒤왼쪽");
 	Tire backRightTire =  new Tire(4 , "뒤오른쪽");
 	
-	// 2. 생성자
-	
 	// 3. 메소드 
-	boolean[] run() {
+	int run() {
 		System.out.println("[자동차가 달립니다.]");
-		boolean[] tirestate = new boolean[4];
-		tirestate[0] =  frontLeftTire.roll();
-		tirestate[1] =  frontRightTire.roll();
-		tirestate[2] =  backLeftTire.roll();
-		tirestate[3] =  backRightTire.roll();
-		for( boolean b : tirestate ) {
-			if( b == false ) { stop(); break; }
-		}
-		return tirestate;
+		if( frontLeftTire.roll() == false ) { stop(); 	return 1; }
+		if( frontRightTire.roll() == false ){ stop(); 	return 2; }
+		if( backLeftTire.roll() == false ) 	{ stop(); 	return 3; }
+		if( backRightTire.roll() == false ) { stop(); 	return 4; }
+		return 0;
 	}
-
-	
 	void stop() {System.out.println("[자동차가 멈춥니다.]");}
-	
 }

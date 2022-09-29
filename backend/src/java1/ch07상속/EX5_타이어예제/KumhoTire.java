@@ -1,11 +1,9 @@
 package java1.ch07상속.EX5_타이어예제;
 
 public class KumhoTire extends Tire {
-	
 	public KumhoTire(int maxRotation, String location) {
 		super(maxRotation, location);
 	}
-	
 	@Override
 	public boolean roll() {
 		++accumulatedRotation;	// 누적 회전수 1씩증가 
@@ -18,5 +16,4 @@ public class KumhoTire extends Tire {
 			return false; // 수명 없을경우 false [ 펑크 일경우 ]
 		}
 	}
-
 }
