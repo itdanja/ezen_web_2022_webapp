@@ -10,13 +10,17 @@ public class Car {
 	// 2. 생성자
 	
 	// 3. 메소드 
-	int run() {
+	boolean[] run() {
 		System.out.println("[자동차가 달립니다.]");
-		if( frontLeftTire.roll() == false ) { stop(); 	return 1; }
-		if( frontRightTire.roll() == false ){ stop(); 	return 2; }
-		if( backLeftTire.roll() == false ) 	{ stop(); 	return 3; }
-		if( backRightTire.roll() == false ) { stop(); 	return 4; }
-		return 0;
+		boolean[] tirestate = new boolean[4];
+		tirestate[0] =  frontLeftTire.roll();
+		tirestate[1] =  frontRightTire.roll();
+		tirestate[2] =  backLeftTire.roll();
+		tirestate[3] =  backRightTire.roll();
+		for( boolean b : tirestate ) {
+			if( b == false ) { stop(); break; }
+		}
+		return tirestate;
 	}
 
 	
