@@ -28,6 +28,7 @@ public class Dao {
 		String sql = "insert into menu values( null , ? )"; // 1. SQL 작성
 			ps = con.prepareStatement(sql); // 2. SQL 연결/조작
 			ps.setString( 1 , "과자" );	// ? : 첫번째 ? 에 변수 대입 
+							// 3. SQL 실행/결과조작
 			ps.executeUpdate(); // executeUpdate() : 실행
 	}
 	public void login( ) throws SQLException {
