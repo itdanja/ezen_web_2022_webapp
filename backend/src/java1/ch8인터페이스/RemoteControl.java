@@ -1,4 +1,4 @@
-package java1.ch8;
+package java1.ch8인터페이스;
 
 //	클래스 선언 : 접근제한자 class 클래스명{ }
 //  인터페이스 선언 : 접근제한자 interface 인터페이스명{ }

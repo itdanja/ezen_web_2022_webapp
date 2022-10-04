@@ -1,4 +1,4 @@
-package java1.ch8;
+package java1.ch8인터페이스;
 
 public class Television implements RemoteControl {
 			// [ implements 인터페이스 ] : 구현하다 ( 추상을 구현 )
@@ -22,6 +22,7 @@ public class Television implements RemoteControl {
 		}else {
 			this.volume = volume;
 		}
+		System.out.println("현재 tv 볼륨 : " + this.volume);
 	}
 	
 }
