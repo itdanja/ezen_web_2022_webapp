@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+	font-family : "맑은고딕";
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+a{ text-decoration: none; color: black; }
+
+.hd_top{
+	display: flex;
+	margin: 20px 0px;
+	justify-content: space-between;
+}
+.webbox{
+	width: 1200px;
+	margin: 0 auto;
+}
+.hd_sub{
+	font-size : 12px;
+	display: flex;
+	align-items: center;
+}
+.hd_sub li{
+	margin-left: 20px;
+}
+.hd_menu{
+	display: flex;
+	justify-content: space-between;
+	margin: 10px 0px 20px 0px;
+}
+.hd_menu li{
+	font-size: 15px;
+}
+.hd_title a{
+	font-family : "yg-jalnan";
+	font-size: 40px; 
+}
+.hd_menu li:nth-child(1) a{ color: red; font-weight: bold; }
+.hd_menu li:nth-child(2) a{ color: blue; font-weight: bold; }
+.hd_menu li:nth-child(10) a{ color: grey; font-weight: bold; }
+.hd_menu li:nth-child(11) a{ color: skyblue; font-weight: bold; }
+
+.searchbox input{ border: none; width: 100px;}
+.searchbox span { border-bottom: solid black; margin: 0px 20px 0px 120px;  }
+
+.fa-shopping-cart , .fa-search{
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+

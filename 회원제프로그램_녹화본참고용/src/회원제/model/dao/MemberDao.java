@@ -8,10 +8,12 @@ import java.sql.ResultSet;
 import 회원제.model.dto.MemberDto;
 
 public class MemberDao {
+	
 	private Connection con; 
 	private PreparedStatement ps; 	// 접속된 DB에 SQL 연결 조작하는 인터페이스 
 	private ResultSet rs;			// SQL 결과[쿼리]를 조작하는 인터페이스 
-	private MemberDao() {
+	
+	public MemberDao() {
 		try {
 			 con = DriverManager.getConnection(
 				"jdbc:mysql://localhost:3306/testdb",
@@ -19,8 +21,6 @@ public class MemberDao {
 				"1234");
 		}catch (Exception e) { System.out.println("경고) DB 접속 실패 " + e ); }
 	}
-	private static MemberDao mDao = new MemberDao();
-	public static MemberDao getInstance() { return mDao; }
 	
 	public boolean signup( MemberDto dto) {
 		String sql ="insert into member values( null , ? , ? , ? , ?)"; // String sql = "insert into 테이블명 values( 값1, 값2 , 값3 )";
