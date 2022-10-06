@@ -30,7 +30,6 @@ public class signup extends HttpServlet {
 		// 5. 결과 제어
 		if( result ) { response.sendRedirect("/jspweb/member/login.jsp");}
 		else { }
-		
 //		if( result ) {System.out.println("회원가입 성공");}
 //		else { System.out.println("회원가입 실패");}
 		// 4. DAO 메소드 호출용 객체 선언 

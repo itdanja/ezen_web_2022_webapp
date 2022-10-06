@@ -4,11 +4,8 @@ import model.dto.MemberDto;
 
 public class MemberDao extends Dao {
 	// 0. 싱글톤 객체 선언 [ 공유 메모리 ] 
-	private static MemberDao mdao 
-			= new MemberDao();
-	public static MemberDao getInstance() { 
-		return mdao;
-	}
+	private static MemberDao mdao = new MemberDao();
+	public static MemberDao getInstance() { return mdao;}
 	//1. 회원가입 메소드 
 	public boolean signup( MemberDto dto ) {
 		String sql ="insert into"
