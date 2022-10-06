@@ -1,4 +1,108 @@
 
+
+
+let idj = /^[a-zA-Z0-9]{5,15}$/;
+
+const mid = document.querySelector('#mid') 
+const midconfirmbox = document.querySelector('#midconfirmbox') 
+
+mid.addEventListener('keyup' , ( e) => {
+	console.log( e );
+	if( idj.test( mid.value ) ){ // 정규표현식과 같으면
+		midconfirmbox.innerHTML="통과";
+		$.ajax({
+			url : "/jspweb/member/idcheck" ,
+			data : { "mid" : mid.value },
+			success : function( result ){
+				alert( result );
+				if( result == 'true' ){
+					midconfirmbox.innerHTML="사용중인아이디";
+				}else{
+					midconfirmbox.innerHTML="사용가능한아이디";
+				}
+		}
+		
+	});
+	}else{
+		midconfirm.innerHTML="한글을 제외한 영문+숫자 5~15 사이 문자열";
+	}
+})
+
+let passswordj = /^[a-zA-Z0-9]{5,15}$/; // 정규표현식
+
+const mpassword = document.querySelector('#mpassword')
+const mpasswordconfirm = document.querySelector('#mpasswordconfirm')
+const mpasswordconfirmbox = document.querySelector('#mpasswordconfirmbox') 
+
+mpassword.addEventListener('keyup' , ( e) => {
+	
+	if( passswordj.test( mpassword.value ) ){ // 정규표현식 같으면
+		if( mpassword.value == mpasswordconfirm.value ){ // 비밀번호 와 비밀번호체크 와 다르면
+			mpasswordconfirmbox.innerHTML = "사용가능한 비밀번호 입니다.";
+		}else{
+			mpasswordconfirmbox.innerHTML = "두 비밀번호가 같지 않습니다.";
+		}
+	}else{
+		mpasswordconfirmbox.innerHTML = "영소문자 5~15 사이로 입력해주세요!";
+	}
+	
+})
+
+mpasswordconfirm.addEventListener('keyup' , ( e) => {
+	if( passswordj.test( mpasswordconfirm.value ) ){ // 정규표현식 같으면
+		if( mpassword.value == mpasswordconfirm.value ){ // 비밀번호 와 비밀번호체크 와 다르면
+			mpasswordconfirmbox.innerHTML = "사용가능한 비밀번호 입니다.";
+		}else{
+			mpasswordconfirmbox.innerHTML = "두 비밀번호가 같지 않습니다.";
+		}
+	}else{
+		mpasswordconfirmbox.innerHTML = "영소문자 5~15 사이로 입력해주세요!";
+	}
+})
+
+
+let namej = /^[가-힣]{2,10}$/;	// 한글만 2~10 정규표현식
+const mname = document.querySelector('#mname')
+const mnameconfirmbox = document.querySelector('#mnameconfirmbox')
+
+
+mname.addEventListener('keyup' , ( e) => {
+	if( namej.test(mname.value) ){ // 정규표현식 같으면
+		mnameconfirmbox.innerHTML = "가능한 이름";
+	}else{
+		mnameconfirmbox.innerHTML = "불가능해요";
+	}
+})
+
+let phonej = /^([0-9]{2,3})-([0-9]{3,4})-([0-9]{3,4})$/;
+let emailj = /^[a-zA-Z0-9]{3,20}$/;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 카카오 우편 api */
    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 function sample4_execDaumPostcode() {

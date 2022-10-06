@@ -30,12 +30,3 @@ select * from member where mid = '123' and mpassword = '456';
 	-- 존재하지 않으면 레코드 x 
 select * from member;
     
-    
-
-
-
-
-
-
-
-
