@@ -9,7 +9,7 @@
 <body>
 
 	<h3> 회원가입 페이지 </h3>
-	<form action="" method="post">
+	<form action="/jspweb/member/signup" method="post">
 		아이디 : 		<input type="text" 		name="mid">					<br>
 		비밀번호 : 	<input type="password" 	name="mpassword">			<br>
 		비밀번호확인 : 	<input type="password" 	name="mpasswordconfirm">	<br>
@@ -40,7 +40,9 @@
 		속성 
 			1. action="전송을 받을 URL"
 			2. method= 전송방식
-			
+							get -- -> 서블릿(java) doget 메소드 
+							post -- -> 서블릿(java) dopost 메소드
+							
 				HTTP 전송 메소드
 			
 				GET				VS			POST 
