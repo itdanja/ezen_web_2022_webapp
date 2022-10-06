@@ -12,7 +12,7 @@
 	<form action="/jspweb/member/signup" method="post">
 		아이디 : 		<input type="text" 		name="mid">					<br>
 		비밀번호 : 	<input type="password" 	name="mpassword">			<br>
-		비밀번호확인 : 	<input type="password" 	name="mpasswordconfirm">	<br>
+		비밀번호확인 : <input type="password" 	name="mpasswordconfirm">	<br>
 		이름 : 		<input type="text" 		name="mname">				<br>
 		전화번호 : 	<input type="text" 		name="mphone">				<br>
 		이메일 : 		<input type="text" 		name="memail">				<br>
