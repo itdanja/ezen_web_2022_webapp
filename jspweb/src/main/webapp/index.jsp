@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
-		
-		<h3> 메인 페이지 </h3>
+	<%@include file="header.jsp" %>
+	<h3> 메인 페이지 </h3>
 
 </body>
 </html>

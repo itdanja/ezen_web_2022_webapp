@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
+	<%@include file="../header.jsp" %>
 	<h3> 로그인 페이지 </h3>
 	<form action="login" method="post">
 		아이디 : <input type="text" name="mid">			<br>
