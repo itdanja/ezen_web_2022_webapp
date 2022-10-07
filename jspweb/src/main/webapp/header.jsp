@@ -13,16 +13,13 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 </head>
 <body>
-
 	<div class="webbox"> 	<!-- 웹페이지 박스권 -->
-		
 		<div class="hd_top"> <!-- 상단 헤더 -->
 			<div>	<!--  로고  -->
 				<span class="hd_title"> 
 					<a href="/jspweb/index.jsp">Ezen Shop</a> 
 				</span>	
 			</div>
-			
 			<ul class="hd_sub">	<!--  상단 메뉴 -->
 				<li> <a href="/jspweb/member/login.jsp">로그인</a> </li>
 				<li> <a href="/jspweb/member/signup.jsp">회원가입</a> </li>
@@ -51,10 +48,8 @@
 			</li>
 		</ul>
 	</div>
-	
 	<!-- JQUERY 라이브러리 -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-
 </body>
 </html>
 
