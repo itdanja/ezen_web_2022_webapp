@@ -14,29 +14,24 @@ import model.dao.MemberDao;
  */
 @WebServlet("/member/findid")
 public class findid extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 1. 변수 요청 
+		request.setCharacterEncoding("UTF-8"); // 요청시 한글 인코딩 
+		String mname = request.getParameter("mname");
+		String memail = request.getParameter("memail");
+		// 2. DB처리 
+		String result = MemberDao.getInstance().findid(mname, memail);
+		// 3. 응답 
+		response.getWriter().print( result );
+	}
+
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public findid() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		String mname = request.getParameter("mname");
-		String memail = request.getParameter("memail");
-		
-		String result = MemberDao.getInstance().findid(mname, memail);
-		response.getWriter().print(result);
-		
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
