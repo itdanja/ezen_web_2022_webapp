@@ -6,24 +6,21 @@
 	// 1. 함수정의 [ function 함수명( 매개변수 ){  } ]
 	// 2. HTML 함수 실행 --> 이벤트
 		// 1. onclick="함수명()"	: 클릭했을때 함수호출 
+			// 1. html 입력된 데이터 가져오기 [ DOM객체 ]
+	// 1. document.querySelector("#id").value
+	// 2. document.getElementById("id").value
 function login(){
-	// 1. html 입력된 데이터 가져오기 [ DOM객체 ]
-		// 1. document.querySelector("#id").value
-		// 2. document.getElementById("id").value
 	let mid = document.querySelector('#mid').value
 	let mpassword = document.querySelector('#mpassword').value
 	let loginconfirmbox = document.querySelector('#loginconfirmbox')
 	$.ajax({
-		url : "/jspweb/member/login" ,
+		url : "/jspweb/member/login" ,	// 서블릿 URL
 		data : { "mid" : mid , "mpassword" : mpassword  } ,
-		success : function( re ){ 
-			if( re === 'true' ){
-				alert('로그인 성공')
-				location.href ='/jspweb/index.jsp';	/* js 하이퍼링크 */ 
-			}else{
-				alert('로그인 실패')
-				loginconfirmbox.innerHTML ='회원정보가 다릅니다.' /* 해당 id에 문자열 넣기 */
-			}
+		success : function( re ){
+			if( re === '1' ){ location.href ='/jspweb/index.jsp';}	
+			else if( re === '2' ){ loginconfirmbox.innerHTML ='패스워드가 다릅니다.'}
+			else if( re === '3' ){ loginconfirmbox.innerHTML ='데이터베이스 오류[관리자에게문의]'}
+			else if( re === '0' ){ loginconfirmbox.innerHTML ='존재하지 않는 아이디 입니다.'}
 		}
 	});
 }
