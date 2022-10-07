@@ -7,7 +7,12 @@
 </head>
 <body>
 	<%@include file="header.jsp" %>
-	<h3> 메인 페이지 </h3>
+	
+	<img alt="" src="img/mainimg.gif" width="100%">
+	
+	<div class="webbox"> 
+		<h3> 메인 페이지 </h3>
+	</div>
 
 </body>
 </html>

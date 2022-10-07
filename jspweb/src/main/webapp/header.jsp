@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"D
+<meta charset="UTF-8">
 <title>이젠 쇼핑몰</title>
 	<!-- 뷰포트 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,6 +51,9 @@
 			</li>
 		</ul>
 	</div>
+	
+	<!-- JQUERY 라이브러리 -->
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 </body>
 </html>
