@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+		
 		<h3> 메인 페이지 </h3>
 
 </body>

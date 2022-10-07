@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3> 로그인 페이지 </h3>
-	<form action="/jspweb/member/login" method="post">
+	<form action="login" method="post">
 		아이디 : <input type="text" name="mid">			<br>
 		비밀번호 : <input type="text" name="mpassword">	<br>
 		<input type="submit" value="로그인"> 
