@@ -106,4 +106,13 @@ public class MemberDao extends Dao {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
