@@ -64,7 +64,6 @@ function viewdelete(){
 			'<span> ! 정말 탈퇴 하시겠습니까? </span>' + 
 			'<input type="password" id="mpassword" >' + 
 			'<button onclick="mdelete()">확인</button>';
-			alert( 3 );
 	// 3. tag 에 html 넣기 
 	deletebox.innerHTML = tag
 }
