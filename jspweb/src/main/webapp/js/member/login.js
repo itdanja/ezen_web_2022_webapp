@@ -13,6 +13,7 @@ function login(){
 	let mid = document.querySelector('#mid').value
 	let mpassword = document.querySelector('#mpassword').value
 	let loginconfirmbox = document.querySelector('#loginconfirmbox')
+	
 	$.ajax({
 		url : "/jspweb/member/login" ,	// 서블릿 URL
 		data : { "mid" : mid , "mpassword" : mpassword  } ,

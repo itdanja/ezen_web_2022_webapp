@@ -20,7 +20,16 @@
 					<a href="/jspweb/index.jsp">Ezen Shop</a> 
 				</span>	
 			</div>
+			
+			<!-- 세션 호출 [ JSP방식 = 템플릿마다 다름 ( JSP vs 리액트 ) -->
+			<%
+				// JSP 스크립트 태그 ( 태그안에 JAVA 문법 작성 가능 )
+					// jsp 세션객체 제공
+				String loginid = (String)session.getAttribute("mid");				
+			%>
+			
 			<ul class="hd_sub">	<!--  상단 메뉴 -->
+				<li> <%=loginid %> </li>
 				<li> <a href="/jspweb/member/login.jsp">로그인</a> </li>
 				<li> <a href="/jspweb/member/signup.jsp">회원가입</a> </li>
 				<li> <a href="#">마이쇼핑</a> </li>
