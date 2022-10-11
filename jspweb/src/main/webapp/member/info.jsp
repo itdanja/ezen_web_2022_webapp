@@ -20,6 +20,10 @@
 	<!-- 본문 -->
 	<div class="webbox">
 		<h3> 회원 정보 </h3>
+		
+		<button onclick="viewdelete()">회원탈퇴</button>
+		<div id="deletebox"></div>
+		
 		<table>
 			<tr>
 				<td>회원번호</td> <td id="mno"> </td>
@@ -45,6 +49,13 @@
 			<tr>
 				<td>포인트</td> <td id="mpoint"> </td>
 			</tr>
+		</table>
+	</div>
+	
+	<div class="webbox">
+		<h3> 회원 목록 </h3>
+		<table id="memeberlisttable">
+			
 		</table>
 	</div>
 

@@ -27,6 +27,7 @@ public class infolist extends HttpServlet {
 		// Dto ------> json
 		// 1. JSONObject 여러개 담을수 있는 JSON리스트 선언 
 		JSONArray array = new JSONArray();
+		
 		for( MemberDto dto : list ) {
 			// 2. JSONObject 생성 
 			JSONObject object = new JSONObject();	

@@ -108,21 +108,7 @@ public class MemberDao extends Dao {
 						rs.getString( 6 ), rs.getString( 7 ), 
 						rs.getString( 8 ) , rs.getInt( 9 ) 
 						);
-				
-				// 2. 빈생성자
-				/*
-				dto = new MemberDto();
-				dto.setMno( rs.getInt( 1 ) );
-				dto.setMid( rs.getString( 2 ) );
-				// 패스워드 제외
-				dto.setMname( rs.getString( 4 ) );
-				dto.setMphone( rs.getString( 5 ) );
-				dto.setMemail( rs.getString( 6 ) );
-				dto.setMaddress( rs.getString( 7 ) );
-				dto.setMdate( rs.getString( 8 ) );
-				dto.setMpoint( rs.getInt( 9 ) );
-				*/
-				// 3. 반환
+				// 2. 반환
 				return dto;
 			}
 		}catch (Exception e) { System.out.println( e );}
@@ -148,6 +134,21 @@ public class MemberDao extends Dao {
 			return list;						// 8. 리스트 반환
 		}catch (Exception e) {System.out.println(e);}
 		return list;
+	}
+	
+	// 8. 회원탈퇴
+	public boolean delete( String mid , String mpassword) {
+		String sql = "delete from member"
+				+ " where mid = ? and mpassword = ? ";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , mid );	
+			ps.setString( 2 , mpassword );
+			int count = ps.executeUpdate();  // 삭제 레코드 수 반환
+			if( count == 1 ) { return true; } 
+			// 삭제된 레코드가 1개 이면 성공 
+		}catch (Exception e) {System.out.println(e);} 
+		return false;
 	}
 	
 	
