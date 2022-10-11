@@ -1,5 +1,7 @@
 package model.dao;
 
+import java.util.ArrayList;
+
 import model.dto.MemberDto;
 
 public class MemberDao extends Dao {
@@ -127,6 +129,26 @@ public class MemberDao extends Dao {
 		return dto;
 	}
 	
+	// 7. 모든 회원 호출 
+	public ArrayList<MemberDto> getinfolist(){
+		ArrayList<MemberDto> list = new ArrayList<>();	// 1.리스트 선언 
+		String sql ="select * from member";	// 2. SQL 작성 
+		try {
+			ps = con.prepareStatement(sql);	// 3. SQL 연결 
+			rs = ps.executeQuery();			// 4. SQL 실행 
+			while( rs.next() ) {			// 5. SQL 결과 레코드 반복 호출
+				MemberDto dto = new MemberDto(	// 6. 레코드 --> DTO 객체 생성 
+						rs.getInt( 1 ) , rs.getString( 2 ) , null ,
+						rs.getString( 4 ), rs.getString( 5 ) ,
+						rs.getString( 6 ), rs.getString( 7 ), 
+						rs.getString( 8 ) , rs.getInt( 9 ) 
+						);
+				list.add(dto);					// 7. DTO -> 리스트 담기
+			}
+			return list;						// 8. 리스트 반환
+		}catch (Exception e) {System.out.println(e);}
+		return list;
+	}
 	
 	
 	

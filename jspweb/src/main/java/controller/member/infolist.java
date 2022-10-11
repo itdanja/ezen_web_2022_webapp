@@ -1,31 +1,36 @@
 package controller.member;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import model.dao.MemberDao;
 import model.dto.MemberDto;
 
 /**
- * Servlet implementation class info
+ * Servlet implementation class infolist
  */
-@WebServlet("/member/info")
-public class info extends HttpServlet {
+@WebServlet("/member/infolist")
+public class infolist extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 요청 [ 세션에 로그인 정보 호출  ]
-		String mid = (String)request.getSession().getAttribute("mid");
-		// 2. db
-		MemberDto dto =	MemberDao.getInstance().getinfo( mid );
-		// *** JS는 DTO를 사용하지 않습니다. 그래서 js 이해할수 있는걸로 변환합니다. 
-			// 1. js 이해할수 있는 형식 변경 [ JSON 형식 ]
-			// 2. DTO ---> JSON 형식 [ JAVA 제공X -> 외부라이브러리 json.simple 적용 ]
-		JSONObject object = new JSONObject();		
+	
+		ArrayList<MemberDto> list = 
+				MemberDao.getInstance().getinfolist();
+		// Dto ------> json
+		// 1. JSONObject 여러개 담을수 있는 JSON리스트 선언 
+		JSONArray array = new JSONArray();
+		for( MemberDto dto : list ) {
+			// 2. JSONObject 생성 
+			JSONObject object = new JSONObject();	
+			// 3. JSONObject 에 엔트리[정보] 담기
 			object.put( "mno", dto.getMno() );
 			object.put( "mid", dto.getMid() );
 			object.put( "mname", dto.getMname() );
@@ -34,24 +39,23 @@ public class info extends HttpServlet {
 			object.put( "maddress", dto.getMaddress() );
 			object.put( "mdate", dto.getMdate() );
 			object.put( "mpoint", dto.getMpoint() );
-		// 3. 응답 
+			array.add( object ); // 4. JSONObject 객체를 리스트에 담기
+		}
+		
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().print( object );
+		response.getWriter().print( array );
+		
 	}
-	
+
 	private static final long serialVersionUID = 1L;
-    
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public info() {
+    public infolist() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

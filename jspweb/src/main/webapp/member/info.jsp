@@ -22,7 +22,28 @@
 		<h3> 회원 정보 </h3>
 		<table>
 			<tr>
+				<td>회원번호</td> <td id="mno"> </td>
+			</tr>
+			<tr>
 				<td>아이디</td> <td id="mid"> </td>
+			</tr>
+			<tr>
+				<td>이름</td> <td id="mname"> </td>
+			</tr>
+			<tr>
+				<td>전화번호</td> <td id="mphone"> </td>
+			</tr>
+			<tr>
+				<td>이메일</td> <td id="memail"> </td>
+			</tr>
+			<tr>
+				<td>주소</td> <td id="maddress"> </td>
+			</tr>
+			<tr>
+				<td>가입일</td> <td id="mdate"> </td>
+			</tr>
+			<tr>
+				<td>포인트</td> <td id="mpoint"> </td>
 			</tr>
 		</table>
 	</div>
@@ -32,3 +53,20 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
