@@ -60,7 +60,7 @@
 			</tr>
 			<tr>
 				<td class="col2"> <input type="text" id="sample4_detailAddress" placeholder="상세주소" name="maddress4"> </td>
-				<td class="col3"> 사용중인 아이디 입니다. </td>
+				<td class="col3"> </td>
 			</tr>
 		</table>
 		
@@ -69,18 +69,18 @@
 		<span class="confirmbox">
 		
 			<textarea readonly="readonly" ></textarea>
-			<input type="checkbox"> <span>[필수] 이용약관 동의</span>
+			<input id="confirm1" type="checkbox"> <span>[필수] 이용약관 동의</span>
 			
 			
 			<textarea readonly="readonly" ></textarea>
-			<input type="checkbox"> <span>[필수] 개인정보 수집 및 이용 동의</span>
+			<input id="confirm2" type="checkbox"> <span>[필수] 개인정보 수집 및 이용 동의</span>
 		
 		</span>
 		
 		
 		<div class="signupbtnbox">
 			<button type="reset">취소하기</button>
-			<button type="button">회원가입</button>
+			<button type="button" onclick="formsubmit()">회원가입</button>
 		</div>
 		</form>
 	</div>

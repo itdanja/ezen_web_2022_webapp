@@ -103,14 +103,42 @@ let sample4_roadAddress =  document.querySelector("#sample4_roadAddress")
 let sample4_jibunAddress =  document.querySelector("#sample4_jibunAddress")
 let sample4_detailAddress =  document.querySelector("#sample4_detailAddress")
 
-function addresscheck(){ alert('aaaa') }
+function addresscheck( 이벤트객체 ){
+	let 입력된값 = 이벤트객체.currentTarget.value;
+	if( 입력된값.indexOf(',') !== -1 ){ col3[5].innerHTML = bicon+' 주소에 ,[쉼표] 입력 불가능' }
+	else{ col3[5].innerHTML = sicon; } 
+}
 
-sample4_postcode.addEventListener( 'change' , addresscheck() )
+sample4_postcode.addEventListener( 'change' ,  addresscheck )	// change 된 객체의 정보를 addresscheck함수에게 인수로 전달
+sample4_roadAddress.addEventListener( 'change' ,  addresscheck )
+sample4_jibunAddress.addEventListener( 'change' ,  addresscheck )
+sample4_detailAddress.addEventListener( 'change' ,  addresscheck )
+/* ------ 전송 버튼 눌렀을때 ------- */
+function formsubmit(){
+	// 1.아이디 ~ 주소 모두 유효성검사 검토 
+	for( let i = 0 ; i <= 5 ; i++ ){	//  col3[0] : 아이디  , col3[1] : 비밀번호  ~~~    col3[5] : 주소
+		if( col3[i].innerHTML !== sicon ){ alert('입력이 안된 정보가 있습니다.'); return false; }
+	}
+	// 2.이용약관 체크박스 검토 
+	if( document.querySelector('#confirm1').checked == false ){ // 체크가 안되어 있으면
+		// tag객체명.checked    : 체크가 되어있으면 true 아니면 false
+		alert('이용약관에 동의해주세요'); return false;
+	}
+	if( document.querySelector('#confirm2').checked == false ){ // 체크가 안되어 있으면
+		alert(' 개인정보 수집 동의해주세요'); return false;
+	}
+	document.querySelector('.signupform').submit();	// 해당 form 전송 // 폼객체.submit()
+	// document.querySelector('.signupform') : signupform 이라는 class 를 가지고 있는 tag 호출
+}
+
 
 /*
 	tag객체명.addEventListener( '이벤트명' , 함수명(매개변수) )
 	tag객체명.addEventListener( '이벤트명' , function(매개변수){ 실행코드  })
 	tag객체명.addEventListener( '이벤트명' , 매개변수 => 실행코드 )
+	
+	문자열.indexOf(찾을문자) : 해당 문자열에 찾을문자의 인덱스 번호  [ -1 : 없다 ]
+	
 
 */
 
