@@ -4,27 +4,62 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+	<link rel="stylesheet" href="../css/signup.css">
+
 </head>
 <body>
 	<%@include file="../header.jsp" %>
 	
 	<div class="webbox">
-		<h3> 회원가입 페이지 </h3>
-		<form action="/jspweb/member/signup" method="post">
-			아이디 : 		<input type="text" 		name="mid">					<br>
-			비밀번호 : 	<input type="password" 	name="mpassword">			<br>
-			비밀번호확인 : <input type="password" 	name="mpasswordconfirm">	<br>
-			이름 : 		<input type="text" 		name="mname">				<br>
-			전화번호 : 	<input type="text" 		name="mphone">				<br>
-			이메일 : 		<input type="text" 		name="memail">				<br>
-			
-			<!-- 카카오 우편 API : https://postcode.map.daum.net/guide -->
-			<input type="text" id="sample4_postcode" placeholder="우편번호" name="maddress1">
-			<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-			<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="maddress2">
-			<input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="maddress3">
-			<span id="guide" style="color:#999;display:none"></span>
-			<input type="text" id="sample4_detailAddress" placeholder="상세주소" name="maddress4">
+		<form class="signupform" action="/jspweb/member/signup" method="post">
+		<h2 class="pagetitle"> 회원가입 </h2>
+		<h3 class="parttitle"> 기본정보 </h3>
+		<table class="signuptable">
+			<tr>
+				<td class="col1" > 아이디 * </td>
+				<td class="col2"> <input type="text" 		name="mid"> </td>
+				<td class="col3"> 사용중인 아이디 입니다. </td>
+			</tr>
+			<tr>
+				<td class="col1" > 비밀번호 * </td>
+				<td class="col2"> <input type="password" 	name="mpassword"> </td>
+				<td class="col3"> 사용중인 아이디 입니다. </td>
+			</tr>
+			<tr>
+				<td class="col1" > 비밀번호확인 * </td>
+				<td class="col2"> <input type="password" 	name="mpasswordconfirm"> </td>
+				<td class="col3"> 사용중인 아이디 입니다. </td>
+			</tr>
+			<tr>
+				<td class="col1" > 이름 * </td>
+				<td class="col2"> <input type="text" 		name="mname"> </td>
+				<td class="col3"> 사용중인 아이디 입니다. </td>
+			</tr>
+			<tr>
+				<td class="col1" > 전화번호 * </td>
+				<td class="col2"> <input type="text" 		name="mphone">	 </td>
+				<td class="col3"> 사용중인 아이디 입니다. </td>
+			</tr>
+			<tr>
+				<td class="col1" > 이메일 * </td>
+				<td class="col2"> <input type="text" 		name="memail"> </td>
+				<td class="col3"> 사용중인 아이디 입니다. </td>
+			</tr>
+			<tr>
+				<td rowspan="2" class="col1" > 주소 * </td>
+				<td class="col2"> 
+					<input type="text" id="sample4_postcode" placeholder="우편번호" name="maddress1">
+					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+					<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="maddress2">
+					<input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="maddress3">
+				</td>
+			</tr>
+			<tr>
+				<td class="col2"> <input type="text" id="sample4_detailAddress" placeholder="상세주소" name="maddress4"> </td>
+				<td class="col3"> 사용중인 아이디 입니다. </td>
+			</tr>
+		</table>
 			
 			<input type="submit" value="회원가입">
 		</form>

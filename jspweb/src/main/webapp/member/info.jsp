@@ -13,9 +13,7 @@
 	<!-- 세션을 이용한 페이지 제어  -->
 	<%
 		// header.jsp 파일의 변수 호출 
-		if( loginid == null ){  
-			response.sendRedirect("login.jsp"); 
-		}
+		if( loginid == null ){  response.sendRedirect("login.jsp"); }
 	%>
 	<!-- 본문 -->
 	<div class="webbox">
