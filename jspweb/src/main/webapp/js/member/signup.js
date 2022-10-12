@@ -4,13 +4,24 @@
 		 $/ : 정규표현식 끝
 		 [a-z] : 소문자 패턴
 		 [A-Z] : 대문자 패턴
-		 [0-9] : 숫자 패턴
+		 [0-9] : 숫자 패턴			\d
+		 [가-힣] : 한글 패턴
 		 { 최소길이 , 최대길이  } : 문자열 길이 패턴 
-		 
+		 + : 앞에 있는 패턴 1개 이상 반복
+		 ? : 앞에 있는 패턴 0개 혹은 1개 이상 반복
+		 * : 앞에 있는 패턴 0개 반복
+		 	(?=.*[a-z]) : 최소 한개 이상의 소문자 영문
+		 	(?=.*[A-Z]) : 최소 한개 이상의 대문자 영문
+		 	(?=.*[0-9]) : 최소 한개 이상의 숫자				(?=.*\d) : 최소 한개 이상의 숫자
+		 	(?=.*[!@#$%^&*()_] ) : 최소 한개 이상의 특수문자 
+		 	
 		 검사 : 정규표현식.test( 데이터 )  : 맞으면 true , false
 		 
-		 1. /^[a-z0-9]{5,20}$/  : 소문자/숫자 조합 5~20글자 패턴
-		 2. 
+		 1. /^[a-z0-9]{5,20}$/  						: 소문자/숫자 조합 5~20글자 패턴
+		 2. /^[a-zA-Z0-9]{8,20}$/						: 영대소문자/숫자 조합 8~20글자 패턴
+		 3. /^[a-zA-Z가-힣]{2,20}$/						: 영대소문자/한글 조합 2~20글자 패턴
+		 4. /^([0-9]{2,3})-([0-9]{3,4})-([0-9]{3,4})$/	: 숫자2~3 - 숫자3~4 - 숫자3~4 패턴
+		 5. /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/	: 영대소문자/숫자 @ 영대소문자/숫자 . 영대소문자/숫자
 */
 // 0. 아이콘
 let sicon = '<i class="fas fa-check-circle"></i>'
@@ -51,21 +62,58 @@ function mevent3(){
 	let mpasswordj = /^[a-zA-Z0-9]{8,20}$/
 	if( !mpasswordj.test(mpasswordconfirm) ){ col3[1].innerHTML = bicon+'영대소문자/숫자 조합 8~20글자' }	// 정규표현식 다르면
 	else if( mpasswordconfirm != mpassword ) { col3[1].innerHTML = bicon+'비밀번호 서로 다릅니다.' } // 두 비밀번호가 다르면
-	else{ col3[1].innerHTML = sicon; mevent2();  }	// 정규표현식 맞고 두 비밀번호 맞으면
+	else{ col3[1].innerHTML = sicon; mevent2(); }	// 정규표현식 맞고 두 비밀번호 맞으면
 }
 /*----- 이름 ------------ */
 function mevent4(){
-	alert('이름 입력');
+	let mname = document.querySelector("#mname").value
+	let mnamej = /^[a-zA-Z가-힣]{2,20}$/
+	if( mnamej.test( mname) ){ col3[2].innerHTML = sicon;  }
+	else{ col3[2].innerHTML = bicon+'영대소문자 혹은 한글 2~20글자'}
 }
 /*----- 전화번호 ------------ */
 function mevent5(){
-	alert('전화번호 입력');
+	let mphone = document.querySelector("#mphone").value
+	let mphonej = /^([0-9]{2,3})-([0-9]{3,4})-([0-9]{3,4})$/
+	if( mphonej.test(mphone) ){ col3[3].innerHTML = sicon; }
+	else{ col3[3].innerHTML = bicon+'지역번호-XXXX-XXXX 형식 입력해주세요' }
 }
 /*----- 이메일 ------------ */
 function mevent6(){
-	alert('이메일 입력');
+	let memail = document.querySelector("#memail").value
+	let memailj = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/
+	if( memailj.test(memail) ){ 
+		
+		$.ajax({
+			url : "http://localhost:8080/jspweb/member/emailcheck" , 
+			data : { "memail" : memail } , 
+			success : function( re ){ 
+				if( re === 'true'){ 
+					col3[4].innerHTML = bicon+' 사용중인 이메일 입니다. '  
+				}
+				else{ col3[4].innerHTML = sicon;  }
+			 }		
+		})
+	}
+	else{ col3[4].innerHTML = bicon+' 이메일 형식으로 입력해주세요 ' }
 }
 /*----- 주소 ------------ */
+let sample4_postcode =  document.querySelector("#sample4_postcode")
+let sample4_roadAddress =  document.querySelector("#sample4_roadAddress")
+let sample4_jibunAddress =  document.querySelector("#sample4_jibunAddress")
+let sample4_detailAddress =  document.querySelector("#sample4_detailAddress")
+
+function addresscheck(){ alert('aaaa') }
+
+sample4_postcode.addEventListener( 'change' , addresscheck() )
+
+/*
+	tag객체명.addEventListener( '이벤트명' , 함수명(매개변수) )
+	tag객체명.addEventListener( '이벤트명' , function(매개변수){ 실행코드  })
+	tag객체명.addEventListener( '이벤트명' , 매개변수 => 실행코드 )
+
+*/
+
 
 /*----- 회원가입 전송확인 ------------ */
 

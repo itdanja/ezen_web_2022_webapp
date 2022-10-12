@@ -159,6 +159,14 @@ public class MemberDao extends Dao {
 		}catch (Exception e) {System.out.println(e);} return false;
 	}
 	
+	// 10. 이메일 중복체크
+	public boolean emailcheck( String memail ) {
+		String sql ="select * from member where memail = ?";
+		try {
+			ps = con.prepareStatement(sql); ps.setString( 1 , memail );
+			rs = ps.executeQuery(); if( rs.next() ) return true;
+		}catch (Exception e) {System.out.println(e);} return false;
+	}
 	
 	
 	

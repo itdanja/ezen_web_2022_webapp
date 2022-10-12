@@ -33,20 +33,20 @@
 			<tr>
 				<td class="col1" > 이름 * </td>
 				<td class="col2"> <input type="text" 		name="mname" 			id="mname" 				onkeyup="mevent4()"> </td>
-				<td class="col3"> 사용중인 아이디 입니다. </td>
+				<td class="col3">  </td>
 			</tr>
 			<tr>
 				<td class="col1" > 전화번호 * </td>
 				<td class="col2"> <input type="text" 		name="mphone" 			id="mphone" 			onkeyup="mevent5()"> </td>
-				<td class="col3"> 사용중인 아이디 입니다. </td>
+				<td class="col3">  </td>
 			</tr>
 			<tr>
 				<td class="col1" > 이메일 * </td>
 				<td class="col2"> <input type="text" 		name="memail" 			id="memail" 			onkeyup="mevent6()"> </td>
-				<td class="col3"> 사용중인 아이디 입니다. </td>
+				<td class="col3">  </td>
 			</tr>
 			<tr>
-				<td rowspan="2" class="col1" > 주소 * </td>
+				<td rowspan="2" class="col1" > 주소  </td>
 				<td colspan="2" class="col2"> 
 					<span>
 						<input type="text" id="sample4_postcode" placeholder="우편번호" name="maddress1">
