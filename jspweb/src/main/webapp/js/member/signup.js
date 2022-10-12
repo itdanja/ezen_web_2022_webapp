@@ -119,14 +119,10 @@ function formsubmit(){
 	for( let i = 0 ; i <= 5 ; i++ ){	//  col3[0] : 아이디  , col3[1] : 비밀번호  ~~~    col3[5] : 주소
 		if( col3[i].innerHTML !== sicon ){ alert('입력이 안된 정보가 있습니다.'); return false; }
 	}
-	// 2.이용약관 체크박스 검토 
-	if( document.querySelector('#confirm1').checked == false ){ // 체크가 안되어 있으면
-		// tag객체명.checked    : 체크가 되어있으면 true 아니면 false
-		alert('이용약관에 동의해주세요'); return false;
-	}
-	if( document.querySelector('#confirm2').checked == false ){ // 체크가 안되어 있으면
-		alert(' 개인정보 수집 동의해주세요'); return false;
-	}
+	// 2.이용약관 체크박스 검토  [ // tag객체명.checked    : 체크가 되어있으면 true 아니면 false ]
+	if( document.querySelector('#confirm1').checked == false ){ alert('이용약관에 동의해주세요'); 		return false; }
+	if( document.querySelector('#confirm2').checked == false ){ alert(' 개인정보 수집 동의해주세요'); 	return false; }
+	
 	document.querySelector('.signupform').submit();	// 해당 form 전송 // 폼객체.submit()
 	// document.querySelector('.signupform') : signupform 이라는 class 를 가지고 있는 tag 호출
 }

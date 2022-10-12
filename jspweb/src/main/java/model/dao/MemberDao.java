@@ -168,6 +168,16 @@ public class MemberDao extends Dao {
 		}catch (Exception e) {System.out.println(e);} return false;
 	}
 	
+	// 11. 회원정보 수정 
+	public boolean update(String mid , String mname ) {
+		String sql = "update member set mname = ? where mid = ? ";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , mname );	ps.setString( 2 , mid );
+			ps.executeUpdate(); return true;
+		}catch (Exception e) {System.out.println(e);} return false;
+	}
+	
 	
 	
 	
