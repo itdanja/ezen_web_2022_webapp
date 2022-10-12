@@ -24,12 +24,11 @@
 			<tr>
 				<td class="col1" > 비밀번호 * </td>
 				<td class="col2"> <input type="password" 	name="mpassword" 		id="mpassword" 			onkeyup="mevent2()"> </td>
-				<td class="col3"></td>
+				<td rowspan="2" class="col3"></td>
 			</tr>
 			<tr>
 				<td class="col1" > 비밀번호확인 * </td>
 				<td class="col2"> <input type="password" 	name="mpasswordconfirm" id="mpasswordconfirm" 	onkeyup="mevent3()"> </td>
-				<td class="col3"> 사용중인 아이디 입니다. </td>
 			</tr>
 			<tr>
 				<td class="col1" > 이름 * </td>

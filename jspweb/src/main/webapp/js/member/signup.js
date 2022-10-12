@@ -10,29 +10,48 @@
 		 검사 : 정규표현식.test( 데이터 )  : 맞으면 true , false
 		 
 		 1. /^[a-z0-9]{5,20}$/  : 소문자/숫자 조합 5~20글자 패턴
+		 2. 
 */
-
+// 0. 아이콘
+let sicon = '<i class="fas fa-check-circle"></i>'
+let bicon = '<i class="fas fa-ban"></i>'
+// 1. col3 div 모두 가져오기 
+let col3 = document.querySelectorAll('.col3')	// class가 col3 이면 모두 호출 [ ALL -> 배열 ]
 /*----- 아이디 ------------ */
-function mevent1(){
-	let mid = document.querySelector("#mid").value
-	let midj = /^[a-z0-9]{5,20}$/
+function mevent1(){											// 아이디를 입력[keyup]하면 이벤트 발생 = 함수 실행
+	let mid = document.querySelector("#mid").value			// 1. 입력받은 아이디 호출 
+	let midj = /^[a-z0-9]{5,20}$/							// 2. 정규표현식 작성 
+	if( midj.test(mid) ){ // 정규표현식이 동일하면				// 3. 정규표현식 검사 
 	
-	if( midj.test(mid) ){
-		alert("O");
-	}else{
-		alert("X");
-	}
-	
-	
-	
+		$.ajax({ 											// 4. 아이디 중복체크 [ 비동기식 - ajax ]
+			url : "http://localhost:8080/jspweb/member/idcheck",
+			data : { "mid" : mid } , 
+			success : function( re ) {						// 5. 중복체크 결과(re) 
+				if( re === 'true'){ col3[0].innerHTML = bicon+" 사용중인 아이디" }
+				else{ col3[0].innerHTML = sicon }
+			 }
+		})// ajax end 
+		
+	}else{	 col3[0].innerHTML = bicon+'소문자/숫자 조합 5~20글자' } // 정규표현식이 다르면
 }
 /*----- 비밀번호 ------------ */
 function mevent2(){
-	alert('비밀번호 입력');
+	let mpassword = document.querySelector("#mpassword").value
+	let mpasswordj = /^[a-zA-Z0-9]{8,20}$/
+	if( mpasswordj.test(mpassword) ){
+		col3[1].innerHTML = sicon; mevent3();
+	}else{
+		col3[1].innerHTML = bicon+'영대소문자/숫자 조합 8~20글자'
+	}
 }
 /*----- 비밀번호 확인 ------------ */
 function mevent3(){
-	alert('비밀번호 확인 입력');
+	let mpassword = document.querySelector("#mpassword").value
+	let mpasswordconfirm = document.querySelector("#mpasswordconfirm").value
+	let mpasswordj = /^[a-zA-Z0-9]{8,20}$/
+	if( !mpasswordj.test(mpasswordconfirm) ){ col3[1].innerHTML = bicon+'영대소문자/숫자 조합 8~20글자' }	// 정규표현식 다르면
+	else if( mpasswordconfirm != mpassword ) { col3[1].innerHTML = bicon+'비밀번호 서로 다릅니다.' } // 두 비밀번호가 다르면
+	else{ col3[1].innerHTML = sicon; mevent2();  }	// 정규표현식 맞고 두 비밀번호 맞으면
 }
 /*----- 이름 ------------ */
 function mevent4(){

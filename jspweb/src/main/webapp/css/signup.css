@@ -63,6 +63,11 @@
 }
 .confirmbox span{ font-size: 15px;}
 
+/* 유효성검사 아이콘 */
+.fa-check-circle{ color: green; font-size: 20px; }
+.fa-ban{ color: red; font-size: 20px; }
+
+
 
 
 
