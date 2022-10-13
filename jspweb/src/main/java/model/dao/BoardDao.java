@@ -24,10 +24,10 @@ public class BoardDao extends Dao {
 		}catch (Exception e) {System.out.println( e );}
 		return false;
 	}
-	// 2. 글출력 [ JSP 용 ] 
+	// 2. 글출력
 	public ArrayList< BoardDto > getlist( ) {
 		ArrayList< BoardDto > list = new ArrayList<>();
-		String sql = "select * from board";
+		String sql = "select b.* , m.mid from member m , board b where m.mno = b.mno;";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -49,8 +49,7 @@ public class BoardDao extends Dao {
 	
 	// 3. 글 조회
 	public BoardDto getboard( int bno) {
-		String sql ="select * from board "
-				+ "where bno =  "+bno;
+		String sql ="select b.* , m.mid from member m , board b where m.mno = b.mno and bno = 1";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();

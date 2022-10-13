@@ -16,9 +16,11 @@ function list(){ // 함수 정의한다
 				// 2. i번쨰 객체의 정보를 html 형식으로 변환해서 문자열에 저장
 				html += '<tr>' +
 							'<td>'+b.bno+'</td>'+
-							'<td><a href="http://localhost:8080/jspweb/board/view.jsp?bno='+b.bno+'">'+b.btitle+'</a></td>'+
+							//'<td><a href="http://localhost:8080/jspweb/board/view.jsp?bno='+b.bno+'">'+b.btitle+'</a></td>'+
 							'<td onclick="viewload('+b.bno+')">'+b.btitle+'</td>'+
-							'<td>'+b.mno+'</td>'+
+							'<td>'+b.mid+'</td>'+
+							'<td>'+b.bdate+'</td>'+
+							'<td>'+b.bview+'</td>'+
 						'</tr>';
 			} // for end 
 				console.log( html )

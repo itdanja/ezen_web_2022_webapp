@@ -38,7 +38,8 @@
 		<!-- JS로 테이블 표시    [ HTML(JSP) --- JS ---- 서블릿 --- DAO ] -->
 		<table class="btalbe">
 			<tr>
-				<th> 번호 </th> <th> 제목 </th> <th> 작성자 </th>
+				<th> 번호 </th> <th> 제목 </th> <th>작성자</th> 
+				<th> 작성일 </th> <th> 조회수 </th>
 			</tr>
 		</table>
 	</div>
