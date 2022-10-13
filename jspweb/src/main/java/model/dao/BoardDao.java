@@ -34,8 +34,12 @@ public class BoardDao extends Dao {
 			// if[한개] -> dto vs while[여러개] -> list
 			while( rs.next() ) {
 				BoardDto dto = new BoardDto(
-						rs.getInt(1) , rs.getString(2) , 
-						rs.getString(3), rs.getInt(4) );
+						rs.getInt(1), rs.getString(2),
+						rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getInt(6),
+						rs.getInt(7), rs.getInt(8),
+						rs.getString(9)
+						);
 				list.add(dto); // 리스트에 담기
 			}
 			return list;
@@ -51,9 +55,13 @@ public class BoardDao extends Dao {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			if( rs.next() ) {
-				BoardDto dto = new BoardDto( 
-						rs.getInt( 1 ) , rs.getString(2),
-						rs.getString(3) , rs.getInt(4) );
+				BoardDto dto = new BoardDto(
+						rs.getInt(1), rs.getString(2),
+						rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getInt(6),
+						rs.getInt(7), rs.getInt(8),
+						rs.getString(9)
+						);
 				return dto;
 			}
 		}catch (Exception e) {System.out.println(e);}

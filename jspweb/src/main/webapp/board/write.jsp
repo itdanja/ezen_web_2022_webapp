@@ -13,6 +13,7 @@
 	
 	<div class="webbox">
 		<h3> 글쓰기 </h3>
+		
 		<!-- 1. form = [페이지전환O]  2. ajax = [페이지전환X]  선택  -->
 		<!-- 1.  -->  
 		<!--
@@ -23,9 +24,9 @@
 		</form>
 		 -->
 		<!--  2.  -->
-		 
 			제목 : <input type="text"> <br>
-			내용 : <input type="text">
+			내용 : <input type="text"> <br>
+			첨부파일 : <input type="file"> <br>
 			<button onclick="bwrite()">쓰기</button>
 		
 	</div>
@@ -35,3 +36,6 @@
 
 </body>
 </html>
+
+
+

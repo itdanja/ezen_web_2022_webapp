@@ -31,13 +31,33 @@ create table member(
 	-- 회원 삭제 
 	delete from member where mid = 'dfgdfgdf' and mpassword = 'dfgdfg';
 */
-
+DROP TABLE if exists category;
+create table category( cno int auto_increment primary key , cname varchar(100)  );
 -- 게시판 테이블 생성 
 DROP TABLE if exists board;
 CREATE TABLE board(
-	bno			int auto_increment primary key, 	
-    btitle		varchar(1000), 						
-    bcontent	longtext , 							 
-    mno 		int	,							
+	bno			int auto_increment primary key,  -- 번호  	
+    btitle		varchar(1000), 		-- 제목 		
+    bcontent	longtext ,			-- 내용
+    bfile		longtext ,			-- 첨부파일 [ 게시물 1개당 첨부파일 1개 ]
+    bdate 		datetime default now()	,	-- 작성일 : 기본값 현재 DB서버 시스템 날짜 
+    bview		int default 0 ,				-- 조회수 : 기본값 0 
+    cno			int ,				-- 카테고리번호 FK 
+    mno 		int	,				-- 작성자 
+    constraint bcno_fk foreign key (cno) references category(cno) ,
     constraint bmno_fk foreign key (mno) references member(mno) 
-)
+);
+
+
+
+
+-- 1. 한개 테이블 검색 
+select * from member;
+-- 2. 두개 테이블 검색  [ 1번테이블 레코드수 x 2번테이블 레코드수 ]
+select * from member , board;
+-- 3. 조건 [ pk-fk 일치 한 경우만 표시 ]
+select * from member , board where member.mno = board.mno;
+-- 4. 표시할 필드 선택 
+select b.bno , b.btitle , b.bcontent , b.bfile , b.bdate , b.bview , b.cno , b.mno , m.mid
+from member m , board b where m.mno = b.mno;
+

@@ -16,8 +16,8 @@ function list(){ // 함수 정의한다
 				// 2. i번쨰 객체의 정보를 html 형식으로 변환해서 문자열에 저장
 				html += '<tr>' +
 							'<td>'+b.bno+'</td>'+
-							'<td><a href="http://localhost:8080/jspweb/board/view.jsp?bno='+b.bno+'">'+b.btitle+'<a></td>'+
-							'<td onclick="bview('+b.bno+')">'+b.btitle+'</td>'+
+							'<td><a href="http://localhost:8080/jspweb/board/view.jsp?bno='+b.bno+'">'+b.btitle+'</a></td>'+
+							'<td onclick="viewload('+b.bno+')">'+b.btitle+'</td>'+
 							'<td>'+b.mno+'</td>'+
 						'</tr>';
 			} // for end 
@@ -27,16 +27,18 @@ function list(){ // 함수 정의한다
 	})
 }
 
-function bview( bno ){
+function viewload( bno ){
 	$.ajax({
-		url : "http://localhost:8080/jspweb/board/view" , 
+		url : "http://localhost:8080/jspweb/board/viewload" , 
 		data : { "bno" : bno },
-		success : function( re ){ 
-			let board  = JSON.parse( re )
-			console.log( board )
+		success : function( re ){
+			location.href = "http://localhost:8080/jspweb/board/view.jsp"
 		}
 	})
 }
+
+
+
 
 
 
