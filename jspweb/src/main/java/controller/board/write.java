@@ -19,7 +19,7 @@ public class write extends HttpServlet {
 		
 		String mid = (String)request.getSession().getAttribute("mid");
 		int mno = MemberDao.getInstance().getMno(mid);
-	
+		
 		String btitle = request.getParameter("btitle");
 		String bcontent = request.getParameter("bcontent");
 			System.out.println( btitle );
@@ -27,11 +27,12 @@ public class write extends HttpServlet {
 		boolean result = 
 		BoardDao.getInstance().write(btitle, bcontent , mno );
 			System.out.println( result );
-		/* form 전송용  */
-			//if( result ) { response.sendRedirect("list.jsp");}
-			//else {response.sendRedirect("write.jsp");}
 		/* js 전송용  */
 		response.getWriter().print(result);
+		
+		/* form 전송용  */
+		//if( result ) { response.sendRedirect("list.jsp");}
+		//else {response.sendRedirect("write.jsp");}
 		
 	}
 	

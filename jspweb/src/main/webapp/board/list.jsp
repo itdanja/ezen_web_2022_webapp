@@ -36,7 +36,7 @@
 		</table>
 		
 		<!-- JS로 테이블 표시    [ HTML(JSP) --- JS ---- 서블릿 --- DAO ] -->
-		<table>
+		<table class="btalbe">
 			<tr>
 				<th> 번호 </th> <th> 제목 </th> <th> 작성자 </th>
 			</tr>

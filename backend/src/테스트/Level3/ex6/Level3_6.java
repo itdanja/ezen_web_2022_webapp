@@ -13,7 +13,14 @@ public class Level3_6 {
 		String quiz = "동해물과 백두산이"; 
 		System.out.println( quiz );
 		/* 문제풀이 위치 */
-
+		
+		String input = scanner.nextLine();
+		int 맞은개수 = 0;
+		for( int i = 0 ; i<quiz.length() ; i++ ) {
+			if ( quiz.charAt(i) == input.charAt(i) ) { 맞은개수++;}
+		}
+		System.out.println();
+		
 		/* ----------- */
 
 	}

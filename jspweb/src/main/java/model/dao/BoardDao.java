@@ -43,6 +43,23 @@ public class BoardDao extends Dao {
 		catch (Exception e) {System.out.println(e);} return list;
 	}
 	
+	// 3. 글 조회
+	public BoardDto getboard( int bno) {
+		String sql ="select * from board "
+				+ "where bno =  "+bno;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if( rs.next() ) {
+				BoardDto dto = new BoardDto( 
+						rs.getInt( 1 ) , rs.getString(2),
+						rs.getString(3) , rs.getInt(4) );
+				return dto;
+			}
+		}catch (Exception e) {System.out.println(e);}
+		return null;
+	}
+	
 	
 	
 	
