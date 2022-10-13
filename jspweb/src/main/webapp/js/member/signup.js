@@ -66,7 +66,7 @@ function mevent3(){
 }
 /*----- 이름 ------------ */
 function mevent4(){
-	let mname = document.querySelector("#mname").value
+	let mname = document.querySelector("#mname").value;			
 	let mnamej = /^[a-zA-Z가-힣]{2,20}$/
 	if( mnamej.test( mname) ){ col3[2].innerHTML = sicon;  }
 	else{ col3[2].innerHTML = bicon+'영대소문자 혹은 한글 2~20글자'}
@@ -113,6 +113,7 @@ sample4_postcode.addEventListener( 'change' ,  addresscheck )	// change 된 객�
 sample4_roadAddress.addEventListener( 'change' ,  addresscheck )
 sample4_jibunAddress.addEventListener( 'change' ,  addresscheck )
 sample4_detailAddress.addEventListener( 'change' ,  addresscheck )
+
 /* ------ 전송 버튼 눌렀을때 ------- */
 function formsubmit(){
 	// 1.아이디 ~ 주소 모두 유효성검사 검토 
