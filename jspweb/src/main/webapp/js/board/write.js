@@ -1,4 +1,10 @@
 
+/* 썸머노트 실행 */
+$(document).ready(function() {
+  $('#summernote').summernote();
+});
+
+
 function bwrite(){
 	
 	// form 버전 
