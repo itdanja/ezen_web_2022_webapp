@@ -1,8 +1,25 @@
 
 /* 썸머노트 실행 */
 $(document).ready(function() {
-  $('#summernote').summernote();
-});
+  //$('#summernote').summernote( {설정객체} );
+  $('#summernote').summernote( {
+	
+		plasceholder : '내용 입력 해주세요' , 
+		maxHeight : null , 
+		minHeight : 300, 
+		lang: 'ko-KR' // default: 'en-US'
+		
+	});
+  
+}); 
+
+  	
+  	
+  
+  
+  
+  
+
 
 
 function bwrite(){
@@ -27,7 +44,13 @@ function bwrite(){
 		// 기본값 : 전송url 데이터 명시   http://example.com?title=tit&content=cont
 		// vs
 		// false : http://example.com
-		success : function( re ){ alert( re) }
+		success : function( re ){
+			if( re === 'true'){ 
+				alert('글등록'); 
+				location.href="list.jsp"
+			}
+			else{ alert('글등록실패') }
+		}
 	})
 	
 	/*
