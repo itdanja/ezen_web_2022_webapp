@@ -47,7 +47,7 @@ public class BoardDao extends Dao {
 	
 	// 3. 글 조회
 	public BoardDto getboard( int bno) {
-		String sql ="select b.* , m.mid from member m , board b where m.mno = b.mno and bno = 1";
+		String sql ="select b.* , m.mid from member m , board b where m.mno = b.mno and bno = "+bno;
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();

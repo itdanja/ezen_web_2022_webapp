@@ -37,10 +37,8 @@ public class view extends HttpServlet {
 		object.put("mid", dto.getMid() );
 		object.put("bfile", dto.getBfile() );
 		// 4. 응답 
+		response.setCharacterEncoding("utf-8");
 		response.getWriter().print( object );
-		
-		
-		
 		
 		
 	}
