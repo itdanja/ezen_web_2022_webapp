@@ -10,7 +10,9 @@ function bview(){
 			document.querySelector('.bno').innerHTML = board.bno;
 			document.querySelector('.btitle').innerHTML = board.btitle;
 			document.querySelector('.bcontent').innerHTML = board.bcontent;
-			document.querySelector('.mno').innerHTML = board.mno;
+			document.querySelector('.mid').innerHTML = board.mid;
+			document.querySelector('.bfile').innerHTML = board.bfile;
+			
 		}
 	})
 }

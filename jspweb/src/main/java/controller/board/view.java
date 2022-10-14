@@ -34,11 +34,10 @@ public class view extends HttpServlet {
 		object.put("bno", dto.getBno());
 		object.put("btitle", dto.getBtitle());
 		object.put("bcontent", dto.getBcontent());
-		object.put("mno", dto.getMno() );
+		object.put("mid", dto.getMid() );
+		object.put("bfile", dto.getBfile() );
 		// 4. 응답 
 		response.getWriter().print( object );
-		
-		
 		
 		
 		
