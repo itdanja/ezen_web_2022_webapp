@@ -23,12 +23,15 @@
 			<button type="submit">쓰기</button>
 		</form>
 		 -->
+		 
 		<!--  2.  -->
-			제목 : <input type="text"> <br>
-			내용 : <input type="text"> <br>
-			첨부파일 : <input type="file"> <br>
-			<button onclick="bwrite()">쓰기</button>
-		
+		<form>
+			제목 : <input type="text" name="btitle"> <br>
+			내용 : <input type="text" name="bcontent"> <br>
+			첨부파일 : <input type="file" name ="bfile"> <br>
+			<!-- form 태그 안에서 button 사용시에는 type 필수 넣기 -->
+			<button type="button" onclick="bwrite()">쓰기</button>
+		</form>
 	</div>
 	<script type="text/javascript" src="../js/board/write.js"></script>
 	
