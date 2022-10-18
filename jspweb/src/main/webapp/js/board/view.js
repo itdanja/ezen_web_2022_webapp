@@ -42,8 +42,6 @@ function bview(){
 		}
 	})
 }
-
-
 function bdelete( bno ){ // 삭제 버튼 클릭시 삭제할 번호를 인수[식별]
 	$.ajax({
 		url : "http://localhost:8080/jspweb/board/bdelete" , 

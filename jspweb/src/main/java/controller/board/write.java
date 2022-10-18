@@ -56,8 +56,13 @@ public class write extends HttpServlet {
 				// 첨부파일 : http post메소드 지원
 			// new MultipartRequest( 1.요청방식 , 2.파일저장경로 , 3.최대용량범위(바이트) , 4.인코딩타입 , 5.기타(보안기능)  )
 						// 1비트( 0 , 1 )	--> 1바이트 ( 01011111 : 8비트 ) -> 1kb ( 1024b ) -> 1mb ( 1024kb ) -> 1G ( 1024MB )
-		// 1. 저장 경로 [ 프로젝트 저장 ] 
-		String uploadpath = "C:\\Users\\504t\\git\\ezen_web_2022_webapp\\jspweb\\src\\main\\webapp\\upload";
+		// 1. 저장 경로 [ 개발중인 프로젝트 폴더 저장 ] 
+			//String uploadpath = "C:\\Users\\504t\\git\\ezen_web_2022_webapp\\jspweb\\src\\main\\webapp\\upload";
+		// 1. 저장 경로 [ 배포된 프로젝트의 (서버) 폴더 저장 ]
+			// 1. 현재 배포된 프로젝트의 경로 찾기 
+			//String uploadpath = request.getSession().getServletContext().getRealPath("/") ; // jspweb
+		String uploadpath = request.getSession().getServletContext().getRealPath("/upload") ; // jspweb/폴더명
+		
 		// 2. Multipart 객체 생성 
 		MultipartRequest multi = new MultipartRequest(
 							request ,  						// 1. 요청방식 
@@ -66,6 +71,7 @@ public class write extends HttpServlet {
 							"UTF-8" , 						// 4. 인코딩
 							new DefaultFileRenamePolicy() 	// 5. 업로드된 파일의 이름이 중복일경우 자동으로 이름 변경
 				); // 생성자 end
+		
 		// 3. 해당 저장경로에 첨부파일 업로드가 된다. 
 		// 4. 나머지 데이터를 직접 요청 
 		String btitle = multi.getParameter("btitle");	// request -> multi 

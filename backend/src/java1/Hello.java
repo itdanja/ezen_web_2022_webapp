@@ -16,6 +16,9 @@ public class Hello  { // class s
 					// * 실행할 코드는 main 메소드 안에서 작성 
 		// syso + 자동완성
 		System.out.println("Hello , Java");
+		
+		System.out.println(  Math.sqrt( 100  ) );
+		
 	} // main e
 	
 	// 3. 주석 처리 

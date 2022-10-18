@@ -6,9 +6,7 @@ $(document).ready(function() {
 	
 		plasceholder : '내용 입력 해주세요' , 
 		maxHeight : null , 
-		minHeight : 300, 
-		lang: 'ko-KR' // default: 'en-US'
-		
+		minHeight : 300
 	});
   
 }); 
