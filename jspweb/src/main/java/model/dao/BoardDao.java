@@ -23,9 +23,13 @@ public class BoardDao extends Dao {
 		return false;
 	}
 	// 2. 글출력
-	public ArrayList< BoardDto > getlist( ) {
+	public ArrayList< BoardDto > getlist( int startrow , int listsize ) {
 		ArrayList< BoardDto > list = new ArrayList<>();
-		String sql = "select b.* , m.mid from member m , board b where m.mno = b.mno;";
+		
+		String sql = "select b.* , m.mid from member m , board b "
+				+ "where m.mno = b.mno "
+				+ "order by b.bdate desc limit "+startrow+" , "+listsize;
+		
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
