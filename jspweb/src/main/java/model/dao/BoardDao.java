@@ -104,6 +104,17 @@ public class BoardDao extends Dao {
 			ps.executeUpdate(); return true;
 		}catch (Exception e) {System.out.println(e);} return false;
 	}
+	
+	// 7. 조회수 증가 
+	public void bviewupdate( int bno ) {
+		String sql = "update board "
+				+ " set bview = bview+1 "
+				+ " where bno = "+ bno;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+		}catch (Exception e) {System.out.println(e);}
+	}
 }
 
 
