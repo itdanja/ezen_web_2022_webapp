@@ -115,6 +115,16 @@ public class BoardDao extends Dao {
 			ps.executeUpdate();
 		}catch (Exception e) {System.out.println(e);}
 	}
+	
+	// 8. 전체 게시물 수 
+	public int gettotalsize() {
+		String sql = "select count(*) from board";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery(); 
+			if( rs.next() ) return rs.getInt(1);
+		}catch (Exception e) {System.out.println(e);} return 0;
+	}
 }
 
 

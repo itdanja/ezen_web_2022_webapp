@@ -1,8 +1,12 @@
 
 list() // js 열람시 메소드 1번 실행 
 function list(){ // 함수 정의한다
+
+	let listsize = 3;
+
 	$.ajax({
 		url : "http://localhost:8080/jspweb/baord/list" , 
+		data : { "listsize" : listsize } , 
 		success : function( re ){
 			console.log( re )
 			let boardlist = JSON.parse( re )
@@ -25,6 +29,23 @@ function list(){ // 함수 정의한다
 			} // for end 
 				console.log( html )
 			document.querySelector('.btalbe').innerHTML += html
+			
+			// 1. 페이징버튼 html 구성 
+			let pagehtml = '';
+				
+				// 2. 이전 버튼 
+				pagehtml += "<button>이전</button>";
+			
+				// 4. 페이지번호 버튼
+				for( let i = 1 ; i<= 10 ; i++ ){
+					pagehtml += "<button>"+i+"</button>"
+				}
+			
+				// 3. 다음 버튼 
+				pagehtml += "<button>다음</button>";
+			
+			document.querySelector('.pagebox').innerHTML = pagehtml
+			
 		}
 	})
 }
