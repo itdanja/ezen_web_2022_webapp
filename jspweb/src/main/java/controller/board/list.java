@@ -35,6 +35,27 @@ public class list extends HttpServlet {
 		// 3. 페이지별 시작 게시물 행번호 
 		int startrow = (page-1)*listsize;
 			// 1페이지 -> 1-1 * 3 => 0 // 2페이지 -> 2-1 * 3 => 3 // 3페이지 -> 3-1 * 3 => 6
+		
+		// 3. 화면에 표시할 최대 버튼수 
+		int btnsize = 5;	// 버튼 5개씩 표시 [ 몫 : 현재페이지가 최대버튼수 커지면 ]
+		int startbtn =  ( (page-1) / btnsize ) * btnsize  + 1 ;	 // 버튼 시작번호 
+		int endbtn = startbtn + (btnsize-1); 	// 버튼 끝번호 
+			// 만약에 endbtn 마지막 페이지보다 크면 마지막버튼 번호는 마지막페이지 번호 
+			if( endbtn > totalpage ) endbtn = totalpage;
+		
+			// 1. 1 페이지 경우	1	( (1-1) / btnsize ) * btnsize + 1 	= 1 
+			// 2. 2 페이지 경우 	1	( (2-1) / btnsize ) * btnsize + 1 	= 1 
+			// 3. 3 페이지 경우 	1	( (3-1) / btnsize ) * btnsize + 1 	= 1 
+			// 3. 4 페이지 경우 	1	( (4-1) / btnsize ) * btnsize + 1  	= 1
+			// 3. 5 페이지 경우 	1	( (5-1) / btnsize ) * btnsize + 1 	= 1
+			// 3. 6 페이지 경우 	6	( (6-1) / btnsize ) * btnsize + 1	= 6 
+		
+			//  					sb				eb
+			// 	page 1~5			1	2	3	4	5
+			//	page 6~10			6	7	8	9	10
+			//	page 11~15			11	12	13	14	15
+			//	page 16~20			16	17	18	19	20
+		
 		// * 페이징처리에 필요한 정보 담는 jsonobject 
 		JSONObject boards = new JSONObject();
 		// 2. db
@@ -53,6 +74,9 @@ public class list extends HttpServlet {
 		// 4. 
 		boards.put("totalpage", totalpage );
 		boards.put("data", array);
+		boards.put("startbtn", startbtn   );
+		boards.put("endbtn", endbtn   );
+		
 		// 3. 응답o
 		response.setCharacterEncoding("UTF-8"); 
 		response.getWriter().print( boards );

@@ -1,6 +1,6 @@
 
 let pageinfo = {  // js 객체 선언 
- 	listsize : 3 ,  // 한페이지당 게시물 표시 개수 
+ 	listsize : 2 ,  // 한페이지당 게시물 표시 개수 
 	page  : 1 		// 현재 페이지 번호 
 }
 
@@ -8,7 +8,7 @@ list( 1 ) // js 열람시 메소드 1번 실행  [ 첫 화면에서 1페이지 ]
 function list( page ){ // 함수 정의한다
 	
 	pageinfo.page = page;	// 객체 정보 변경 
-
+	
 	$.ajax({
 		url : "http://localhost:8080/jspweb/baord/list" , 
 		data :  pageinfo ,	// 페이지 정보 객체 전달  
@@ -40,17 +40,16 @@ function list( page ){ // 함수 정의한다
 			
 			// 1. 페이징버튼 html 구성 
 			let pagehtml = '';
-				
-				// 2. 이전 버튼 
-				pagehtml += "<button>이전</button>";
-			
-				// 4. 페이지번호 버튼
-				for( let page = 1 ; page<= boards.totalpage ; page++ ){
+				// 2. 이전 버튼  // 만일 현재페이지가 첫페이지이면 이전페이지 불가
+				if( page <= 1 ) { pagehtml += '<button onclick="list( '+(page)+')">이전</button>'; }
+				else { pagehtml += '<button onclick="list( '+(page-1)+')">이전</button>'; }
+				// 4. 페이지번호 버튼 [ 시작버튼 ~ 마지막버튼 ]
+				for( let page = boards.startbtn ; page<= boards.endbtn ; page++ ){
 					pagehtml += '<button type="button" onclick="list('+page+')">'+page+'</button>'
 				}
-			
-				// 3. 다음 버튼 
-				pagehtml += "<button>다음</button>";
+				// 3. 다음 버튼 // 만일 현재페이지가 마지막페이지이면 다음페이지 불가 
+				if( page >= boards.totalpage ){ pagehtml += '<button onclick="list( '+(page)+')">다음</button>'; }
+				else{ pagehtml += '<button onclick="list( '+(page+1)+')">다음</button>'; }
 			
 			document.querySelector('.pagebox').innerHTML = pagehtml
 			
