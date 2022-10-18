@@ -15,10 +15,14 @@
 	<div class="webbox">
 		<h3> 글쓰기 </h3>
 		<form>
-			제목 : <input type="text" name="btitle"> <br>
+			제목 : <input type="text" name="btitle" class="btitle"> <br>
 			<!-- 썸머노트  -->
-			<textarea id="summernote" name="bcontent"></textarea>
-			첨부파일 : <input type="file" name ="bfile"> <br>
+			<textarea id="summernote" name="bcontent" class="bcontent"></textarea>
+			첨부파일 : <input type="file" name ="bfile" class="bfile"> <br>
+			
+			<!-- 기존 첨부파일 이름과 삭제버튼 표시 구역 -->
+			<div class="oldbfilebox" id="oldbfilebox"></div>
+			
 			<!-- form 태그 안에서 button 사용시에는 type 필수 넣기 -->
 			<button type="button" onclick="bupdate()">수정</button>
 		</form>
