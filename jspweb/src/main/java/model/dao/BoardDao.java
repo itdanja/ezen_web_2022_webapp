@@ -142,6 +142,16 @@ public class BoardDao extends Dao {
 			if( rs.next() ) return rs.getInt(1);
 		}catch (Exception e) {System.out.println(e);} return 0;
 	}
+	///////////////////////////////////////////////// 댓글 /////////////////////////////////////
+	// 9. 댓글 작성 
+	public boolean rwrite( String rcontent , int mno , int bno ) {
+		String sql = "insert into reply( rcontent , mno , bno ) values( ? , ? , ? )";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , rcontent ); ps.setInt( 2 , mno ); ps.setInt( 3 , bno );
+			ps.executeUpdate(); return true;
+		}catch (Exception e) {System.out.println(e);} return false;
+	}
 }
 
 

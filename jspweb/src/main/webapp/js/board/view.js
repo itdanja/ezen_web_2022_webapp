@@ -1,9 +1,41 @@
 
+/*
+	value		: input , select , textarea 등
+		<tag value = >
+	innerHTML 	: div , table , span , textarea 등
+		<tag>  </tag>
+*/
+
+
+function rwrite(){
+	let rcontent = document.querySelector(".rcontent").value;
+	
+	$.ajax({
+		url : "/jspweb/reply/rwrite" ,
+		data : {"rcontent" :  rcontent } , 
+		type : "POST" , /* HTTP 메소드 : 1.GET방식=기본값 2. POST방식 */
+		success : function( re ){
+			
+			 if( re == 1 ){
+				alert('댓글작성')
+				location.reload();
+			}else if( re == 0){
+				alert('로그인후 작성가능합니다.')
+				location.href='../member/login.jsp'
+			}else{
+				alert('댓글실패')
+			}
+			
+		}
+	})
+	
+}
+
 bview()
 
 function bview(){
 	$.ajax({
-		url : "http://localhost:8080/jspweb/board/view" , 
+		url : "/jspweb/board/view" , 
 		success : function( re ){ 
 			let board  = JSON.parse( re )
 			console.log( board )
@@ -44,7 +76,7 @@ function bview(){
 }
 function bdelete( bno ){ // 삭제 버튼 클릭시 삭제할 번호를 인수[식별]
 	$.ajax({
-		url : "http://localhost:8080/jspweb/board/bdelete" , 
+		url : "/jspweb/board/bdelete" , 
 		data : { "bno" : bno } , // 삭제할 게시물의 식별번호[pk->bno]
 		success : function( re ){
 			if( re === 'true'){
