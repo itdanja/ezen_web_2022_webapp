@@ -29,14 +29,25 @@ function rlist(){
 }
 function rereplyview( rno ){
 	let replydiv = document.querySelector('.reply'+rno)
-	replydiv.innerHTML = '<input type="text"><button>답글작성</button>'
+	replydiv.innerHTML = '<input type="text" class="rerecontent'+rno+'"><button onclick="rereplywrite('+rno+')">답글작성</button>'
+}
+function rereplywrite( rno ){
+	let rcontent = document.querySelector('.rerecontent'+rno).value
+	$.ajax({
+		url : "/jspweb/reply/rwrite" ,
+		data : {"rcontent" :  rcontent , "rno" : rno , "type" : "rereply" } , 
+		type : "POST" , 
+		success : function( re ){ 
+			
+		 }
+	});
 }
 
 function rwrite(){
 	let rcontent = document.querySelector(".rcontent").value;
 	$.ajax({
 		url : "/jspweb/reply/rwrite" ,
-		data : {"rcontent" :  rcontent } , 
+		data : {"rcontent" :  rcontent , "type" : "reply" } , 
 		type : "POST" , /* HTTP 메소드 : 1.GET방식=기본값 2. POST방식 */
 		success : function( re ){
 			 if( re == 1 ){

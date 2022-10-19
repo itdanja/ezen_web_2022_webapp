@@ -156,6 +156,17 @@ public class BoardDao extends Dao {
 		}catch (Exception e) {System.out.println(e);} return false;
 	}
 	
+	// 9-2. 대댓글 작성 
+	public boolean rrwrite( String rcontent , int mno , int bno , int rindex ) {
+		String sql = "insert into reply( rcontent , mno , bno , rindex ) values( ? , ? , ? , ? )";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , rcontent ); 	ps.setInt( 2 , mno ); 
+			ps.setInt( 3 , bno );			ps.setInt( 4 , rindex );
+			ps.executeUpdate(); return true;
+		}catch (Exception e) {System.out.println(e);} return false;
+	}
+	
 	// 10. 댓글 호출
 	public JSONArray getrlist( int bno ) {
 		JSONArray array = new JSONArray();
