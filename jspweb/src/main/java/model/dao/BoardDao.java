@@ -121,8 +121,14 @@ public class BoardDao extends Dao {
 	}
 	
 	// 8. 전체 게시물 수 
-	public int gettotalsize() {
-		String sql = "select count(*) from board";
+	public int gettotalsize( String key , String keyword ) {
+		String sql = "";
+		if( !key.equals("") && !keyword.equals("") ) { // 검색이 있을경우
+			 sql = "select count(*) from member m , board b where m.mno = b.mno and "+key+" like '%"+keyword+"%'";
+		}else { // 검색이 없을경우 
+			 sql = "select count(*) from member m , board b where m.mno = b.mno";
+		}
+		
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery(); 

@@ -1,13 +1,29 @@
 
 let pageinfo = {  // js 객체 선언 
- 	listsize : 2 ,  // 한페이지당 게시물 표시 개수 
-	page  : 1 		// 현재 페이지 번호 
+ 	listsize :5 ,	//게시물 표시 개수 
+	page  : 1 ,		// 현재 페이지 번호 
+	key : '',		// 검색 키 
+	keyword : '',	// 검색 키워드
+}
+
+// 검색처리 
+function bsearch(){
+	
+	let key = document.querySelector('.key').value
+	let keyword = document.querySelector('.keyword').value
+	
+	pageinfo.key = key
+	pageinfo.keyword = keyword
+	
+	list( 1 )
+	
 }
 
 list( 1 ) // js 열람시 메소드 1번 실행  [ 첫 화면에서 1페이지 ]
 function list( page ){ // 함수 정의한다
 	
 	pageinfo.page = page;	// 객체 정보 변경 
+	
 	
 	$.ajax({
 		url : "http://localhost:8080/jspweb/baord/list" , 

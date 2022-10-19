@@ -22,10 +22,18 @@ import model.dto.BoardDto;
 public class list extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		///// 검색처리 /////////////
+		String key		= request.getParameter("key");
+		String keyword	= request.getParameter("keyword");
+		System.out.println( key );
+		System.out.println( keyword );
+		/////////////////////////
+		
 		// 1. 페이지당 게시물수 
 		int listsize = Integer.parseInt(request.getParameter("listsize"));
-		// 2. 전체 게시물수 
-		int totalsize = BoardDao.getInstance().gettotalsize();
+		// 2. 전체 게시물수 vs 검색된 게시물 수 
+		int totalsize = BoardDao.getInstance().gettotalsize( key , keyword);
 		// 3. *전체 페이지수 계산
 		int totalpage = 0;
 		if( totalsize % listsize == 0 ) totalpage = totalsize / listsize;	// 나머지가 없으면
@@ -58,7 +66,7 @@ public class list extends HttpServlet {
 		
 		// * 페이징처리에 필요한 정보 담는 jsonobject 
 		JSONObject boards = new JSONObject();
-		// 2. db
+		// 2. 전체 게시물 호출 vs 검색된 게시물 호출 
 		ArrayList<BoardDto> list =  BoardDao.getInstance().getlist( startrow , listsize);
 			// ** arraylist ---> jsonarray 변환[ js에서 쓸려고 ]
 			JSONArray array = new JSONArray();
