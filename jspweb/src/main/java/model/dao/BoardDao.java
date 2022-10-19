@@ -23,13 +23,20 @@ public class BoardDao extends Dao {
 		return false;
 	}
 	// 2. 글출력
-	public ArrayList< BoardDto > getlist( int startrow , int listsize ) {
+	public ArrayList< BoardDto > getlist( int startrow , int listsize , String key , String keyword ) {
 		ArrayList< BoardDto > list = new ArrayList<>();
-		
-		String sql = "select b.* , m.mid from member m , board b "
-				+ "where m.mno = b.mno "
-				+ "order by b.bdate desc limit "+startrow+" , "+listsize;
-		
+		String sql = "";
+		if( !key.equals("") && !keyword.equals("") ) { // 검색이 있을경우 
+			sql = "select b.* , m.mid "
+					+ "from member m , board b "
+					+ "where m.mno = b.mno and "+key+" like '%"+keyword+"%' "
+					+ "order by b.bdate desc "
+					+ "limit "+startrow+" , "+listsize;
+		}else { // 검색이 없을경우
+			sql = "select b.* , m.mid from member m , board b "
+					+ "where m.mno = b.mno "
+					+ "order by b.bdate desc limit "+startrow+" , "+listsize;
+		}
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
