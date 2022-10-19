@@ -6,29 +6,50 @@
 		<tag>  </tag>
 */
 
+function rlist(){
+	$.ajax({
+		url : "/jspweb/reply/rlist" ,
+		success : function(re){ 
+			let replylist = JSON.parse(re)
+			let html = ''
+			for( let i = 0 ; i<replylist.length ; i++){
+				let reply = replylist[i]
+				html += '<div>'+
+							'<span>'+reply.rcontent+'</sapn>'+
+							'<span>'+reply.rdate+'</sapn>'+
+							'<span>'+reply.mid+'</sapn>'+
+							'<button type="button" onclick="rereplyview('+reply.rno+')">답글</button>'+
+							'<div class="reply'+reply.rno+'"></div>'+	// 댓글마다 사용되는 구역
+						'</div>';
+			}
+			document.querySelector('.replylist').innerHTML = html;
+			
+		}
+	})
+}
+function rereplyview( rno ){
+	let replydiv = document.querySelector('.reply'+rno)
+	replydiv.innerHTML = '<input type="text"><button>답글작성</button>'
+}
 
 function rwrite(){
 	let rcontent = document.querySelector(".rcontent").value;
-	
 	$.ajax({
 		url : "/jspweb/reply/rwrite" ,
 		data : {"rcontent" :  rcontent } , 
 		type : "POST" , /* HTTP 메소드 : 1.GET방식=기본값 2. POST방식 */
 		success : function( re ){
-			
 			 if( re == 1 ){
-				alert('댓글작성')
-				location.reload();
+				alert('댓글작성') // location.reload();
+				rlist()
 			}else if( re == 0){
 				alert('로그인후 작성가능합니다.')
 				location.href='../member/login.jsp'
 			}else{
 				alert('댓글실패')
 			}
-			
 		}
 	})
-	
 }
 
 bview()
@@ -36,6 +57,7 @@ bview()
 function bview(){
 	$.ajax({
 		url : "/jspweb/board/view" , 
+		async : false ,	/* 동기식 */
 		success : function( re ){ 
 			let board  = JSON.parse( re )
 			console.log( board )
@@ -71,8 +93,12 @@ function bview(){
 				let updatebtn = '<button><a href="../board/update.jsp">수정</a></button>'
 				btnbox.innerHTML += updatebtn;
 			}
+
 		}
 	})
+	////////////////// 댓글출력 ///////////////////
+	rlist()
+	
 }
 function bdelete( bno ){ // 삭제 버튼 클릭시 삭제할 번호를 인수[식별]
 	$.ajax({

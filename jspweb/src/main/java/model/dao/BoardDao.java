@@ -2,6 +2,9 @@ package model.dao;
 
 import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import model.dto.BoardDto;
 
 public class BoardDao extends Dao {
@@ -151,6 +154,27 @@ public class BoardDao extends Dao {
 			ps.setString( 1 , rcontent ); ps.setInt( 2 , mno ); ps.setInt( 3 , bno );
 			ps.executeUpdate(); return true;
 		}catch (Exception e) {System.out.println(e);} return false;
+	}
+	
+	// 10. 댓글 호출
+	public JSONArray getrlist( int bno ) {
+		JSONArray array = new JSONArray();
+		String sql = "select r.rcontent , r.rdate , m.mid , r.rno "
+				+ "from reply r , member m "
+				+ "where r.mno = m.mno and r.bno = "+bno;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				JSONObject object = new JSONObject();
+				object.put( "rcontent", rs.getString(1) );
+				object.put( "rdate", rs.getString(2) );
+				object.put( "mid", rs.getString(3) );
+				object.put( "rno", rs.getInt(4) );
+				array.add(object);
+			}
+		}catch (Exception e) {} return array;
+		
 	}
 }
 
