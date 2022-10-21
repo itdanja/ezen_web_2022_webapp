@@ -61,5 +61,49 @@ function onerror(e){ 	alert(e) }
 // JSON ---> 문자열 변환 	JSON.stringify( )
 // 문자열 ---> JSON 변환  	JSON.parse( )
 
+emoview() // 이모티콘 호출 
+function emoview(){ // 이모티콘 호출 함수 
+	let html ='';
+	for( let i = 1 ; i<=43 ; i++ ){
+		html +=  '<img src="/jspweb/img/imoji/emo'+i+'.gif" width="70px" onclick="emosend('+i+')">'
+	}
+	document.querySelector('.dropdown-menu').innerHTML = html
+}
+function emosend( i ){
+	alert( i +"번째 이모티콘 선택")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

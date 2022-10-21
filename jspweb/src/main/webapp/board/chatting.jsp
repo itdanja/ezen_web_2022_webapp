@@ -32,7 +32,13 @@
 					<!-- 이모티콘 , 보내기 -->
 					<div class="row">
 						<div class="col-sm-2">
-							<button>이모티콘</button>
+							<button class="dropdown-toggle" type="button" id="emobutton" data-bs-toggle="dropdown">
+								이모티콘
+							</button>
+							<ul style="width: 400px; height: 200px;" aria-labelledby="emobutton" class="dropdown-menu">
+								<!-- 이모티콘 표시 구역 -->
+							</ul>
+							
 						</div>
 						<div class="col-sm-3 offset-7">
 							<button class="form-control" type="button" onclick="send()">보내기</button>
