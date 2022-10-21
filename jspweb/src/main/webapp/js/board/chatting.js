@@ -13,8 +13,8 @@ if( mid != 'null'){
 	clientsocket.onmessage = function(e){ onmessage(e) }
 	clientsocket.onerror = function(e){ onerror(e) }
 }else{ alert('로그인하고 오세요~'); location.href='../member/login.jsp'; }
-function onopen(e){ 	alert( e ) }
-function onclose(e){  	alert( e )}
+function onopen(e){ 	}
+function onclose(e){  	}
 
 function send(){
 	let msg = { // 전송할 데이터 객체
@@ -98,8 +98,14 @@ function onmessage(e){
 			'</div>';
 			document.querySelector('.contentbox').innerHTML = html
 		}
-		
 		////////////////////////////////////////////////////////////////////////////////////
+	}else if( msg.type == 'alarm' ){
+		///////////////////////////////////////3. 알람 메시지 코드 /////////////////////////////////////////////
+		let html = document.querySelector('.contentbox').innerHTML;
+		html +=	'<div class="alarm">'+
+					'<span> '+msg.content+' </span>'+
+				'</div>';
+		document.querySelector('.contentbox').innerHTML = html		
 	}
 	
 	/////////////// 스크롤 하단으로 내리기 ////////////////////////
