@@ -16,13 +16,18 @@
 		
 		g-0 : 커터 [ 하위 태그들간의 여백 제거 ]
 		
+		form-control : 폼양식 기본 꾸미기
+		
+		
 		
 */
 /* 사용자 정의 css */
+
+.chattingbox{ border : 3px solid #f9f9f9; }
+
 .contentbox{ /* 채팅창 */
 	background-color: #b2c7d9;
-	height: 700px;
-	width: 300px;
+	height: 700px; 
 }
 .secontent{ /* 보낼때 */
 	text-align: right; /* 텍스트 오른쪽배치 */
@@ -50,6 +55,10 @@
 	background-color: #a9bdce;
 }
 .name{ font: 12px; }
+
+.msgbox{ resize: none; } /* textarea 크기 변경불가 */
+
+
 
 
 

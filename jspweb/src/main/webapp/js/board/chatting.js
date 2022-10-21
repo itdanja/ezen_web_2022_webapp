@@ -16,24 +16,43 @@ if( mid != 'null'){
 function onopen(e){ 	alert( e ) }
 function onclose(e){  	alert( e )}
 function send(){ 
-	let msg = {
-		content : document.querySelector('.msgbox').value , 
-		mid : mid , 
-		date : new Date().toLocaleTimeString() 
+	let msg = { // 전송할 데이터 객체
+		content : document.querySelector('.msgbox').value , // 작성내용
+		mid : mid ,  // 보낸 사람 
+		date : new Date().toLocaleTimeString(), // 날짜 
+		img : '프로필.jpg' // 사진
 	}
 	clientsocket.send( JSON.stringify(msg) )
 	document.querySelector('.msgbox').value = ''
 }
 function enterkey(){ if(window.event.keyCode == 13){ send() } }
 function onmessage(e){
-	let msg = JSON.parse( e.data )
-	console.log( msg )
-	let html = '<div>'+
-					'<span>'+msg.mid+'   :   </span>'+
-					'<span>'+msg.content+'</span>'+
-					'<span> [ '+msg.date+' ] </span>'+
-				'</div>';
-	document.querySelector('.contentbox').innerHTML += html; 
+	let msg = JSON.parse( e.data ) // 받은 데이터 객체
+	if( msg.mid == mid ){ // 본인 글이면  // 보낸사람 아이디와 접속된 아이디가 동일하면
+		let html = document.querySelector('.contentbox').innerHTML;
+		
+		html +=  	'<div class="secontent my-3"> '+
+						'<span class="date"> '+msg.date+' </span>'+
+						'<span class="content"> '+msg.content+' </span>'+
+					'</div>';
+		document.querySelector('.contentbox').innerHTML = html
+		
+	}else{ // 본인 글이 아니면 
+		let html = document.querySelector('.contentbox').innerHTML;
+		 html +=  '<div class="row g-0 my-3">'+
+		'	<div class="col-sm-1 mx-2">'+
+		'		<img width="100%;" class="rounded-circle" alt="" src="/jspweb/img/'+msg.img+'">'+
+		'	</div>'+
+		'	<div class="col-sm-9"> '+
+		'		<div class="recontent"> '+
+		'			<div class="name">'+msg.mid+'</div>'+
+		'			<span class="content">'+msg.content+'</span>'+
+		'			<span class="date">'+msg.date+'</span>'+
+		'		</div>'+
+		'	</div>'+
+		'</div>';
+		document.querySelector('.contentbox').innerHTML = html
+	}
  }
 function onerror(e){ 	alert(e) }
 
