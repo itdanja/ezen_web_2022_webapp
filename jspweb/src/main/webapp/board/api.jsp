@@ -15,6 +15,11 @@
 		<!-- 1. 지도를 표시할 div 입니다 -->
 		<div id="map" style="width:100%;height:350px;"></div>
 		
+		<!-- 2. 약국 상세 정보 div 입니다. -->
+		<div class="detailbox">
+			
+		</div>
+		
 		<div class="row">  <!-- b: row  -->
 			<div class="col-sm-3">  <!-- b: col-sm-3 [3/12] -->
 				<input type="text" class="form-control addrinput">
@@ -23,8 +28,9 @@
 			<button type="button" class="btn" onclick="addrsearch()">검색</button>
 			</div>
 		</div>
+		
 		<table class="table"> <!-- b:table -->
-			<tr> <th> 약국명 </th> <th> 전화번호 </th> <th> 주소 </th> </tr>
+			
 		</table>
 	</div>
 	

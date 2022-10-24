@@ -1,24 +1,26 @@
 //////////////////////////////////////// [ 전역변수 ]///////////////////////////////////////////////
-let datalist = null // 선언만 [ 전역변수 ]
+let datalist = null // 약국 리스트  선언만 [ 전역변수 - 여러 함수에서 같이 쓸려고 ]
 //////////////////////////////////////// [ 함수 호출 ]///////////////////////////////////////////////
 getdata()
 ////////////////////////////////////// 공공데이터 api 호출 ///////////////////////////////////////
+// 1. 공공데이터 호출 함수 
 function getdata(){
 	$.ajax({
 		url : "/jspweb/board/api" , 
 		success: function( re ){
-			let json = JSON.parse(re);		console.log( json )			// json : 전체 객체 
-			datalist = json.data ;			console.log( datalist )
-			dataprint( ) // 검색이 없을때 모든 약국 호출 
+			let json = JSON.parse(re);		// json : 전체 객체 
+			datalist = json.data ;			// json.data : 약국 리스트 
+			dataprint( ) // 검색이 없을때 모든 약국 호출  [ search : undefined ]
 		}
 	})
 }
-function addrsearch(){
+// 2. 검색 버튼을 눌렀을때 함수
+function addrsearch(){ 
 	let addr = document.querySelector('.addrinput').value
-	dataprint( addr ) // 검색이 있을경우 검색어 전달
+	dataprint( addr ) // 검색이 있을경우 검색어 전달  [ search : addr ]
 }
-function dataprint( search ){ // search : 검색어
-	console.log( "타입 확인 : " + typeof(search) ) // undefined vs  "undefined"		
+// 3. html에 약국리스트 출력 함수 
+function dataprint( search ){ // search : 검색어	
 	if( search !== undefined ){ // 검색이 있을경우
 		let searchlist = [] // [검색된]약국리스트 선언 
 		for( let i = 0 ; i<datalist.length ; i++ ){
@@ -28,9 +30,11 @@ function dataprint( search ){ // search : 검색어
 			}
 		} // for end 
 		datalist = searchlist // 약국리스트를 [ 검색된 ]약국리스트로 대입(교체)
-	}
+		if( search == '' ){ getdata(); } // 만약에 검색 키워드에 입력값이 없으면 초기화
+	} // 검색 if end 
 	
-	let html = '';
+	
+	let html = '<tr> <th> 약국명 </th> <th> 전화번호 </th> <th> 주소 </th> </tr>';
 	for( let i = 0 ; i<datalist.length ; i++){	// 약국 하나씩 호출 
 		let data = datalist[i]	// i번째 약국 임시 변수 
 		html += '<tr onclick="mapview('+i+')">'+	// 해당 행 클릭시 map 메소드 실행 [ 클릭한 인덱스 매개변수 전달 ]
@@ -63,6 +67,10 @@ function mapview( i ){
 	            map: map,			// 해당 마커를 표시할 map 객체 대입 
 	            position: coords	// 마커 좌표 대입
 	        });
+	        // 마커 클릭이벤트 : 마커에 클릭이벤트를 등록합니다
+			kakao.maps.event.addListener(marker, 'click', function() {
+			    detailview(i) // 약국 상세 div 출력 
+			});
 	        // 인포윈도우 : 마커의 설명[말풍선]달기
 	        var infowindow = new kakao.maps.InfoWindow({
             content: '<div style="width:150px;text-align:center;padding:6px 0;">'+datalist[i].약국명+'</div>'
@@ -73,6 +81,26 @@ function mapview( i ){
 	     }
     })
 }
+function detailview( i ){
+	let html = '<div>'+datalist[i].약국명+'</div>'+
+				'<div>'+datalist[i].주소+'</div>'+
+				'<div>'+datalist[i].대표전화+'</div>'+
+				'<div><button>평점주기</button></div>'+
+				'<div><button>문의하기</button></div>';
+	document.querySelector('.detailbox').innerHTML = html;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
