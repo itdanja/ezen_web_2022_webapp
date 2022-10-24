@@ -48,7 +48,7 @@
 			</div>
 		</div>
 		
-		<table class="table"> <!-- b:table -->
+		<table class="table apitable1"> <!-- b:table -->
 			
 		</table>
 	</div>

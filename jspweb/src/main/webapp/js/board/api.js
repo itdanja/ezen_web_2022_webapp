@@ -41,7 +41,7 @@ function dataprint( search ){ // search : 검색어
 					'<td>'+data.약국명+'</td><td>'+data.대표전화+'</td><td>'+data.주소+'</td>'+
 				'<tr>';
 	} // for end 
-	document.querySelector('table').innerHTML = html
+	document.querySelector('.apitable1').innerHTML = html
 }
 
 //////////////////////////////////* 카카오 지도 API */////////////////////////////////////////
