@@ -89,6 +89,33 @@ function detailview( i ){
 				'<div><button>문의하기</button></div>';
 	document.querySelector('.detailbox').innerHTML = html;
 }
+///////////////////////////////////////////////////////////////////////
+
+getdata2()
+function getdata2(){
+	
+	$.ajax({
+		url : "/jspweb/board/api2",
+		success : function( re ){ 
+			let json = JSON.parse( re )
+			console.log( json )
+			// 해당 테이블에 부동산 정보 출력 
+		 }
+	})
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////
 
 
 
