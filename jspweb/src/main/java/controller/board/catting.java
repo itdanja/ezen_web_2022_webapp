@@ -32,8 +32,8 @@ public class catting{
 	// 1. 접속
 	@OnOpen	// 웹소켓이 들어왔을때 
 	public void OnOpen( Session session , @PathParam("mid") String mid  ) throws IOException {
-		sendmsg(  jsonAlarm(mid+"님이 들어왔습니다.") );
 		clients.put(session, mid); // **서버소켓에서 해당 세션 저장하기
+		sendmsg(  jsonAlarm(mid+"님이 들어왔습니다.") );
 	}
 	// 2. 나가기 
 	@OnClose // 웹소켓을 나갔을때 
