@@ -35,7 +35,8 @@ public class pcategory extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 2. db처리  
-		ArrayList<PcategoryDto> list = new ProductDao().getPcategory();
+		ArrayList<PcategoryDto> list 
+			= new ProductDao().getPcategory();
 		// 3. 리스트 --> json 변환[ js ]
 		JSONArray array = new JSONArray();
 		for( PcategoryDto dto :  list ) {
