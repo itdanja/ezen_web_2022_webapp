@@ -11,17 +11,16 @@
 	<div class="container"> <!-- b: container -->
 		<h3> 제품 등록 </h3>
 		<form>
-			제품명 : <input type="text">
-			설명 : <textarea rows="" cols=""></textarea>
-			할인율 : <input type="text">
+			제품명 : <input type="text" name="pname">
+			설명 : <textarea rows="" cols="" name="pcomment"></textarea>
+			할인율 : <input type="text" name="pdiscount">
 			카테고리 : x
-			상품대표이미지 : <input type="file">
+			상품대표이미지 : <input type="file" id="pimg" name="pimg">
 			<button type="reset">취소</button> 
 			<button type="button" onclick="regist()">등록</button>
 		 </form>
-		 
 		 <div> <!-- form에 등록된 첨부파일[이미지만 가능] 미리보기 -->
-		 	
+		 	<img alt="" src="" id="pimgpre">
 		 </div>
 	</div>
 	
