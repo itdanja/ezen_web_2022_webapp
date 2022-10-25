@@ -32,9 +32,25 @@ pimg.addEventListener( 'change' , function(e){ //  e : 첨부파일 input change
 // 3. 카테고리 추가 버튼을 눌렀을때 이벤트 
 function pcategoryview(){
 	document.querySelector('.pcategoryaddbox').innerHTML
-		= ' <input type="text" name="pcname">'+
-					'<button type="button" onclick="pcategoryadd()">카테고리 등록</button>'
+		= '<input type="text" id="pcname"><button type="button" onclick="setpcategory()">카테고리 등록</button>'
 }
+// 4. 카테고리 등록 버튼을 눌렀을때 이벤트
+function setpcategory(){
+	$.ajax({ 
+		url : "/jspweb/board/pcategory" , 
+		type : "post" , 
+		data:{ "pcname" : document.querySelector('#pcname').value} ,
+		success:function(re){
+			if( re == 'true'){
+				alert('카테고리등록')
+				document.querySelector('.pcategoryaddbox').innerHTML = ''
+			}else{ alert('카테고리실패') }
+		} 
+	})
+}
+// 5. 카테고리 호출 메소드 [ 실행조건 : 페이지 열렸을때 ]
+getpcategory()
+function getpcategory(){}
 
 
 

@@ -20,8 +20,8 @@
 					
 				</span>
 				
-				<div> <!-- 카테고리 목록 구역  -->
-				
+				<div class="pcategorybox"> <!-- 카테고리 목록 구역  -->
+					
 				</div>
 				
 			상품대표이미지 : <input type="file" id="pimg" name="pimg"> <br>
