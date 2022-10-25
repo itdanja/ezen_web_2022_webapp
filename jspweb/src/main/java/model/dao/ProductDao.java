@@ -19,7 +19,19 @@ public class ProductDao extends Dao {
 	}
 	// 2. 카테고리 출력 [ R ]
 	public ArrayList< PcategoryDto > getPcategory(){
-		return null;
+		ArrayList<PcategoryDto> list = new ArrayList<>();
+		String sql = "select * from pcategory"; 
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				PcategoryDto dto 
+					= new PcategoryDto( rs.getInt(1) , 
+							rs.getString(2) );
+				list.add(dto);
+			}
+		}catch (Exception e) { System.out.println(e);	}
+		return list;
 	}
 	// 3. 제품 등록  [ C ]
 	public boolean setProduct (ProductDto dto ) {

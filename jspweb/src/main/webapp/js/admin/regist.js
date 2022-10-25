@@ -44,13 +44,29 @@ function setpcategory(){
 			if( re == 'true'){
 				alert('카테고리등록')
 				document.querySelector('.pcategoryaddbox').innerHTML = ''
+				getpcategory() // 카테고리 호출 메소드 실행
 			}else{ alert('카테고리실패') }
 		} 
 	})
 }
 // 5. 카테고리 호출 메소드 [ 실행조건 : 페이지 열렸을때 ]
 getpcategory()
-function getpcategory(){}
+function getpcategory(){
+	$.ajax({
+		url : "/jspweb/board/pcategory" , 
+		type : "get" , 
+		success:function(re){
+			let json = JSON.parse(re)
+			let html = ''
+			for( let i = 0 ; i<json.length ; i++ ){
+				let category = json[i];
+				html += '<input type="radio" name="pcno" value='+category.pcno+'>'+category.pcname;
+			}
+			
+			document.querySelector(".pcategorybox").innerHTML = html;
+		}
+	})
+}
 
 
 
