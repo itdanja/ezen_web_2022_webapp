@@ -29,6 +29,41 @@ pimg.addEventListener( 'change' , function(e){ //  e : 첨부파일 input change
 })
 
 
+// 3. 카테고리 추가 버튼을 눌렀을때 이벤트 
+function pcategoryview(){
+	document.querySelector('.pcategoryaddbox').innerHTML
+		= ' <input type="text" name="pcname">'+
+					'<button type="button" onclick="pcategoryadd()">카테고리 등록</button>'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

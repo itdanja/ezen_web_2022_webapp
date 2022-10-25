@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import model.dto.ProductDto;
+
 /**
  * Servlet implementation class regist
  */
@@ -25,10 +27,15 @@ public class regist extends HttpServlet {
 				"UTF-8", 
 				new DefaultFileRenamePolicy() );
 		
-		String pname = multi.getParameter("pname");			System.out.println( pname );
-		String pcomment = multi.getParameter("pcomment");	System.out.println( pcomment );
-		String pdiscount = multi.getParameter("pdiscount");	System.out.println( pdiscount );
-		String pimg = multi.getFilesystemName("pimg"); 		System.out.println( pimg );
+		String pname = multi.getParameter("pname");			
+		String pcomment = multi.getParameter("pcomment");	
+		int pprice = Integer.parseInt( multi.getParameter("pprice") ) ;		
+		float pdiscount = Float.parseFloat( multi.getParameter("pdiscount") );
+		String pimg = multi.getFilesystemName("pimg"); 
+		
+		ProductDto dto = new ProductDto( 0 , pname, pcomment, pprice, pdiscount, (byte) 0 , pimg, null, 0 );
+		System.out.println( dto.toString() ); // dto 확인용
+		
 		
 	}
 
