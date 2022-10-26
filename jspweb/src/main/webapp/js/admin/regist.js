@@ -11,8 +11,9 @@ function regist(){
 		processData : false ,
 		contentType : false ,
 		success: function( re ){ 
-			console.log( re )
-		 }
+			if( re == 'true' ){ alert("제품등록") }
+			else{ alert("제품등록실패") }
+		}
 	})
 }
 // 2. 첨부파일 등록(변경 = change ) 했을때 [사진]미리보기
