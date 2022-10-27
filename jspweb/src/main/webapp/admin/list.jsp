@@ -29,10 +29,71 @@
 		</table>
 	</div>
 	
+	<!-- 부트스트랩 : 모달 -->
+	<!-- Button trigger modal -->
+	<button style="display: none;" type="button" class="updatemodalhtn btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+	</button>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content"> 			<!-- 모달내용 -->
+	    
+	      <div class="modal-header">				<!--  모달 타이틀  -->
+	        <h1 class="modal-title fs-5" id="staticBackdropLabel">제품 수정 창</h1>
+	      </div>
+	      
+	      <div class="modal-body">					<!-- 모달 본문 -->
+	      	<!-- regist.jsp form 사용 -->
+	      	
+	      	<form>
+				제품명 : <input type="text" name="pname"> <br>
+				설명 : <textarea rows="" cols="" name="pcomment"></textarea> <br>
+				가격 : <input type="text" name="pprice"> <br>
+				할인율 : <input type="text" name="pdiscount"> <br>
+				카테고리 : 
+				제품상태 : 
+				상품대표이미지 : <input type="file" id="pimg" name="pimg"> <br>
+			 </form>
+			 
+	      </div>
+	      
+	      <div class="modal-footer">				<!-- 모달 푸터 -->
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	        <button type="button" class="btn btn-primary">수정</button>
+	      </div>
+	      
+	      
+	    </div>
+	  </div>
+	</div>
+	
+	
+	<!--  ------------------------------------  -->
+	
 	<script src="/jspweb/js/admin/list.js" type="text/javascript"></script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

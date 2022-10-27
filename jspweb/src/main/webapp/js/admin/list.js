@@ -4,6 +4,7 @@ getproduct()
 function getproduct(){
 	$.ajax({
 		url :"/jspweb/admin/regist" ,
+		data : { "type" : 1 } , 	// 타입이 1 이면 모든 제품 호출 
 		type : "get", // 해당 서블릿주소의 doGet메소드과 통신
 		success : function( re ){
 			let json = JSON.parse( re )
@@ -22,7 +23,7 @@ function getproduct(){
 						`	<td> ${p.pactive}  </td>`+
 						`	<td> ${p.pdate}  </td>`+
 						`	<td> `+
-						`		<button type="button">수정</button>`+
+						`		<button type="button" onclick="updatemodal(${p.pno})">수정</button>`+
 						`		<button type="button" onclick="deleteprodcut( ${p.pno} )">삭제</button>`+
 						`</td>`+
 						`</tr>`;
@@ -32,9 +33,24 @@ function getproduct(){
 	})
 } // f end 
 
-// 2. 수정 메소드 
+// 2-1. 수정 모달 실행 메소드 
+function updatemodal( pno ){
+	// 1. 해당 모달을 열러주는 버튼에 강제클릭 이벤트 실행 
+	document.querySelector(".updatemodalhtn").click() // 해당 버튼을 강제클릭하는 이벤트 실행
+	// 2. 해당 모달에 기존 내용물 넣기 
+		// 2-1 : 해당 pno의 제품정보 호출 
+		$.ajax({
+			url : "/jspweb/admin/regist",
+			data : { "type" : 2 , "pno" : pno } , 	// 타입이 2 이면 개별 제품 호출 
+			type : "get" ,
+			success : function( re ){ alert( re ) }
+		})
+}
+// 2-2. 수정 처리 메소드 
 
-// 3. 삭제 메소드 
+
+
+// 3. 삭제 처리 메소드 
 function deleteprodcut( pno ){
 	if( confirm("정말 삭제하시겠습니까?") ){ // 확인 버튼을 눌렀을때
 		$.ajax({

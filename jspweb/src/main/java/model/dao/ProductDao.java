@@ -53,7 +53,7 @@ public class ProductDao extends Dao {
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			while( rs.next() ) {
+			while( rs.next() ) { // 여러개 --> while -> next() 여러 번실행
 				ProductDto dto = new ProductDto(
 						rs.getInt(1), rs.getString(2),
 						rs.getString(3), rs.getInt(4), 
@@ -78,6 +78,22 @@ public class ProductDao extends Dao {
 		return false;
 	}
 	
+	// 6. 제품 개별출력 
+	public ProductDto getpProduct( int pno ) {
+		String sql = "select * from product where pno = "+pno;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if( rs.next() ) { // 1개 --> if -> next() 1번실행
+				ProductDto dto = new ProductDto(
+						rs.getInt(1), rs.getString(2),
+						rs.getString(3), rs.getInt(4), 
+						rs.getFloat(5), rs.getByte(6), 
+						rs.getString(7), rs.getString(8), rs.getInt(9) );
+				return dto;
+			}
+		}catch (Exception e) {System.out.println(e);} return null;
+	}
 	
 }
 

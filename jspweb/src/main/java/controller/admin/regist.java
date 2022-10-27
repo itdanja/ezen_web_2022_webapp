@@ -50,23 +50,55 @@ public class regist extends HttpServlet { // HttpServlet 서블릿클래스[ htt
 	
 	//////////////////////////////////////////// 2. 제품 출력 메소드 [ get ]  ////////////////////////////////////////////////
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<ProductDto> list  = new ProductDao().getProductlist();// DAO 처리 
-		JSONArray array = new JSONArray(); 	// LIST -> JSON
-		for( int i = 0 ; i<list.size() ; i++ ) {
-			JSONObject object  = new JSONObject();
-			object.put("pno", list.get(i).getPno() );				
-			object.put("pname", list.get(i).getPname() );
-			object.put("pcomment", list.get(i).getPcomment() );		
-			object.put("pprice", list.get(i).getPprice() );
-			object.put("pdiscount", list.get(i).getPdiscount() );	
-			object.put("pactive", list.get(i).getPactive() );
-			object.put("pimg", list.get(i).getPimg() );				
-			object.put("pdate", list.get(i).getPdate() );
-			object.put("pcno", list.get(i).getPcno() );			
-			array.add(object);
-		}
+		
+		// * 타입 : 1 [ 모든 제품 출력 ]  2 [ 개별 제품 출력 ] 
+		
+		// 공통 변수
+		String type = request.getParameter("type");
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().print(array);
+		if( type.equals("1") ) {
+			//////////////////////////////////////////// 모든 제품 출력 //////////////////////////
+			ArrayList<ProductDto> list  = new ProductDao().getProductlist();// DAO 처리 
+			JSONArray array = new JSONArray(); 	// LIST -> JSON
+			for( int i = 0 ; i<list.size() ; i++ ) {
+				JSONObject object  = new JSONObject();
+				object.put("pno", list.get(i).getPno() );				
+				object.put("pname", list.get(i).getPname() );
+				object.put("pcomment", list.get(i).getPcomment() );		
+				object.put("pprice", list.get(i).getPprice() );
+				object.put("pdiscount", list.get(i).getPdiscount() );	
+				object.put("pactive", list.get(i).getPactive() );
+				object.put("pimg", list.get(i).getPimg() );				
+				object.put("pdate", list.get(i).getPdate() );
+				object.put("pcno", list.get(i).getPcno() );			
+				array.add(object);
+			}
+			response.getWriter().print(array);
+			///////////////////////////////////////////////////////////////////////////////////
+			
+		}else if( type.equals("2") ) {
+			////////////////////////////////////////////  개별 제품 출력 //////////////////////////
+			// 1. 호출할 제품번호 요청 
+			int pno = Integer.parseInt( request.getParameter("pno") ) ;
+			// 2. db처리 
+			ProductDto dto = new ProductDao().getpProduct( pno );
+			// 3. dto -> json 형변환 [ 로직 ] 
+				JSONObject object  = new JSONObject();
+				object.put("pno", dto.getPno() );				
+				object.put("pname", dto.getPname() );
+				object.put("pcomment", dto.getPcomment() );		
+				object.put("pprice", dto.getPprice() );
+				object.put("pdiscount", dto.getPdiscount() );	
+				object.put("pactive",dto.getPactive() );
+				object.put("pimg", dto.getPimg() );				
+				object.put("pdate", dto.getPdate() );
+				object.put("pcno", dto.getPcno() );	
+			// 4. 응답 
+			response.getWriter().print(object);
+			///////////////////////////////////////////////////////////////////////////////////
+		}
+		
+
 	}
 	
 	/////////////////////////////////////////// 3. 제품 수정 메소드 [ put ]  ///////////////////////////////////////////////
