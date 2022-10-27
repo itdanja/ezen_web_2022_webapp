@@ -68,10 +68,13 @@ function updateproduct(){
 		processData : false , 
 		contentType : false , 
 		success : function( re ){ 
+			if( re === 'true'){
+				alert("수정성공")
 				// 1. 모달닫기
 				document.querySelector(".modelclosebtn").click()
 				// 2. 새로고침
 				pagechage('list.jsp');
+			}else{ alert("수정실패")}
 		}
 	})
 	
@@ -93,6 +96,26 @@ function deleteprodcut( pno ){
 		}) // ajax end 
 	} // if end 
 } // f end 
+
+
+// 4. 카테고리 호출 메소드 [ 실행조건 : 페이지 열렸을때 ]
+getpcategory()
+function getpcategory(){
+	$.ajax({
+		url : "/jspweb/board/pcategory" , 
+		type : "get" , 
+		success:function(re){
+			let json = JSON.parse(re)
+			let html = ''
+			for( let i = 0 ; i<json.length ; i++ ){
+				let category = json[i];
+				html += '<input type="radio" name="pcno" value='+category.pcno+'>'+category.pcname;
+			}
+			document.querySelector(".pcategorybox").innerHTML = html;
+		}
+	})
+}
+
 
 /* 
 	server 프로젝트 폴더 클릭 -> server.xml  -> 63줄 정도
