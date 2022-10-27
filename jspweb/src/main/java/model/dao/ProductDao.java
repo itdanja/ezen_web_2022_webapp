@@ -64,6 +64,21 @@ public class ProductDao extends Dao {
 		}catch (Exception e) { System.out.println( e ); }
 		return list;
 	}
+	
+	// 5. 제품 삭제 
+	public boolean deleteprodcut( int pno ) {
+		String sql = "delete from product "
+				+ "where pno = "+pno;
+		try {
+			ps = con.prepareStatement(sql);
+			// 삭제시 삭제된 레코드수로 삭제성공 유무판단
+			int count = ps.executeUpdate();
+			if( count == 1 ) return true;
+		}catch (Exception e) {System.out.println(e);}
+		return false;
+	}
+	
+	
 }
 
 

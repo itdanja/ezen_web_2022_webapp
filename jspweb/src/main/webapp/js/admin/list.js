@@ -4,10 +4,85 @@ getproduct()
 function getproduct(){
 	$.ajax({
 		url :"/jspweb/admin/regist" ,
-		type : "get", 
+		type : "get", // 해당 서블릿주소의 doGet메소드과 통신
 		success : function( re ){
 			let json = JSON.parse( re )
-			console.log( json )
+			let html = '';
+			// forEach( 반복변수명 => { 실행문 } ) : 인덱스 존재하는 객체에 한해 사용가능
+			json.forEach( p => {
+				// 반복변수명에 인덱스객체 하나씩 대입 
+				html +=  `<tr>`+
+						`	<td> <img src="/jspweb/admin/pimg/${p.pimg}" style="width:100%"> </td> `+
+						`	<td> ${p.pno} </td>`+
+						`	<td> ${p.pcno}  </td>`+
+						`	<td> ${p.pname}  </td>`+
+						`	<td> ${p.pprice}  </td>`+
+						`	<td> ${p.pdiscount}  </td>`+
+						`	<td> ${ p.pprice -(p.pprice * p.pdiscount) }  </td>`+
+						`	<td> ${p.pactive}  </td>`+
+						`	<td> ${p.pdate}  </td>`+
+						`	<td> `+
+						`		<button type="button">수정</button>`+
+						`		<button type="button" onclick="deleteprodcut( ${p.pno} )">삭제</button>`+
+						`</td>`+
+						`</tr>`;
+			}) // 반복 end 
+			document.querySelector('table').innerHTML += html
 		}
 	})
-}
+} // f end 
+
+// 2. 수정 메소드 
+
+// 3. 삭제 메소드 
+function deleteprodcut( pno ){
+	if( confirm("정말 삭제하시겠습니까?") ){ // 확인 버튼을 눌렀을때
+		$.ajax({
+			url :"/jspweb/admin/regist" ,
+			data : { "pno" : pno } ,
+			type : "delete" ,  // 해당 서블릿주소 의 doDelete메소드과 통신
+			success: function( re ){ 
+				if( re ==='true' ){ alert('삭제성공'); pagechage('list.jsp'); }
+					// pagechage() : dashboard.jsp내  dashboard.js가 포함되어 있기때문에 호출이 가능하다.   
+						// 현재 구조상 dashboard.jsp내 특정태그에 list.jsp 포함
+				else{ alert('삭제실패') }
+			}
+		}) // ajax end 
+	} // if end 
+} // f end 
+
+/* 
+	server 프로젝트 폴더 클릭 -> server.xml  -> 63줄 정도
+		- 톰캣 서버의 기본설정값은 get,post 방식만 객체[Body] 전송 
+	원본 : <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+	수정 : <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" parseBodyMethods="GET,POST,PUT,DELETE"/>
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
