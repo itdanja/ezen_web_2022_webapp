@@ -50,6 +50,34 @@ function updatemodal( pno ){
 				document.querySelector('.pcomment').value = json.pcomment
 				document.querySelector('.pprice').value = json.pprice
 				document.querySelector('.pdiscount').value = json.pdiscount
+				
+						// 카테고리 호출 
+						$.ajax({
+							url : "/jspweb/board/pcategory" , 
+							type : "get" , 
+							success:function(re){
+								let json2 = JSON.parse(re)
+								let html = ''
+								for( let i = 0 ; i<json2.length ; i++ ){
+									let category = json2[i];
+									if( category.pcno == json.pcno ){
+										
+										html += '<input checked type="radio" name="pcno" value='+category.pcno+'>'+category.pcname;
+									}else{
+										html += '<input type="radio" name="pcno" value='+category.pcno+'>'+category.pcname;
+									}
+									
+								}
+								document.querySelector(".pcategorybox").innerHTML = html;
+							}
+						})
+						
+						// 제품 상태 호출 
+						let pactivebtns =  document.querySelectorAll('.pactive');
+						if( json.pactive == 0 ){ pactivebtns[0].checked = true }
+						if( json.pactive == 1 ){ pactivebtns[1].checked = true }
+						if( json.pactive == 2 ){ pactivebtns[2].checked = true }
+						
 			}
 		})
 }
@@ -96,25 +124,6 @@ function deleteprodcut( pno ){
 		}) // ajax end 
 	} // if end 
 } // f end 
-
-
-// 4. 카테고리 호출 메소드 [ 실행조건 : 페이지 열렸을때 ]
-getpcategory()
-function getpcategory(){
-	$.ajax({
-		url : "/jspweb/board/pcategory" , 
-		type : "get" , 
-		success:function(re){
-			let json = JSON.parse(re)
-			let html = ''
-			for( let i = 0 ; i<json.length ; i++ ){
-				let category = json[i];
-				html += '<input type="radio" name="pcno" value='+category.pcno+'>'+category.pcname;
-			}
-			document.querySelector(".pcategorybox").innerHTML = html;
-		}
-	})
-}
 
 
 /* 
