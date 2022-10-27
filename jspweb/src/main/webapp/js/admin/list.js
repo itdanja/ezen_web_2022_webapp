@@ -43,12 +43,36 @@ function updatemodal( pno ){
 			url : "/jspweb/admin/regist",
 			data : { "type" : 2 , "pno" : pno } , 	// 타입이 2 이면 개별 제품 호출 
 			type : "get" ,
-			success : function( re ){ alert( re ) }
+			success : function( re ){ 
+				let json = JSON.parse(re)
+				document.querySelector('.pno').value = json.pno
+				document.querySelector('.pname').value = json.pname
+				document.querySelector('.pcomment').value = json.pcomment
+				document.querySelector('.pprice').value = json.pprice
+				document.querySelector('.pdiscount').value = json.pdiscount
+			}
 		})
 }
 // 2-2. 수정 처리 메소드 
-
-
+function updateproduct(){
+	// 1.수정할 정보
+	let form = document.querySelector('.updateform')
+	let formdata = new FormData( form )
+	// fomrdata 속성 추가 
+		// formdata.set('속성명' : 데이터 )
+		// formdata.set('pno' : pno )
+	$.ajax({ 
+		url : "/jspweb/admin/regist" , 
+		type : "put" ,  // 해당 서블릿주소 의 doPut메소드과 통신
+		data : formdata , 
+		processData : false , 
+		contentType : false , 
+		success : function( re ){ 
+			alert( re )
+		}
+	})
+	
+}
 
 // 3. 삭제 처리 메소드 
 function deleteprodcut( pno ){

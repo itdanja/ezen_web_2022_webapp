@@ -46,21 +46,23 @@
 	      <div class="modal-body">					<!-- 모달 본문 -->
 	      	<!-- regist.jsp form 사용 -->
 	      	
-	      	<form>
-				제품명 : <input type="text" name="pname"> <br>
-				설명 : <textarea rows="" cols="" name="pcomment"></textarea> <br>
-				가격 : <input type="text" name="pprice"> <br>
-				할인율 : <input type="text" name="pdiscount"> <br>
-				카테고리 : 
+	      	<form class="updateform">
+	      		제품번호 : <input type="text" readonly="readonly" name="pno"  		class="pno"  > <br> 
+				제품명 : 	<input type="text" 						name="pname"  	class="pname" > <br>
+				설명 : 	<textarea rows="" cols="" 				name="pcomment"	class="pcomment" ></textarea> <br>
+				가격 : 	<input type="text" 						name="pprice"	class="pprice" > <br>
+				할인율 : 	<input type="text" 						name="pdiscount"class="pdiscount" > <br>
+				카테고리 : <span class="categorybox"></span>  <br>
 				제품상태 : 
-				상품대표이미지 : <input type="file" id="pimg" name="pimg"> <br>
+					<input type="radio" value="0"> 준비중 
+					<input type="radio" value="1"> 판매중
+					<input type="radio" value="2"> 재고없음<br>
+				<input type="file" id="pimg" name="pimg"> <br>
 			 </form>
-			 
 	      </div>
-	      
 	      <div class="modal-footer">				<!-- 모달 푸터 -->
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-	        <button type="button" class="btn btn-primary">수정</button>
+	        <button type="button" class="btn btn-primary" onclick="updateproduct()">수정</button>
 	      </div>
 	      
 	      

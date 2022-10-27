@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<%@include file="header.jsp" %>
+
+	<%@ include file="header.jsp" %>
 	
 	<img alt="" src="img/mainimg.gif" width="100%">
 	

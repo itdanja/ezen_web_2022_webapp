@@ -50,9 +50,7 @@ public class regist extends HttpServlet { // HttpServlet 서블릿클래스[ htt
 	
 	//////////////////////////////////////////// 2. 제품 출력 메소드 [ get ]  ////////////////////////////////////////////////
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		// * 타입 : 1 [ 모든 제품 출력 ]  2 [ 개별 제품 출력 ] 
-		
 		// 공통 변수
 		String type = request.getParameter("type");
 		response.setCharacterEncoding("UTF-8");
@@ -104,8 +102,29 @@ public class regist extends HttpServlet { // HttpServlet 서블릿클래스[ htt
 	/////////////////////////////////////////// 3. 제품 수정 메소드 [ put ]  ///////////////////////////////////////////////
 	
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* 첨부파일이 있을경우 [ 업로드 용 ] */
+		MultipartRequest multi = new MultipartRequest(
+				request, 
+				request.getSession().getServletContext().getRealPath("/admin/pimg") , 
+				1024*1024*10,
+				"UTF-8", 
+				new DefaultFileRenamePolicy() );
 		
+		int pno = Integer.parseInt( multi.getParameter("pno") );	// 수정할 대상 
 		
+		String pname = multi.getParameter("pname");			
+		String pcomment = multi.getParameter("pcomment");	
+		int pprice = Integer.parseInt( multi.getParameter("pprice") ) ;		
+		float pdiscount = Float.parseFloat( multi.getParameter("pdiscount") );
+		String pimg = multi.getFilesystemName("pimg"); 
+		
+		ProductDto dto = new ProductDto( 
+				pno , pname, 
+				pcomment,pprice, 
+				pdiscount, (byte) 0 ,
+				pimg, null, 0 );
+		
+		System.out.println( "수정할 dto : "+ dto.toString() );
 		
 	}
 	
