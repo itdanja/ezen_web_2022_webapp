@@ -125,6 +125,7 @@ public class regist extends HttpServlet { // HttpServlet 서블릿클래스[ htt
 				pimg, null, 0 );
 		
 		System.out.println( "수정할 dto : "+ dto.toString() );
+		// 과제
 		
 	}
 	

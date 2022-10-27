@@ -61,7 +61,7 @@
 			 </form>
 	      </div>
 	      <div class="modal-footer">				<!-- 모달 푸터 -->
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	        <button type="button" class="modelclosebtn btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 	        <button type="button" class="btn btn-primary" onclick="updateproduct()">수정</button>
 	      </div>
 	      

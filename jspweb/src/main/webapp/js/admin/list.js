@@ -68,7 +68,10 @@ function updateproduct(){
 		processData : false , 
 		contentType : false , 
 		success : function( re ){ 
-			alert( re )
+				// 1. 모달닫기
+				document.querySelector(".modelclosebtn").click()
+				// 2. 새로고침
+				pagechage('list.jsp');
 		}
 	})
 	
