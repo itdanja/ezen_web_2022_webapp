@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 
-	<link href="/jspweb/css/main.css" rel="stylesheet">
+	<link href="/jspweb/css/index.css" rel="stylesheet">
 
 </head>
 <body>
