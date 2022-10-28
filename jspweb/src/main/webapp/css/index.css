@@ -25,6 +25,7 @@
 .item_title{ /*제품명*/
 	font-size: 15px;
 	margin: 2% 0%;
+	height: 40px;
 }
 .item_size{
 	font-size: 13px;
