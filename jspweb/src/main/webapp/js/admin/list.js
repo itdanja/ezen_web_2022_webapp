@@ -4,7 +4,7 @@ getproduct()
 function getproduct(){
 	$.ajax({
 		url :"/jspweb/admin/regist" ,
-		data : { "type" : 1 } , 	// 타입이 1 이면 모든 제품 호출 
+		data : { "type" : 1  , "option" : "all"} , 	// 타입이 1 이면 모든 제품 호출 
 		type : "get", // 해당 서블릿주소의 doGet메소드과 통신
 		success : function( re ){
 			let json = JSON.parse( re )

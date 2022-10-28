@@ -47,40 +47,15 @@
 	
 	<!-- 제품 출력 -->
 	<div class="container"> <!-- b : container 전체 박스권 -->
-		
-				
 		<h6 class="box_title"> CATEGORY BEST </h6>
-		
 		<div class="itemlist">	<!-- 일정 구역 -->
-		
-			<div class="item">	<!-- 1개의 제품[아이템] -->
-				<a href="#">  	<!-- 대표 이미지 -->
-					<img src="/jspweb/img/p1.gif">
-				</a>
-				<div class="item_info"> <!-- 제품 정보 -->
-					<div class="item_title"> 	<!-- 제품명 -->
-						트렌디한 크롭 기장의 덤블안감 카라넥 스웨이드 무스탕
-					</div>
-					
-					<div class="item_size"> [FREE] </div>
-					
-					<div class="item_price"> 200,000 원 </div> <!-- 원가 -->
-					<div> <!-- 할인된 가격 , 할인율 -->
-						<span class="item_sale"> 20,000원 </span>
-						<span class="item_discount"> 90% </span>
-					</div>	
-					<div class="item_review">찜수 54 리뷰수 412</div> <!-- 리뷰  -->
-					
-				</div>
-				<div>	<!-- 배지 구역 -->
-					<span class="badge rounded-pill text-bg-warning">주문폭주</span>
-					<span class="badge rounded-pill text-bg-danger">1+1</span>
-				</div>
-			</div>
+			<!-- 제품이 출력되는 구역 -->
 		</div>
 		
 		
 	</div>
+	
+	<script type="text/javascript" src="/jspweb/js/index.js"></script>
 	
 	
 	

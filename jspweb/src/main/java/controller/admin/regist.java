@@ -58,8 +58,12 @@ public class regist extends HttpServlet { // HttpServlet 서블릿클래스[ htt
 		String type = request.getParameter("type");
 		response.setCharacterEncoding("UTF-8");
 		if( type.equals("1") ) {
+			
+			// 1.전체출력 2.판매중 출력 
+			String option = request.getParameter("option");
+			
 			//////////////////////////////////////////// 모든 제품 출력 //////////////////////////
-			ArrayList<ProductDto> list  = new ProductDao().getProductlist();// DAO 처리 
+			ArrayList<ProductDto> list  = new ProductDao().getProductlist( option );// DAO 처리 
 			JSONArray array = new JSONArray(); 	// LIST -> JSON
 			for( int i = 0 ; i<list.size() ; i++ ) {
 				JSONObject object  = new JSONObject();
