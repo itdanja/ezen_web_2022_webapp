@@ -34,7 +34,7 @@
 					<tr> <td style="width: 20%;"> 사이즈 </td> 		<td class="rows"> <input type="text" class="psize form-control"> </td> </tr>
 					<tr> <td style="width: 20%;"> 색상 </td> 			<td class="rows"> <input type="text" class="pcolor form-control"> </td> </tr>
 					<tr> <td style="width: 20%;"> 재고수량 </td> 		<td class="rows"> <input type="text" class="pstock form-control"> </td> </tr>
-					<tr> <td colspan="2"> <button type="button" class="form-control">등록</button> </td> </tr>
+					<tr> <td colspan="2"> <button onclick="setstock()" type="button" class="form-control">등록</button> </td> </tr>
 				</table>
 			</div>
 			<div class="col-md-6">

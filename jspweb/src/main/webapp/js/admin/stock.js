@@ -80,6 +80,55 @@ function getproduct( pcno ){
 	});
 }
 
+// 3. 재고 등록 버튼을 눌렀을떄 
+function setstock(){
+	// 1. 등록할 데이터 구성[객체화]한다.  vs form [ *첨부파일 있을경우 ]
+	let info = {
+		psize : document.querySelector('.psize').value , 
+		pcolor :  document.querySelector('.pcolor').value , 
+		pstock :  document.querySelector('.pstock').value ,
+		pno :  rows[1].innerHTML 
+	}
+	$.ajax({
+		url : "/jspweb/stock" , 
+		type : "post",		// post method
+		data : info , 
+		success : re => { 
+			console.log(  re )
+		}
+	})
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
