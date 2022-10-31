@@ -27,7 +27,7 @@
 		<div class="row my-3">	<!-- b : my-3 위아래 바깥여백[마진] -->
 			<div class="col-md-6">
 				<h3>재고 등록</h3>
-				<table class="table"> <!-- b: table 테이블 형식 -->
+				<table class="table "> <!-- b: table 테이블 형식 -->
 					<tr> <td style="width: 20%;"> 카테고리번호 </td> 	<td class="rows"></td> </tr>
 					<tr> <td style="width: 20%;"> 제품번호 </td> 		<td class="rows"></td> </tr>
 					<tr> <td style="width: 20%;"> 제품명 </td> 		<td class="rows"></td> </tr>
@@ -39,7 +39,7 @@
 			</div>
 			<div class="col-md-6">
 				<h3>재고 출력</h3>
-				<table class="table">
+				<table class="table stocktable">
 					<tr>
 						<th> 사이즈 </th>
 						<th> 색상 </th>
