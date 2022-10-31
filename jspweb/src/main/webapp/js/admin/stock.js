@@ -26,13 +26,13 @@ let cselect = document.querySelector('.cselect') 	// 카테고리 선택 상자
 let pselect = document.querySelector('.pselect') 	// 제품 선택 상자
 let rows = document.querySelectorAll('.rows') 		// 재고 등록 td 행 목록
 
-// 카테고리목록에서 선택를 클릭했을떄 제품출력 메소드 호출
+// 1-1 카테고리목록에서 선택를 클릭했을떄 제품출력 메소드 호출
 cselect.addEventListener( 'click' , e => {
 	let pcno = e.currentTarget.value // 선택된 카테고리 번호
 	getproduct( pcno ); // 선택된 카테고리 번호 인수로 전달 
 })
 
-// 제품 목록에서 선택을 했을때 재고 등록 html 구성
+// 1-2 제품 목록에서 선택을 했을때 재고 등록 html 구성
 pselect.addEventListener( 'click' , e => {
 	let pno = e.currentTarget.value // 선택된 카테고리 번호
 	productlist.forEach( p => { 
@@ -40,6 +40,7 @@ pselect.addEventListener( 'click' , e => {
 			rows[0].innerHTML = p.pcno
 			rows[1].innerHTML = p.pno
 			rows[2].innerHTML = p.pname
+			getstock();	// 제품을 클릭했을때 제품재고 메소드 호출 
 		}
 	})
 })
@@ -90,14 +91,26 @@ function setstock(){
 		pno :  rows[1].innerHTML 
 	}
 	$.ajax({
-		url : "/jspweb/stock" , 
+		url : "/jspweb/admin/stock" , 
 		type : "post",		// post method
 		data : info , 
 		success : re => { 
-			console.log(  re )
+			if( re == 'true' ){ alert('재고등록성공'); getstock(); }
+			else{ alert('재고등록실패'); }
 		}
 	})
-	
+}
+// 4. 제품별 재고 출력 
+function getstock(){
+	$.ajax({
+		url : "/jspweb/admin/stock" ,
+		type : "get" ,		// get method
+		data : { "pno" : rows[1].innerHTML  } ,
+		success : re => {
+			let json = JSON.parse(re)
+			console.log(json )
+		}
+	})
 }
 
 

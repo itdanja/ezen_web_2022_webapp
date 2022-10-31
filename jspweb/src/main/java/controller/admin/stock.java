@@ -18,7 +18,7 @@ import model.dto.StockDto;
 /**
  * Servlet implementation class stock
  */
-@WebServlet("/stock")
+@WebServlet("/admin/stock")
 public class stock extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,19 +33,25 @@ public class stock extends HttpServlet {
 	// 재고 출력 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 요청 [ 제품별 모든 재고 확인 -> 제품번호 요청 ] 
-		int pno = Integer.parseInt( request.getParameter("pno") ); // 제품번호
+		int pno = Integer.parseInt( 
+				request.getParameter("pno") ); // 제품번호
 		// 2. db처리 
-		ArrayList<StockDto> list = new ProductDao().getstock( pno );
+		ArrayList<StockDto> list 
+			= new ProductDao().getstock( pno );
 		// 3. 형변환 [ list -> jsonarray ] 
 		JSONArray array = new JSONArray();
 		for( StockDto dto : list ) {
 			JSONObject object = new JSONObject();
-			object.put("psno", dto.getPsno() );		object.put("psize", dto.getPsize() );
-			object.put("pstno", dto.getPstno() );	object.put("pcolor", dto.getPcolor() );
-			object.put("pstock", dto.getPstock() );	array.add(object);
+			object.put("psno", dto.getPsno() );		
+			object.put("psize", dto.getPsize() );
+			object.put("pstno", dto.getPstno() );	
+			object.put("pcolor", dto.getPcolor() );
+			object.put("pstock", dto.getPstock() );	
+			array.add(object);
 		}
 		// 4. 반환 
-		response.setCharacterEncoding("UTF-8");		response.getWriter().print(array);
+		response.setCharacterEncoding("UTF-8");		
+		response.getWriter().print(array);
 	}
 	// 재고 등록 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

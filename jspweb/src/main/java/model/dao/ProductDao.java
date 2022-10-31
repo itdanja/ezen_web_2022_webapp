@@ -143,7 +143,23 @@ public class ProductDao extends Dao {
 	}
 	// 9. 제품별 재고 출력 
 	public ArrayList<StockDto> getstock( int pno){
-		return null;
+		
+		ArrayList<StockDto> list = new ArrayList<>();
+		
+		String sql = "select ps.psno , ps.psize , pst.pstno , pst.pcolor , pst.pstock "
+				+ " from productsize ps , productstock pst"
+				+ " where ps.psno = pst.psno and ps.pno = "+pno
+				+ " order by ps.psize desc";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				StockDto dto = new StockDto(
+						rs.getInt(1), rs.getString(2), 
+						rs.getInt(3), rs.getString(4), rs.getInt(5));
+				list.add(dto);
+			}
+		}catch (Exception e) { System.out.println(e);	} return list;
 	}
 }
 
