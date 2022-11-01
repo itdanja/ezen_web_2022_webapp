@@ -52,7 +52,6 @@
 			<!-- 제품이 출력되는 구역 -->
 		</div>
 		
-		
 	</div>
 	
 	<script type="text/javascript" src="/jspweb/js/index.js"></script>
