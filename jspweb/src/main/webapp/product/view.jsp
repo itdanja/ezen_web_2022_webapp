@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link href="/jspweb/css/productview.css" rel="stylesheet">
 </head>
 <body>
 
@@ -14,7 +15,6 @@
 	%>
 	
 	<div class="container">	<!-- b : container -->
-	
 		<div class="row">	<!-- b : row  -->
 			<!-- 대표 이미지 -->
 			<div class="col-md-6">  <!-- b : col-md-6  -->
@@ -24,21 +24,17 @@
 			<!-- 상품 정보 -->
 			<div class="col-md-6">  <!-- b : col-md-6  -->
 				<div class="infobox">
-					
 					<!-- 제품명 -->
-					<h4>미라클 라이트 경량 퀄팅 점퍼</h4>
+					<h4 class="pname">미라클 라이트 경량 퀄팅 점퍼</h4>
 					
 					<!-- 제품설명 -->
-					<div>솔직히 말씀드려 디자인대비 소매랑 넥라인 끝부분 마감 디테일이 아쉬운 상품입니다. </div>
+					<div class="pcomment">솔직히 말씀드려 디자인대비 소매랑 넥라인 끝부분 마감 디테일이 아쉬운 상품입니다. </div>
 					
 					<!-- 가격 -->
 					<div class="pricebox">	<!-- 할인율이 있을경우 -->
-						<span> 30% </span>	<!-- 할인율 -->
-						<span> 20,000원 </span>	<!-- 원가 -->
-						<span> 16,000원 </span>	<!-- 할인이 적용된 가격 -->
-					</div>
-					<div class="pricebox">	<!-- 할인율이 없을경우 -->
-						<span> 30,000원 </span>	<!-- 원가 -->
+						<span class="pdiscount">30%</span>	<!-- 할인율 -->
+						<span class="pprice">20,000원</span>	<!-- 원가 -->
+						<span class="psale">16,000원</span>	<!-- 할인이 적용된 가격 -->
 					</div>
 					
 					<!-- 사이즈 종류 -->
@@ -47,7 +43,7 @@
 					</div>
 					
 					<!-- 제품 옵션 -->
-					<table class="table">	<!--  b: table -->
+					<table class="table into_t">	<!--  b: table -->
 						<tr> <td>배송구분</td> <td>2,500원 ( 70,000원 이상 구매시 무료) </td> </tr>
 						<tr> <td>카드혜택</td> <td> 무이자할부 </td> </tr>
 						<tr> <td>적립혜택</td> <td> 3000(1%) </td> </tr>
@@ -75,8 +71,57 @@
 								</select>
 							 </td> 
 						</tr>
+					</table>
+					
+					<!-- 선택된 제품 목록  -->
+					<table class="table select_t">
+						<tr> 
+							<th width="60%">상품명/옵션 </th> 
+							<th width="25%">수량</th> 
+							<th width="15%"> 가격 </th> 
+						</tr>
+						
+						<tr>	<!-- 아이템 구역 -->
+							<td> <!-- 선택된 옵션 정보 -->
+								<span>미라클 라이트 경량 퀄팅 점퍼</span>
+								<br>
+								<span> -블랙 / FREE </span>
+							</td>
+							<td> <!-- 옵션 수량 구역  -->
+								<div class="row g-0"> <!-- b : g-0 하위태그내 모든 여백 제거 -->
+									<div class="col-md-3">	<!-- 수량 구역  --> 
+										<input class="form-control" value="1"> 
+									</div>	
+									<div class="col-md-4">	<!-- 수량 버튼 구역  -->
+										<button class="amount_btn">▲</button>
+										<button class="amount_btn">▼</button>
+									</div>
+									<div class="col-md-1">	<!-- 취소 버튼 구역  -->
+										<button class="cancel_btn">x</button>
+									</div>
+								</div>
+							</td>
+							<td>
+								<span> 20,000원</span> <br>
+								<span class="pointbox"> (포인트)2000 </span>
+							</td>
+						</tr>
 						
 					</table>
+					
+					<!-- 선택된 제품들의 총 가격 -->
+					<div class="row">
+						<div class="col-md-6"> 총 상품금액 </div>
+						<div class="col-md-6 totalprice"> 40,000원 </div>
+					</div>
+					
+					<!-- 버튼목록 -->
+					<div class="btnbox">
+						<button id="btn1">바로 구매</button>
+						<button id="btn2">장바구니 담기</button>
+						<button id="btn3">찜하기 ♡</button>	
+					</div>	
+					
 				</div>
 			</div>
 		</div>
