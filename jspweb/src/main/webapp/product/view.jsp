@@ -50,11 +50,8 @@
 						<!-- 색상 선택 행 -->
 						<tr> <td>색상</td> 	
 							<td>
-								<select>
-									<option>-[필수] 색상 선택</option>
-									<option> 블랙 </option>
-									<option> 화이트 </option>
-									<option> 카키 </option>
+								<select class="cselect">
+								
 								</select>
 							 </td> 
 						</tr>
@@ -62,11 +59,8 @@
 						<!-- 사이즈 선택 행 -->
 						<tr> <td>사이즈</td> 	
 							<td>
-								<select>
-									<option>-[필수] 사이즈 선택</option>
-									<option> FREE </option>
-									<option> XL </option>
-									<option> L </option>
+								<select class="sselect">
+									<option>-[필수] 색상 우선 선택 </option>
 								</select>
 							 </td> 
 						</tr>
@@ -74,38 +68,7 @@
 					
 					<!-- 선택된 제품 목록  -->
 					<table class="table select_t">
-						<tr> 
-							<th width="60%">상품명/옵션 </th> 
-							<th width="25%">수량</th> 
-							<th width="15%"> 가격 </th> 
-						</tr>
-						
-						<tr>	<!-- 아이템 구역 -->
-							<td> <!-- 선택된 옵션 정보 -->
-								<span>미라클 라이트 경량 퀄팅 점퍼</span>
-								<br>
-								<span> -블랙 / FREE </span>
-							</td>
-							<td> <!-- 옵션 수량 구역  -->
-								<div class="row g-0"> <!-- b : g-0 하위태그내 모든 여백 제거 -->
-									<div class="col-md-3">	<!-- 수량 구역  --> 
-										<input class="form-control" value="1"> 
-									</div>	
-									<div class="col-md-4">	<!-- 수량 버튼 구역  -->
-										<button class="amount_btn">▲</button>
-										<button class="amount_btn">▼</button>
-									</div>
-									<div class="col-md-1">	<!-- 취소 버튼 구역  -->
-										<button class="cancel_btn">x</button>
-									</div>
-								</div>
-							</td>
-							<td>
-								<span> 20,000원</span> <br>
-								<span class="pointbox"> (포인트)2000 </span>
-							</td>
-						</tr>
-						
+					
 					</table>
 					
 					<!-- 선택된 제품들의 총 가격 -->
