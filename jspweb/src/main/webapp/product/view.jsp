@@ -11,42 +11,41 @@
 	<%@include file = "../header.jsp" %>
 	<% // 자바를 작성할수 있는 태그[서블릿] 
 		// 1. 경로에 있는 pno request 요청
-		// int pno = Integer.parseInt( request.getParameter("pno") );
+		int pno = Integer.parseInt( request.getParameter("pno") );
 	%>
+	<input type="text" value="<%=pno%>" class="pno" >
 	
 	<div class="container">	<!-- b : container -->
 		<div class="row">	<!-- b : row  -->
 			<!-- 대표 이미지 -->
 			<div class="col-md-6">  <!-- b : col-md-6  -->
-				<img alt="" src="/jspweb/img/p3.gif">
+				<img class="pimg" alt="" src="/jspweb/img/p3.gif">
 			</div>
 			
 			<!-- 상품 정보 -->
 			<div class="col-md-6">  <!-- b : col-md-6  -->
 				<div class="infobox">
 					<!-- 제품명 -->
-					<h4 class="pname">미라클 라이트 경량 퀄팅 점퍼</h4>
+					<h4 class="pname"> </h4>
 					
 					<!-- 제품설명 -->
-					<div class="pcomment">솔직히 말씀드려 디자인대비 소매랑 넥라인 끝부분 마감 디테일이 아쉬운 상품입니다. </div>
+					<div class="pcomment"> </div>
 					
 					<!-- 가격 -->
 					<div class="pricebox">	<!-- 할인율이 있을경우 -->
-						<span class="pdiscount">30%</span>	<!-- 할인율 -->
-						<span class="pprice">20,000원</span>	<!-- 원가 -->
-						<span class="psale">16,000원</span>	<!-- 할인이 적용된 가격 -->
+						<span class="pdiscount"></span>	<!-- 할인율 -->
+						<span class="pprice"></span>	<!-- 원가 -->
+						<span class="psale"></span>	<!-- 할인이 적용된 가격 -->
 					</div>
 					
 					<!-- 사이즈 종류 -->
-					<div class="sizebox">
-						<span> [ FREE , XL , L , M , S ] </span>
-					</div>
+					<div class="sizebox"> </div>
 					
 					<!-- 제품 옵션 -->
 					<table class="table into_t">	<!--  b: table -->
 						<tr> <td>배송구분</td> <td>2,500원 ( 70,000원 이상 구매시 무료) </td> </tr>
 						<tr> <td>카드혜택</td> <td> 무이자할부 </td> </tr>
-						<tr> <td>적립혜택</td> <td> 3000(1%) </td> </tr>
+						<tr> <td>적립혜택</td> <td> 3,000(1%) </td> </tr>
 						
 						<!-- 색상 선택 행 -->
 						<tr> <td>색상</td> 	
@@ -127,6 +126,8 @@
 		</div>
 		
 	</div>
+	
+	<script type="text/javascript" src="/jspweb/js/product/productview.js"></script>
 	
 </body>
 </html>
