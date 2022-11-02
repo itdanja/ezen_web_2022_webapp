@@ -81,6 +81,34 @@ document.querySelector('.sselect').addEventListener('change' , (e)=>{
 	print() // 리스트에 존재하는 객체를 출력한다. 
 	
 })
+
+// ** 찜하기 버튼을 눌렀을떄 
+let btnlike = document.querySelector('.btnlike');
+btnlike.addEventListener('click' , (e)=>{
+	// 1.로그인 유무 판단 [ 1. ajax 통신해서 세션 유무 확인한다. *2. jsp 에서 가져온다. ]
+	let mid = document.querySelector('.mid').value
+	if( mid == 'null'){
+		alert('로그인후 가능한 기능입니다.');return;
+	}
+	// 2.찜하기 등록 혹은 취소 처리 
+	$.ajax({
+		url : "/jspweb/product/plike" ,
+		type : "post" , 
+		data : { "pno" : pno } , 
+		success : re => {
+			if( re == "1"){
+				alert('찜하기 취소')
+				btnlike.innerHTML = '찜하기 ♡'
+			}else if ( re == "2" ){
+				alert('찜하기 성공')
+				btnlike.innerHTML = '찜하기 ♥'
+			}else{ alert('DB오류') }
+		}	
+	})
+	
+	
+});
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // js 열람시 최초로 함수 1번 실행 
 getproduct( pno ) 	// 제품 정보 호출 [ pno ]
@@ -154,12 +182,21 @@ function getstock( pno ){ // 5. 현재 제품의 재고목록 호출 [ ajax ]
 		success : (re) => { stock = JSON.parse( re ) }
 	});
 }
+
 // 4. 선택된 제품옵션 리스트를 출력하는 함수 [ 1. 사이즈선택 했을때 2.옵션 제거 했을때 마다 실행]
 function print(){
 	let ohtml = '<tr> <th width="60%">상품명/옵션 </th>  <th width="25%">수량</th>  <th width="15%"> 가격 </th>  </tr>';
+	
+	let totalprice = 0	// 선택한 옵션제품 목록 총판매가 변수 
+	let totalamount = 0	// 선택한 옵션제품 목록 총 수량 변수 
+	
 	productlist.forEach( ( p , i  ) => {
 		let tsale = psale * p.amount	// 판매가 * 수량 
 		let tpoint = Math.round(tsale * 0.01)		// (판매가 * 수량)  * 1%
+		
+		totalprice += tsale		// 각 옵션별 판매가를 전체판매가에 누적 더하기
+		totalamount += p.amount	// 각 옵션별 수량을 전체 수량에 누적 더하기 
+		
 		ohtml +=  '<tr>	'+
 					'	<td> '+
 					'		<span>'+product.pname+'</span>'+
@@ -185,8 +222,12 @@ function print(){
 					'		<span class="pointbox"> (포인트)'+ tpoint.toLocaleString()+' </span>'+
 					'	</td>'+
 					'</tr>';
-	})
+	}) // for end 
+	
 	document.querySelector('.select_t').innerHTML = ohtml
+	
+	let tohtml = totalprice.toLocaleString()+"원 ("+totalamount+"개)";
+	document.querySelector('.totalprice').innerHTML = tohtml
 }
 
 // 5. 수량 증가 버튼을 눌렀을때	
