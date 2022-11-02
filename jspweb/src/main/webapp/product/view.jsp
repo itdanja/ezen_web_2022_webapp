@@ -13,7 +13,7 @@
 		// 1. 경로에 있는 pno request 요청
 		int pno = Integer.parseInt( request.getParameter("pno") );
 	%>
-	<input type="text" value="<%=pno%>" class="pno" >
+	<input type="hidden" value="<%=pno%>" class="pno" >
 	
 	<div class="container">	<!-- b : container -->
 		<div class="row">	<!-- b : row  -->

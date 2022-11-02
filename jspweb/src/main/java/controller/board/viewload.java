@@ -19,10 +19,6 @@ public class viewload extends HttpServlet {
 		
 		// 1. 요청 [ 클릭한 게시물의 번호 저장 = backend ]
 		int bno = Integer.parseInt( request.getParameter("bno") ) ;
-		// * 세션 : 웹서버에 저장할수 있는 메모리 공간
-					// 브라우저마다 할당 [ 유저 마다 메모리 웹서버 할당 ]
-					// 서버 종료되거나 시간타이머 브라우저 종료되었을때
-					// 세션 == Object
 		// 2. 세션 객체 만들기 
 		HttpSession session = request.getSession();
 		// 3. 클릭한 게시물 번호를 세션에 저장 
