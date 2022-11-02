@@ -1,4 +1,3 @@
-
 /*
 	document.querySelector('tag명')
 	document.querySelector('#id명')
@@ -10,12 +9,36 @@
 		src : 
 		style : 
 */
+/*
+	JS 반복문 
+		1. for(  let index = 0 ; 배열명.length ; index++ ) {  }
+			index : 반복변수[ 인덱스용 ]
+			
+		2. 배열명.forEach( ( value , index , array ) => {   } )
+			value : 배열내 데이터 반복변수
+			index : 인덱스 반복변수
+			array : 배열
+			
+		3. for( value of 배열명 ) {  }	
+			// 배열에서 순서대로 데이터 반복변수에 대입 
+			
+		4. for( index in 배열명 ) {  }
+			// 배열에서 순서대로 인덱스 반복변수에 대입 
+*/
+/*
+	// 1. 배열에 객체 추가 
+	배열.push( 객체 )
+	// 2. 배열내 해당 인덱스의 객체 삭제 
+	배열.splice( 인덱스 , 1 )
+*/
 
 ///////////////////////////////////// 공통변수  // 전역변수 [ 여러 함수에서 공유해서 사용하기 위한 목적 ]////////////////////
 let stock = null // 재고목록  
 let product = null // 제품 
 let color = null; /// 선택된 색상 
 let productlist = [] // 선택된 제품옵션 [색상,사이즈,개수] 리스트/목록 선언 
+let psale = 0 // 할인율이 적용된 판매가 
+
 // *. 현재 페이지내 제품번호[ a href="링크?pno=제품번호" ]를 가지고 와서 ajax로 해당 제품번호의 모든 제품정보를 가져오자 
 let pno = document.querySelector('.pno').value
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,18 +59,30 @@ document.querySelector('.cselect').addEventListener('change' , (e)=>{
 // **사이즈 select 박스를 체인지 했을때 이벤트
 document.querySelector('.sselect').addEventListener('change' , (e)=>{
 	let size = e.currentTarget.value
-	// 선택된 제품정보와 옵션을 객체 만드다.
+	
+	// 1. 사이즈 선택시 안내문구 클릭하면 함수 종료 ]
+	if( size == '-[필수] 사이즈 선택' ){ return; }
+	
+	// 2. 이미 존재한 옵션을 클릭했을때 해당 옵션의 수량 증가하고 함수 종료 
+	for( p of productlist ){
+		if( p.pcolor == color && p.psize == size  ){
+				p.amount++; print(); return;
+		}
+	}
+	
+	// 3. 선택된 제품정보와 옵션을 객체 만든다.
 	let sproduct = {
 		pcolor : color , 	// 색상
 		psize : size , 		// 사이즈 
 		amount : 1			// 수량
 	}
+	
 	productlist.push( sproduct ) // 리스트에 담는다.
 	print() // 리스트에 존재하는 객체를 출력한다. 
+	
 })
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // js 열람시 최초로 함수 1번 실행 
-
 getproduct( pno ) 	// 제품 정보 호출 [ pno ]
 getstock( pno )		// 제품 재고 호출 [ pno ]
 sethtmlprint()		// *위 메소드 안에 있는 ajax가 모두 실행된 후에 print 실행
@@ -68,12 +103,18 @@ function sethtmlprint(){
 		document.querySelector('.pcomment').innerHTML = product.pcomment // 3.제품설명 대입
 		let phtml = '' // 4.가격 대입
 		if( product.pdiscount == 0 ){ // 2. 할인이 없을때	[ 천단위 쉼표 함수 : 데이터.toLocaleString() ]
-			phtml += '<span class="psale">'+(product.pprice.toLocaleString() )+'원</span>'
+			
+			psale = product.pprice
+			phtml += '<span class="psale">'+ psale.toLocaleString() +'원</span>'
+			
 		}else{ // 1. 할인이 있을때						[ 반올림(소수점버리고 반올림) : Math.round( 데이터 ) ]
+			
+			psale = product.pprice -( product.pprice * product.pdiscount )
 			phtml +=
 				'<span class="pdiscount">'+ Math.round( product.pdiscount * 100 )+'%</span>'+
 				'<span class="pprice">'+( product.pprice.toLocaleString() )+'원</span>'+
-				'<span class="psale">'+ ( product.pprice -( product.pprice * product.pdiscount ) ).toLocaleString() +'원</span>'
+				'<span class="psale">'+ psale.toLocaleString() +'원</span>'
+				
 		}
 		document.querySelector('.pricebox').innerHTML = phtml 
 		
@@ -116,36 +157,59 @@ function getstock( pno ){ // 5. 현재 제품의 재고목록 호출 [ ajax ]
 // 4. 선택된 제품옵션 리스트를 출력하는 함수 [ 1. 사이즈선택 했을때 2.옵션 제거 했을때 마다 실행]
 function print(){
 	let ohtml = '<tr> <th width="60%">상품명/옵션 </th>  <th width="25%">수량</th>  <th width="15%"> 가격 </th>  </tr>';
-	productlist.forEach( p => {
+	productlist.forEach( ( p , i  ) => {
+		let tsale = psale * p.amount	// 판매가 * 수량 
+		let tpoint = Math.round(tsale * 0.01)		// (판매가 * 수량)  * 1%
 		ohtml +=  '<tr>	'+
 					'	<td> '+
-					'		<span>미라클 라이트 경량 퀄팅 점퍼</span>'+
+					'		<span>'+product.pname+'</span>'+
 					'		<br>'+
-					'		<span> -블랙 / FREE </span>'+
+					'		<span> -'+p.pcolor+' / '+p.psize+' </span>'+
 					'	</td>'+
 					'	<td> '+
 					'		<div class="row g-0"> '+
-					'			<div class="col-md-3">'+
-					'				<input class="form-control" value="1">'+
+					'			<div class="col-md-4">'+
+					'				<input readonly class="form-control" value='+p.amount+'>'+
 					'			</div>	'+
 					'			<div class="col-md-4">	'+
-					'				<button class="amount_btn">▲</button>'+
-					'				<button class="amount_btn">▼</button>'+
+					'				<button class="amount_btn" onclick="amountup('+i+')">▲</button>'+
+					'				<button class="amount_btn" onclick="amountdown('+i+')">▼</button>'+
 					'			</div>'+
 					'			<div class="col-md-1">	'+
-					'				<button class="cancel_btn">x</button>'+
+					'				<button class="cancel_btn" onclick="pcancel('+i+')">x</button>'+
 					'			</div>'+
 					'		</div>'+
 					'	</td>'+
 					'	<td>'+
-					'		<span> 20,000원</span> <br>'+
-					'		<span class="pointbox"> (포인트)2000 </span>'+
+					'		<span> '+tsale.toLocaleString()+'원</span> <br>'+
+					'		<span class="pointbox"> (포인트)'+ tpoint.toLocaleString()+' </span>'+
 					'	</td>'+
 					'</tr>';
 	})
 	document.querySelector('.select_t').innerHTML = ohtml
 }
 
+// 5. 수량 증가 버튼을 눌렀을때	
+function amountup(i){ 
+	// 선택한 옵션의 재고 찾기 
+	let maxstock = 0;
+	stock.forEach( s => {
+		if( s.pcolor == productlist[i].pcolor && s.psize ==  productlist[i].psize ){ // 재고목록에서  선택한 옵션과  일치하면 
+			maxstock = s.pstock // 재고 대입 
+		}
+	})
+	if( productlist[i].amount >= maxstock ){ alert("재고 부족합니다."); return; }
+	productlist[i].amount++; print() 
+}
+// 6. 수량 감소 버튼을 눌렀을때 
+function amountdown(i){ 
+	if( productlist[i].amount <= 1 ){ alert("최소 구매수량 입니다."); return;}
+	productlist[i].amount--;  print() 
+}
+// 7. 선택된 제품 제거 
+function pcancel( i ){
+	productlist.splice( i , 1 ); print(); // 선택된 제품리스트에서 i번째부터 1개를 인덱스제거 
+}
 
 
 
