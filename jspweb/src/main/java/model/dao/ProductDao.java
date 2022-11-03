@@ -3,6 +3,7 @@ package model.dao;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import controller.admin.regist;
 import model.dto.PcategoryDto;
 import model.dto.ProductDto;
 import model.dto.StockDto;
@@ -183,6 +184,23 @@ public class ProductDao extends Dao {
 				ps.executeUpdate(); return 2;
 			}
 		}catch (Exception e) {System.out.println(e);} return 3;
+	}
+	
+	// 11. 장바구니에 선택한 제품 옵션 저장 
+	public boolean setcart( int pno , String psize ,  int amount , String pcolor , int mno) {
+		
+	    String sql = " insert into cart( amount , pstno , mno )"
+	    		+ " values (  "
+	    		+ "	"+amount+" ,"
+	    		+ "    (select pstno "
+	    		+ "	from productstock pst , (select psno from productsize where pno = "+pno+" and psize = '"+psize+"') sub"
+	    		+ "	where pst.psno = sub.psno and pcolor = '"+pcolor+"') ,"
+	    		+ "  "+mno+""
+	    		+ " );";
+	    
+	    try {
+	    	ps = con.prepareStatement(sql); ps.executeUpdate(); return true;
+	    }catch (Exception e) { System.out.println( e ); } return false;
 	}
 	
 	

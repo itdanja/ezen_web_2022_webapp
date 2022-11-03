@@ -104,6 +104,17 @@ create table productstock(
     constraint pstno_pk primary key( pstno ) , 
     constraint psno_fk	foreign key( psno ) references productsize( psno )
 );
+-- 장바구니 db
+drop table if exists cart;
+create table cart(
+	cartno int auto_increment 	,	-- 장바구니 번호
+    amount int	,					-- 옵션 수량
+    pstno int	,					-- 제품재고 정보
+    mno	int	,						-- 회원번호
+    constraint cart_pk primary key( cartno ) , 
+    constraint cart_pstno_fk foreign key ( pstno ) references productstock( pstno ),
+    constraint cart_mno_fk foreign key ( mno ) references member( mno )
+);
 
 
 

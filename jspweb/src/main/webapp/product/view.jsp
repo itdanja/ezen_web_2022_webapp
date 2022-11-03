@@ -87,7 +87,7 @@
 					<!-- 버튼목록 -->
 					<div class="btnbox">
 						<button id="btn1">바로 구매</button>
-						<button id="btn2">장바구니 담기</button>
+						<button id="btn2" class="btncart">장바구니 담기</button>
 						<button id="btn3" class="btnlike">찜하기 ♡</button>	
 					</div>	
 				</div>
