@@ -117,6 +117,39 @@ create table cart(
 );
 
 
+-- 1. 재고번호 찾기 [ join ]
+select * from productstock;	-- 재고 테이블 검색
+select * from productstock where pno = 10; 	-- 재고 pno 없다.[ 오류 ]
+select * from productsize where pno = 10;	-- 사이즈 pno 있다.
+select * from productsize where pno = 10 and psize = 'XL';
+select * from productsize ps , productstock pst where ps.psno = pst.psno; -- 두개 이상 테이블 검색 
+
+select pstno 
+from productsize ps , productstock pst 
+where ps.psno = pst.psno and pno = 10 and psize = 'XL' and pcolor = '오렌지';
+-- -------------------------------------------------------------------------- --
+-- 1. 재고번호 찾기  서브쿼리 [ SQL 안에 select ]
+select psno from productsize where pno = 10 and psize = 'XL';
+
+select pstno
+from productstock pst , 
+(select psno from productsize where pno = 10 and psize = 'XL') sub 
+where pst.psno = sub.psno and pcolor = '오렌지';
+
+-- ------------------------------------------------------------------------- --
+insert into cart( amount , pstno , mno )
+values ( 
+	1 ,
+    (select pstno
+	from productstock pst , 
+		(select psno from productsize where pno = 10 and psize = 'XL') sub 
+	where pst.psno = sub.psno and pcolor = '오렌지') ,
+    3
+);
+
+
+
+
 
 -- ------------------------------------------------------------------------- --
 -- 로그인 된 회원의 장바구니 정보 모두 호출 [ mno -> 카트번호 , 재고번호 , 제품명, 제품사진 , 가격 , 할인율 , 선택한옵션색상/사이즈/수량 ]
