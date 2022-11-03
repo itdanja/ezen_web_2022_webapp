@@ -118,6 +118,83 @@ create table cart(
 
 
 
+-- ------------------------------------------------------------------------- --
+-- 로그인 된 회원의 장바구니 정보 모두 호출 [ mno -> 카트번호 , 재고번호 , 제품명, 제품사진 , 가격 , 할인율 , 선택한옵션색상/사이즈/수량 ]
+-- 예시 3번회원
+
+select * from cart where mno = 3; -- 회원 장바구니
+select * from cart c , productstock pst where c.pstno = pst.pstno; -- 카트 + 재고
+
+select * from cart c , productstock pst , productsize ps 
+where c.pstno = pst.pstno and pst.psno = ps.psno; 		-- 카트 + 재고 + 사이즈 
+
+select * from cart c , productstock pst , productsize ps , product p
+where c.pstno = pst.pstno and pst.psno = ps.psno and ps.pno = p.pno;	-- 카트 + 재고 + 사이즈 + 제품 
+--      	fk = pk		and       fk   =  pk    and  fk = pk
+
+select 
+	c.cartno 장바구니번호 ,  c.pstno 재고번호 , 
+    p.pname  제품명 , p.pimg 제품사진 , 
+    p.pprice  가격 ,   p.pdiscount 할인율 ,
+	pst.pcolor 색상 , ps.psize 사이즈 ,
+    c.amount 구매예정수량
+from 
+	cart c , 
+    productstock pst , 
+    productsize ps , 
+    product p
+where c.pstno = pst.pstno 
+	and pst.psno = ps.psno 
+    and ps.pno = p.pno;
+    
+-- JOIN [ 관계[pf-fk]있을경우에 2개 이상 테이블의 동일한 데이터  ]
+	-- 1. 테이블명 inner JOIN 테이블명 on pk필드 = fk필드 
+select 
+	c.cartno 장바구니번호 ,  c.pstno 재고번호 , 
+    p.pname  제품명 , p.pimg 제품사진 , 
+    p.pprice  가격 ,   p.pdiscount 할인율 ,
+	pst.pcolor 색상 , ps.psize 사이즈 ,
+    c.amount 구매예정수량
+from 
+	cart c inner join
+    productstock pst inner join
+    productsize ps inner join
+    product p
+on  c.pstno = pst.pstno 
+	and pst.psno = ps.psno  
+    and ps.pno = p.pno;
+
+    -- 2. 테이블명 natural join 테이블명 [ 암묵적으로 pk와fk를 조건으로 사용 ]
+select 
+	c.cartno 장바구니번호 ,  c.pstno 재고번호 , 
+    p.pname  제품명 , p.pimg 제품사진 , 
+    p.pprice  가격 ,   p.pdiscount 할인율 ,
+	pst.pcolor 색상 , ps.psize 사이즈 ,
+    c.amount 구매예정수량
+from 
+	cart c natural join
+    productstock pst natural join
+    productsize ps natural join
+    product p;
+    
+-- 
+select 
+	c.cartno ,  c.pstno , 
+    p.pname , p.pimg  , 
+    p.pprice   ,   p.pdiscount  ,
+	pst.pcolor  , ps.psize  ,
+    c.amount 
+from 
+	cart c natural join
+    productstock pst natural join
+    productsize ps natural join
+    product p
+where
+	c.mno = 3;
+
+
+
+
 
 
 

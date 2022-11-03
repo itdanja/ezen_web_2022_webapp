@@ -4,6 +4,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import controller.admin.regist;
+import model.dto.CartDto;
 import model.dto.PcategoryDto;
 import model.dto.ProductDto;
 import model.dto.StockDto;
@@ -201,6 +202,36 @@ public class ProductDao extends Dao {
 	    try {
 	    	ps = con.prepareStatement(sql); ps.executeUpdate(); return true;
 	    }catch (Exception e) { System.out.println( e ); } return false;
+	}
+	
+	// 12. 회원번호의 모든 장바구니 호출 
+	public ArrayList<CartDto> getCart( int mno ){
+		ArrayList<CartDto> list = new ArrayList<>();
+		String sql = "select "
+				+ "	   c.cartno ,  c.pstno , "
+				+ "    p.pname , p.pimg  , "
+				+ "    p.pprice   ,   p.pdiscount  , "
+				+ "	   pst.pcolor  , ps.psize  , "
+				+ "    c.amount  "
+				+ " from "
+				+ "	   cart c natural join "
+				+ "    productstock pst natural join "
+				+ "    productsize ps natural join "
+				+ "    product p "
+				+ " where "
+				+ "	c.mno = "+mno;
+		try {
+			ps = con.prepareStatement(sql); 
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				CartDto cartDto = new CartDto(
+						rs.getInt(1), rs.getInt(2), 
+						rs.getString(3), rs.getString(4), 
+						rs.getInt(5), rs.getFloat(6), 
+						rs.getString(7), rs.getString(8), rs.getInt(9));
+				list.add(cartDto);
+			}
+		}catch (Exception e) {System.out.println(e);} return list;
 	}
 	
 	

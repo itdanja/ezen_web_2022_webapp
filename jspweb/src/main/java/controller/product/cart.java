@@ -54,9 +54,12 @@ public class cart extends HttpServlet {
 			for( int i = 0 ; i<array.size() ; i++  ) { // 3. 반복문
 				JSONObject object = (JSONObject) array.get(i); // 4.순서대로 객체 꺼내기 // json리스트객체.get(인덱스) => 해당 인덱스의 객체
 				
+				System.out.println( object );
 				// 2.db처리 	// json객체.get("키") => 값 호출  // !! : 재고번호
-				boolean result = new ProductDao().setcart( 
-					pno , (String)object.get("psize") ,  (Integer)object.get("amount") , (String)object.get("pcolor") , mno  );
+				String psize 	= (String)object.get("psize");	System.out.println( psize );
+				int amount 	= Integer.parseInt( String.valueOf( object.get("amount" ) ) );	System.out.println( amount );
+				String pcolor 	= (String)object.get("pcolor");	System.out.println( pcolor );
+				boolean result = new ProductDao().setcart( pno , psize  , amount , pcolor , mno  );
 				
 				// 3.응답 [ 만약에 옵션들을 중에 하나라도 실패하면 false 반환 ] 
 				if( result == false ) { response.getWriter().print(result); return; }
@@ -68,6 +71,14 @@ public class cart extends HttpServlet {
 	}
 
 }
+
+/*
+ 								
+ 	JSON 						강제형변환[ 부모가 자식 ]
+ 		"문자" : 문자열 String		(String) ----> O 	[ 클래스가 동일하니까 ]		
+ 		숫자 : Long				(String) ----> x    메소드 이용 [ String.valueOf( ) ]
+ 
+ */
 
 
 
