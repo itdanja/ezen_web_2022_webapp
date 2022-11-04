@@ -47,11 +47,11 @@ function requestPay() {
       merchant_uid:  "",   //주문번호 [ 1.자동번호 2.직접( 날짜+시간+mid+난수 ) ]
       name:  cartlist[0].pname +"외 "+cartlist.length ,	// 제품명 [ 장바구니에 ]
       amount:  totalprice ,                        	 // 숫자타입
-      buyer_email: member.memail ,
-      buyer_name: member.mname ,
-      buyer_tel: member.mphone ,
-      buyer_addr: member.maddress ,
-      buyer_postcode: "01181"
+      buyer_email: "" ,
+      buyer_name: "" ,
+      buyer_tel: "" ,
+      buyer_addr: "" ,
+      buyer_postcode: ""
   }, function (rsp) { // callback
       if (rsp.success) {// 결제 성공 시 로직
     		
