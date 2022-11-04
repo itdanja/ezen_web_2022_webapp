@@ -14,10 +14,19 @@
 		<table class="table cart_t">
 			
 		</table>
+		
+		<button type="button">선택삭제</button>
+		<button type="button">전체삭제</button>
+		<button type="button">쇼핑하기</button>
+		<button onclick="requestPay()" type="button">결제하기</button>	<!-- 아임포트 결제 버튼 -->
 	</div>
+	
+	<!-- 아임포트[ 결제 API ] -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+	
 	<script src="/jspweb/js/product/cart.js" type="text/javascript"></script>
 	
-	
-
 </body>
 </html>
+
+
