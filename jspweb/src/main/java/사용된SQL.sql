@@ -104,6 +104,17 @@ create table productstock(
     constraint pstno_pk primary key( pstno ) , 
     constraint psno_fk	foreign key( psno ) references productsize( psno ) on delete cascade
 );
+
+-- 찜하기 db
+drop table if exists plike;
+create table plike(
+	plikeno int auto_increment,
+	mno int ,
+	pno int,
+    constraint plike_pk primary key ( plikeno ) ,
+    constraint plike_pno foreign key( pno ) references product( pno )  on delete cascade
+)
+
 -- 장바구니 db
 drop table if exists cart;
 create table cart(
@@ -116,6 +127,7 @@ create table cart(
     constraint cart_mno_fk foreign key ( mno ) references member( mno ) on delete cascade
 );
 
+-- 주문 db 
 drop table if exists porder;
 create table porder( -- order [ x ] 
 	ono int auto_increment, -- 주문번호 
@@ -128,6 +140,7 @@ create table porder( -- order [ x ]
     constraint ono_pk primary key (ono) , 
     constraint orderno_mno_fk foreign key (mno) references member(mno) on delete cascade 
 );
+-- 주문 상세 
 drop table if exists porderdetail;
 create table porderdetail(
 	odno int auto_increment , -- 주문상세번호 
@@ -142,7 +155,7 @@ create table porderdetail(
 );
 
 
-
+------------------------------------------------ 테스트 ---------------------------
 -- 1. 재고번호 찾기 [ join ]
 select * from productstock;	-- 재고 테이블 검색
 select * from productstock where pno = 10; 	-- 재고 pno 없다.[ 오류 ]
