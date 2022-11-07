@@ -9,7 +9,7 @@
 <body>
 
 	<%@include file = "../header.jsp" %>
-	<div class="container">
+	<div  class="container">
 	
 		<table class="table cart_t">
 			
@@ -29,5 +29,11 @@
 	
 </body>
 </html>
+
+
+
+
+
+
 
 
