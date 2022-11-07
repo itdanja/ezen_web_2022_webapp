@@ -120,7 +120,7 @@ drop table if exists porder;
 create table porder( -- order [ x ] 
 	ono int auto_increment, -- 주문번호 
     oname varchar(100) ,  -- 받는사람 성명 
-    ohone varchar(100) ,-- 받는사람 연락처 
+    ophone varchar(100) ,-- 받는사람 연락처 
     oddress varchar(100) ,-- 받는사람 주소 
     oquest varchar(100) ,-- 주문 요청사항
     odate datetime default now(),-- 주문 날짜 
@@ -133,7 +133,7 @@ create table porderdetail(
 	odno int auto_increment , -- 주문상세번호 
     odamount int , -- 수량 
     odprice int , -- 결제액
-    odactive int , -- 주문상태 
+    odactive int default 0 , -- 주문상태 
     pstno int , -- 재고번호
     ono int ,-- 주문번호
     constraint odno_pk primary key (odno) , 

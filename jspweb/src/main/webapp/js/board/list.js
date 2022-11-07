@@ -24,7 +24,7 @@ function list( page ){ // 함수 정의한다
 				let b = boardlist[i] // 1. i번째 객체 호출 
 				html += '<tr>' + // 2. i번쨰 객체의 정보를 html 형식으로 변환해서 문자열에 저장
 							'<td>'+b.bno+'</td>'+
-							//'<td><a href="http://localhost:8080/jspweb/board/view.jsp?bno='+b.bno+'">'+b.btitle+'</a></td>'+
+							//'<td><a href="http:/jspweb/board/view.jsp?bno='+b.bno+'">'+b.btitle+'</a></td>'+
 							'<td onclick="viewload('+b.bno+')">'+b.btitle+'</td>'+
 							'<td>'+b.mid+'</td>'+
 							'<td>'+b.bdate+'</td>'+
@@ -58,10 +58,10 @@ function list( page ){ // 함수 정의한다
 // 2. 제목 클릭했을때 상세페이지 이동 함수
 function viewload( bno ){
 	$.ajax({
-		url : "http://localhost:8080/jspweb/board/viewload" , 
+		url : "/jspweb/board/viewload" , 
 		data : { "bno" : bno },
 		success : function( re ){
-			location.href = "http://localhost:8080/jspweb/board/view.jsp"
+			location.href = "/jspweb/board/view.jsp"
 		}
 	})
 }
