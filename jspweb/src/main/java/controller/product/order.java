@@ -1,6 +1,8 @@
 package controller.product;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import model.dao.MemberDao;
+import model.dao.ProductDao;
 import model.dto.OrderDto;
 
 /**
@@ -56,16 +59,18 @@ public class order extends HttpServlet {
 			// 2. 리스트  [ 결제할 제품 리스트 문자열 -> jsonarray ] 
 			JSONArray jsonArray = (JSONArray) parser.parse( data );
 			
+			// 받는사람 정보
+			String oname =  String.valueOf( jsonObject.get("oname") );
+			String ophone = String.valueOf( jsonObject.get("ophone") );
+			String oddress = String.valueOf( jsonObject.get("oddress") );
+			String oquest = String.valueOf( jsonObject.get("oquest") );
+			
+			ArrayList<OrderDto> list = new ArrayList<>(); // 주문 dto 담을 리스트
 			// 3. 반복문 [ orderDto 객체 -> Dao 처리 ]
 			for( int i = 0 ; i<jsonArray.size() ; i++ ) {
 				JSONObject object =  (JSONObject)jsonArray.get(i);
-				// 받는사람 정보
-				String oname =  String.valueOf( jsonObject.get("oname") );
-				String ophone = String.valueOf( jsonObject.get("ophone") );
-				String oddress = String.valueOf( jsonObject.get("oddress") );
-				String oquest = String.valueOf( jsonObject.get("oquest") );
 				// 주문상세 정보
-				int odamount = 		Integer.parseInt( String.valueOf( object.get("amount") ) ) ;
+				int odamount = 			Integer.parseInt( String.valueOf( object.get("amount") ) ) ;
 					int pprice =		Integer.parseInt(String.valueOf(object.get("pprice") ) );
 					float pdiscount = 	Float.parseFloat(String.valueOf(object.get("pdiscount") ) ) ;
 				int odprice = Math.round( pprice - ( pprice *pdiscount ) );
@@ -74,12 +79,15 @@ public class order extends HttpServlet {
 				OrderDto dto = new OrderDto(
 						0, oname, ophone, oddress, oquest,
 						null, mno, 0, odamount, odprice, 0 , pstno);
-				System.out.println( dto.toString() ); // 확인
-			}
+				// 리스트 담기
+				list.add( dto );
+			} // for문 
+			// 4. DB처리 
+			boolean result =  new ProductDao().setOrder( list );
 		
+			response.getWriter().print(result); // db 결과 응답
 		}catch (Exception e) {System.out.println("json형변환 오류 "); }
-		
-		response.getWriter().print("true"); // 성공했을때 true 
+		response.getWriter().print("false"); // 오류시 false 
 		
 	}
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import controller.admin.regist;
 import model.dto.CartDto;
+import model.dto.OrderDto;
 import model.dto.PcategoryDto;
 import model.dto.ProductDto;
 import model.dto.StockDto;
@@ -235,6 +236,14 @@ public class ProductDao extends Dao {
 				list.add(cartDto);
 			}
 		}catch (Exception e) {System.out.println(e);} return list;
+	}
+	
+	// 13. 
+	public boolean setOrder( ArrayList<OrderDto> list ) {
+		// 과제
+		// 1. 주문 레코드생성 
+		// 2. 위에서 생성된 주문번호를 이용해서 주문된 제품[list] 개수만큼 주문상세 레코드 생성 
+		return false;
 	}
 	
 	
