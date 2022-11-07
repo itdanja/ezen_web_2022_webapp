@@ -18,9 +18,12 @@
 			주소 <input type="text" class="oddress"> <br>
 			배송 요청사항 <input type="text" class="oquest"> <br>
 		</form>
-		<button type="button" onclick="requestPay('card')">신용카드</button>
-		<button type="button" onclick="requestPay('phone')">핸드폰결제</button>
-		<button type="button" onclick="requestPay('trans')">계좌이체</button>
+		<h3> 결제수단 </h3>
+		<button type="button" onclick="paymethod('card')">신용카드</button>
+		<button type="button" onclick="paymethod('phone')">핸드폰결제</button>
+		<button type="button" onclick="paymethod('trans')">계좌이체</button> 
+		<br>
+		<button type="button" onclick="requestPay()">결제하기</button>
 	</div>
 	<!-- 2. 아임포트[ 결제 API ] -->
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
