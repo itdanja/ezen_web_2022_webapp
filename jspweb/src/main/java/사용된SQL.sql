@@ -82,7 +82,7 @@ create table product( /* 제품 테이블 */
     pdate datetime default now() , 	/* 등록날짜 */
     pcno int , /* 제품카테고리의 FK */ 
     constraint pno_pk primary key ( pno ),
-    constraint pcno_fk foreign key ( pcno ) references pcategory( pcno ) /* pcategory[pk:pcno]  <-------->  product[fk:pcno] */
+    constraint pcno_fk foreign key ( pcno ) references pcategory( pcno ) on delete cascade /* pcategory[pk:pcno]  <-------->  product[fk:pcno] */
 );
 
 /* 제품별 사이즈 테이블  : 제품별[pno] 사이즈[psize] 저장 */
@@ -92,7 +92,7 @@ create table productsize(
     psize	varchar(100) , 
     pno		int  , 
 	constraint psno_pk primary key( psno ) ,
-    constraint pno_fk foreign key ( pno ) references product( pno )
+    constraint pno_fk foreign key ( pno ) references product( pno ) on delete cascade
 );
 /* 사이즈별 색상재고 테이블 : 사이즈별[psno] 색상[pcolor] 재고[pstock] 저장 */
 drop table if exists productstock;
@@ -102,7 +102,7 @@ create table productstock(
     pstock int ,
     psno int , 
     constraint pstno_pk primary key( pstno ) , 
-    constraint psno_fk	foreign key( psno ) references productsize( psno )
+    constraint psno_fk	foreign key( psno ) references productsize( psno ) on delete cascade
 );
 -- 장바구니 db
 drop table if exists cart;
@@ -112,8 +112,8 @@ create table cart(
     pstno int	,					-- 제품재고 정보
     mno	int	,						-- 회원번호
     constraint cart_pk primary key( cartno ) , 
-    constraint cart_pstno_fk foreign key ( pstno ) references productstock( pstno ),
-    constraint cart_mno_fk foreign key ( mno ) references member( mno )
+    constraint cart_pstno_fk foreign key ( pstno ) references productstock( pstno ) on delete cascade,
+    constraint cart_mno_fk foreign key ( mno ) references member( mno ) on delete cascade
 );
 
 drop table if exists porder;
@@ -126,7 +126,7 @@ create table porder( -- order [ x ]
     odate datetime default now(),-- 주문 날짜 
 	mno int ,-- 회원 번호[ 주문한 사람 ]
     constraint ono_pk primary key (ono) , 
-    constraint orderno_mno_fk foreign key (mno) references member(mno) 
+    constraint orderno_mno_fk foreign key (mno) references member(mno) on delete cascade 
 );
 drop table if exists porderdetail;
 create table porderdetail(
@@ -137,8 +137,8 @@ create table porderdetail(
     pstno int , -- 재고번호
     ono int ,-- 주문번호
     constraint odno_pk primary key (odno) , 
-    constraint od_pstno_fk foreign key ( pstno ) references productstock ( pstno ),
-    constraint od_ono_fk foreign key( ono ) references porder( ono ) 
+    constraint od_pstno_fk foreign key ( pstno ) references productstock ( pstno ) on delete cascade,
+    constraint od_ono_fk foreign key( ono ) references porder( ono ) on delete cascade
 );
 
 
